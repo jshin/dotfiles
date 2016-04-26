@@ -35,12 +35,10 @@ NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'basyura/twibill.vim'
 NeoBundle 'basyura/TweetVim'
 
-if has('mac')
-    NeoBundle 'Shougo/neocomplete.vim'
-    NeoBundle 'Shougo/neco-syntax'
-    NeoBundle 'Shougo/neoinclude.vim'
-    NeoBundle 'Shougo/neco-vim'
-endif
+NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'Shougo/neco-syntax'
+NeoBundle 'Shougo/neoinclude.vim'
+NeoBundle 'Shougo/neco-vim'
 
 "if !has('mac')
 "    NeoBundle 'Shougo/neocomplcache.vim'
