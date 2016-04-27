@@ -39,11 +39,8 @@ zstyle ':vcs_info:*' actionformats '[%b|%a]'
 
 #vcs表示
 ##プロンプト表示前にvcs_info呼び出し
-#precmd() { vcs_info }
 precmd() { vcs_info }
 RPROMPT='${vcs_info_msg_0_}'
-#PROMPT="%{${fg[green]}%}[%m@%T]%{${reset_color}%} %4d
-#${vcs_info_msg_0_} $ "
 ####################################
 #オプション
 setopt print_eight_bit
