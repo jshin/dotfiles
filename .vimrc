@@ -30,15 +30,17 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'Shougo/vimshell.vim'
 
 "Tweetvim
-NeoBundle 'mattn/webapi-vim'
-NeoBundle 'tyru/open-browser.vim'
-NeoBundle 'basyura/twibill.vim'
-NeoBundle 'basyura/TweetVim'
+if executable('curl')
+    NeoBundle 'mattn/webapi-vim'
+    NeoBundle 'tyru/open-browser.vim'
+    NeoBundle 'basyura/twibill.vim'
+    NeoBundle 'basyura/TweetVim'
 
-NeoBundle 'Shougo/neocomplete.vim'
-NeoBundle 'Shougo/neco-syntax'
-NeoBundle 'Shougo/neoinclude.vim'
-NeoBundle 'Shougo/neco-vim'
+    NeoBundle 'Shougo/neocomplete.vim'
+    NeoBundle 'Shougo/neco-syntax'
+    NeoBundle 'Shougo/neoinclude.vim'
+    NeoBundle 'Shougo/neco-vim'
+endif
 
 "if !has('mac')
 "    NeoBundle 'Shougo/neocomplcache.vim'
