@@ -35,16 +35,12 @@ if executable('curl')
     NeoBundle 'tyru/open-browser.vim'
     NeoBundle 'basyura/twibill.vim'
     NeoBundle 'basyura/TweetVim'
-
-    NeoBundle 'Shougo/neocomplete.vim'
-    NeoBundle 'Shougo/neco-syntax'
-    NeoBundle 'Shougo/neoinclude.vim'
-    NeoBundle 'Shougo/neco-vim'
 endif
 
-"if !has('mac')
-"    NeoBundle 'Shougo/neocomplcache.vim'
-"endif
+NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'Shougo/neco-syntax'
+NeoBundle 'Shougo/neoinclude.vim'
+NeoBundle 'Shougo/neco-vim'
 
 NeoBundle 'Shougo/vimproc.vim', {
             \ 'build' : {
