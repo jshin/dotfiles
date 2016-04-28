@@ -79,7 +79,7 @@ set shiftwidth=4
 set nocp
 set smartindent "オートインデン
 set backspace=indent,eol,start
-set clipboard=unnamed,autoselect
+set clipboard=unnamedplus,autoselect
 set encoding=utf-8
 set fileencodings=iso-2022-jp,cp932,sjis,utf-8
 inoremap [ []<LEFT>
@@ -181,6 +181,7 @@ nnoremap <silent> [unite]o :<C-u>Unite<Space>outline<CR>
 nnoremap <silent> [unite]d :<C-u>Unite<Space>directory_mru<CR>
 nnoremap <silent> [unite]h :<C-u>Unite<Space>history/yank<CR>
 nnoremap <silent> [unite]t :<C-u>Unite tab<CR>
+nnoremap <silent> [unite]n :<C-u>Unite<Space>file/new<CR>
 
 "uniteを使っている間のキーマップ
 autocmd FileType unite call s:unite_my_settings()
