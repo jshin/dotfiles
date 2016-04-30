@@ -102,3 +102,4 @@ alias ls='ls -G'
 export PATH="/usr/local/Cellar/openssl/1.0.2a-1/bin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/Library/Tex/texbin:/Users/takuro/Documents/EGGX/:/Users/takuro/Documents/EGGX/:/Applications/eclipse/android-sdk-macosx/platform-tools:/Applications/eclipse/android-sdk-macosx/tools:$PATH"
 
 export GREP_OPTIONS='--color=auto'
+export HOMEBREW_NO_ANALYTICS=1
