@@ -96,8 +96,9 @@ syntax enable
 set ignorecase
 set smartcase
 set wrapscan
-"source /Users/takuro/.vim/colorID.vim
-
+let java_highlight_all=1
+let java_highlight_functions="style"
+let java_allow_cpp_keywords=1
 "マウス設定
 if has("mouse")
     set mouse=a
