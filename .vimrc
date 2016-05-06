@@ -91,6 +91,7 @@ inoremap < <><LEFT>
 inoremap ' ''<LEFT>
 inoremap { {}<LEFT>
 inoremap {<Enter> {}<LEFT><CR><ESC><S-o>
+inoremap <C-c> <Esc>
 set t_Co=256
 set background=dark
 colorscheme hybrid
