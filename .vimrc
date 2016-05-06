@@ -77,7 +77,12 @@ set shiftwidth=4
 set nocp
 set smartindent "オートインデン
 set backspace=indent,eol,start
-set clipboard=unnamedplus,autoselect
+if !has('mac')
+    set clipboard=unnamedplus,autoselect
+endif
+if has('mac')
+    set clipboard=unnamed,autoselect
+endif
 set encoding=utf-8
 set fileencodings=iso-2022-jp,cp932,sjis,utf-8
 inoremap [ []<LEFT>
