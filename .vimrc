@@ -57,6 +57,7 @@ NeoBundle 'osyo-manga/vim-watchdogs'
 NeoBundle 'cohama/vim-hier'
 NeoBundle 'KazuakiM/vim-qfstatusline'
 NeoBundle 'kamichidu/vim-javaclasspath'
+NeoBundle 'superbrothers/vim-vimperator'
 
 call neobundle#end()
 
