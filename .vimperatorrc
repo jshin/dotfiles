@@ -24,3 +24,9 @@ nnoremap s :tabopen<Space>google<Space>
 set complete=sl
 
 set hintchars=;asdfghjkl
+
+map U :u<Space>
+
+hi ErrorMsg color:white; background-color: #ec6aa1;
+
+set! ui.caretWidth=2
