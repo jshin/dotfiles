@@ -22,3 +22,5 @@ set defsearch=google
 nnoremap s :tabopen<Space>google<Space>
 
 set complete=sl
+
+set hintchars=;asdfghjkl
