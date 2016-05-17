@@ -84,7 +84,7 @@ alias py3="python3"
 alias v="vim"
 alias ptex2pdf="ptex2pdf -l"
 alias sshcc="ssh g1344919@cc2000.kyoto-su.ac.jp"
-alias twivim="vim -c TweetVimUserStream"
+alias tweetvim="vim -c TweetVimUserStream"
 alias sudo='sudo '
 
 #グローバルエイリアス
