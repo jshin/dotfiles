@@ -248,7 +248,7 @@ call watchdogs#setup(g:quickrun_config)
 "-----------------end watchdogs--------------------------
 "--------------setting light line-----------------------
 let g:lightline = {
-            \   'colorscheme': 'landscape',
+            \   'colorscheme': 'jellybeans',
             \   'mode_map' : {'c':'NORMAL'},
             \   'active' : {
             \        'left':[
