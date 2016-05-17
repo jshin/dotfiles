@@ -123,7 +123,7 @@ augroup auto_comment_off
     autocmd BufEnter * setlocal formatoptions-=o
 augroup END
 
-inoremap <Space>w   <C-o>:<C-u>w<CR>
+"inoremap <Space>w   <C-o>:<C-u>w<CR>
 
 "--------------neocomplete setting--------------------
 "Disable AutoComplPop
