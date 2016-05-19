@@ -30,3 +30,6 @@ map U :u<Space>
 hi ErrorMsg color:white; background-color: #ec6aa1;
 
 set! ui.caretWidth=2
+
+noremap <C-a> i<C-a>
+inoremap <C-a> <insert><C-a><insert>
