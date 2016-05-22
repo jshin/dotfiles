@@ -88,7 +88,6 @@ set encoding=utf-8
 set fileencodings=iso-2022-jp,cp932,sjis,utf-8
 inoremap [ []<LEFT>
 inoremap ( ()<LEFT>
-inoremap < <><LEFT>
 inoremap ' ''<LEFT>
 inoremap { {}<LEFT>
 inoremap {<Enter> {}<LEFT><CR><ESC><S-o>
