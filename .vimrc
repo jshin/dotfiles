@@ -171,6 +171,9 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 if !exists('g:neocomplete#sources#omni#input_patterns')
     let g:neocomplete#sources#omni#input_patterns = {}
 endif
+
+let g:neocomplete#sources#omni#input_patterns.java = 
+            \ '\h\w\.\w*'
 "-----------------neocomplete setting end ----------------{}
 
 "---------------------unite setting------------------------
