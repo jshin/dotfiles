@@ -73,10 +73,11 @@ set helpheight=999
 set showcmd
 set wildmode=longest,list
 set tabstop=4
-set expandtab
+"set expandtab
 set shiftwidth=4
 set nocp
 set smartindent "オートインデン
+set smarttab
 set backspace=indent,eol,start
 if !has('mac')
     set clipboard=unnamedplus,autoselect
