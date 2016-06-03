@@ -294,7 +294,7 @@ let g:lightline = {
             \}
 
 function! Mymode()
-    return winwidth(0) > 60 ? lightline#mode() : ''
+    return winwidth(0) > 30 ? lightline#mode() : ''
 endfunction
 
 function! Myfugitive()
