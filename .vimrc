@@ -253,7 +253,18 @@ call watchdogs#setup(g:quickrun_config)
 "--------------setting light line-----------------------
 let g:lightline = {
             \   'colorscheme': 'jellybeans',
-            \   'mode_map' : {'c':'NORMAL'},
+            \   'mode_map' : {
+			\		'n' : 'N',
+			\		'i'	: 'I',
+			\		'R' : 'REPLACE',
+			\		'v' : 'V',
+			\		'V': 'V-LINE',
+			\		"\<C-v>": 'V-BLOCK',
+			\		"s" : "S",
+			\		"S" : "S-LINE",
+			\		"\<C-s>" : "S-BLOCK",
+			\		't' : "TERMINAL",
+			\		},
             \   'active' : {
             \        'left':[
             \            ['mode','paste'],
