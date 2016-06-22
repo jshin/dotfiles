@@ -93,6 +93,7 @@ inoremap ( ()<LEFT>
 inoremap ' ''<LEFT>
 inoremap { {}<LEFT>
 inoremap {<Enter> {}<LEFT><CR><ESC><S-o>
+inoremap <C-w>   <C-o>:<C-u>w<CR>
 set t_Co=256
 set background=dark
 colorscheme hybrid
@@ -124,7 +125,11 @@ augroup auto_comment_off
     autocmd BufEnter * setlocal formatoptions-=o
 augroup END
 
-inoremap <C-w>   <C-o>:<C-u>w<CR>
+augroup CompleteTag
+	autocmd!
+	autocmd FileType xml inoremap <buffer> </ </<C-x><C-o>
+	autocmd FileType html inoremap <buffer> </ </<C-x><C-o>
+augroup END
 
 "--------------neocomplete setting--------------------
 "Disable AutoComplPop
