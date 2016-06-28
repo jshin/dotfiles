@@ -41,6 +41,8 @@ NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neco-syntax'
 NeoBundle 'Shougo/neoinclude.vim'
 NeoBundle 'Shougo/neco-vim'
+NeoBundle 'Shougo/neosnippet.vim'
+NeoBundle 'Shougo/neosnippet-snippets'
 
 NeoBundle 'Shougo/vimproc.vim', {
             \ 'build' : {
@@ -210,13 +212,33 @@ function! s:unite_my_settings() "{{{
 endfunction
 "----------------end unite setting-----------------------
 
+"-------------neosnippet settings----------------------
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+"---------------end neosnippet------------------------
+
 "---------------setting watchdogs------------------------
 if !exists("g:quickrun_config")
     let g:quickrun_config = {}
 endif
 let g:quickrun_config = {
             \ "watchdogs_checker/_" :{
-            \       "runner/vimproc/updatetime": 10,
+            \       "runner/vimproc/updatetime": 40,
             \},
             \}
 let g:quickrun_config['java/watchdogs_checker'] = {'type': 'watchdogs_checker/javac'}
@@ -245,16 +267,18 @@ let g:watchdogs_check_CursorHold_enable = 1
 let g:watchdogs_check_CursorHold_enables = {
             \   "java" : 0
             \}
+
 let g:Qfstatusline#UpdateCmd = function('lightline#update')
 
 augroup my_watchdogs
     autocmd!
-    autocmd InsertLeave,BufWritePost,TextChanged *.py,*.c,*.cpp WatchdogsRun
+    autocmd InsertLeave,BufWritePost,TextChanged *.c,*.cpp WatchdogsRun
     autocmd BufRead,BufNewFile *.py,*.c,*.cpp WatchdogsRun
 augroup END
 
 call watchdogs#setup(g:quickrun_config)
 "-----------------end watchdogs--------------------------
+
 "--------------setting light line-----------------------
 let g:lightline = {
             \   'colorscheme': 'jellybeans',
