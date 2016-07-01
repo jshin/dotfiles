@@ -60,7 +60,9 @@ NeoBundle 'cohama/vim-hier'
 NeoBundle 'KazuakiM/vim-qfstatusline'
 NeoBundle 'kamichidu/vim-javaclasspath'
 NeoBundle 'vimperator/vimperator.vim'
-
+NeoBundleLazy 'Valloric/MatchTagAlways', {
+			\ 	'autoload' : {'filetypes' : ['html']}
+			\ }
 call neobundle#end()
 
 "Reqired
