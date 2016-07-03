@@ -80,7 +80,8 @@ set tabstop=4
 "set expandtab
 set shiftwidth=4
 set nocp
-set smartindent "オートインデン
+set autoindent
+set smartindent
 set smarttab
 set backspace=indent,eol,start
 if !has('mac')
@@ -92,12 +93,6 @@ endif
 set encoding=utf-8
 set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
 set fileformats=unix,dos,mac
-inoremap [ []<LEFT>
-inoremap ( ()<LEFT>
-inoremap ' ''<LEFT>
-inoremap { {}<LEFT>
-inoremap {<Enter> {}<LEFT><CR><ESC><S-o>
-inoremap <C-w>   <C-o>:<C-u>w<CR>
 set t_Co=256
 set background=dark
 colorscheme hybrid
@@ -115,6 +110,17 @@ let java_allow_cpp_keywords=1
 if has("mouse")
     set mouse=a
 endif
+
+inoremap [ []<LEFT>
+inoremap ( ()<LEFT>
+inoremap ' ''<LEFT>
+inoremap { {}<LEFT>
+inoremap {<Enter> {}<LEFT><CR><ESC><S-o>
+inoremap <C-w>   <C-o>:<C-u>w<CR>
+nnoremap j gj
+nnoremap k gk
+nnoremap <Up> gk
+nnoremap <Down> gj
 
 "最後の編集箇所に移動
 augroup vimrcEx
