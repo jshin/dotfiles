@@ -63,6 +63,7 @@ NeoBundle 'vimperator/vimperator.vim'
 NeoBundleLazy 'Valloric/MatchTagAlways', {
 			\ 	'autoload' : {'filetypes' : ['html']}
 			\ }
+NeoBundle 'cohama/lexima.vim'
 call neobundle#end()
 
 "Reqired
@@ -111,11 +112,6 @@ if has("mouse")
     set mouse=a
 endif
 
-inoremap [ []<LEFT>
-inoremap ( ()<LEFT>
-inoremap ' ''<LEFT>
-inoremap { {}<LEFT>
-inoremap {<Enter> {}<LEFT><CR><ESC><S-o>
 inoremap <C-w>   <C-o>:<C-u>w<CR>
 nnoremap j gj
 nnoremap k gk
