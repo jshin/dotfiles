@@ -64,6 +64,7 @@ NeoBundleLazy 'Valloric/MatchTagAlways', {
 			\ 	'autoload' : {'filetypes' : ['html']}
 			\ }
 NeoBundle 'cohama/lexima.vim'
+
 call neobundle#end()
 
 "Reqired
@@ -354,7 +355,6 @@ autocmd FileType tweetvim call s:tweetvim_my_setting()
 function! s:tweetvim_my_setting()
 	nnoremap <buffer>s :<C-u>TweetVimSay<CR>
 	nnoremap <silent>t :Unite tweetvim<CR>
-	let g:tweetvim_display_source = 1
 	let g:tweetvim_tweet_per_page = 70
 endfunction
 
