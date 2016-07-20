@@ -64,7 +64,7 @@ NeoBundleLazy 'Valloric/MatchTagAlways', {
 			\ 	'autoload' : {'filetypes' : ['html']}
 			\ }
 NeoBundle 'cohama/lexima.vim'
-
+NeoBundle 'kannokanno/previm'
 call neobundle#end()
 
 "Reqired
