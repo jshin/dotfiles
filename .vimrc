@@ -105,6 +105,7 @@ syntax enable
 set ignorecase
 set smartcase
 set wrapscan
+set completeopt-=preview
 let java_highlight_all=1
 let java_highlight_functions="style"
 let java_allow_cpp_keywords=1
@@ -239,18 +240,6 @@ let g:quickrun_config = {
             \ "watchdogs_checker/_" :{
             \       "runner/vimproc/updatetime": 40,
             \},
-            \}
-let g:quickrun_config['java/watchdogs_checker'] = {'type': 'watchdogs_checker/javac'}
-let g:quickrun_config['watchdogs_checker/javac'] = {
-            \   'command': '$JAVA_HOME/bin/javac',
-            \   'cmdopt' : join([
-            \       '-Xlint:all',
-            \       '-sourcepath "%{javaclasspath#source_path()}"',
-            \       '-classpath "%{javaclasspath#classpath()}"',
-            \       '-deprecation',
-            \]),
-            \   'exec': '%c %o %s:p',
-            \   'errorformat': '%A%f:%l:\ %m,%-Z%p^,%+C%.%#,%-G%.%#',
             \}
 let g:quickrun_config["watchdogs_checker/_"] = {
             \       "outputter/quickfix/open_cmd" : "",
