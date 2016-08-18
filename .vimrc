@@ -65,6 +65,7 @@ NeoBundleLazy 'Valloric/MatchTagAlways', {
 			\ }
 NeoBundle 'cohama/lexima.vim'
 NeoBundle 'kannokanno/previm'
+NeoBundle 'keith/tmux.vim'
 call neobundle#end()
 
 "Reqired
@@ -85,6 +86,7 @@ set nocp
 set autoindent
 set smartindent
 set smarttab
+set autoread
 set backspace=indent,eol,start
 if !has('mac')
     set clipboard=unnamedplus,autoselect
@@ -93,7 +95,8 @@ if has('mac')
     set clipboard=unnamed,autoselect
 endif
 set encoding=utf-8
-set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8,cp932,euc-jp
 set fileformats=unix,dos,mac
 set t_Co=256
 set background=dark
@@ -120,6 +123,7 @@ nnoremap k gk
 nnoremap <Up> gk
 nnoremap <Down> gj
 
+"------------------functions------------------------
 "最後の編集箇所に移動
 augroup vimrcEx
     au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -139,6 +143,11 @@ augroup CompleteTag
 	autocmd FileType html inoremap <buffer> </ </<C-x><C-o>
 augroup END
 
+augroup vimrcchecktime
+	autocmd!
+	autocmd InsertEnter * checktime
+augroup END
+"---------------end functions------------------------
 "--------------neocomplete setting--------------------
 "Disable AutoComplPop
 let g:acp_enableAtStartup = 0
