@@ -11,7 +11,7 @@ if has('vim_starting')
 endif
 
 "Required
-call neobundle#begin(expand('~/vim/bundle/'))
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 "Let NeoBundle mangaze NeoBundle
 "Required
@@ -206,7 +206,7 @@ let g:unite_enable_start_insert=1
 "setting prefix key
 nmap <Space> [unite]
 
-nnoremap <silent> [unite]b :<C-u>Unite<Space>file<Space>buffer<Space>file_mru<CR>
+nnoremap <silent> [unite]b :<C-u>Unite<Space>buffer<Space>file<Space>file_mru<CR>
 nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> [unite]o :<C-u>Unite<Space>outline<CR>
 nnoremap <silent> [unite]d :<C-u>Unite<Space>directory_mru<CR>
