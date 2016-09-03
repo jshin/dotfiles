@@ -59,13 +59,23 @@ NeoBundle 'osyo-manga/vim-watchdogs'
 NeoBundle 'cohama/vim-hier'
 NeoBundle 'KazuakiM/vim-qfstatusline'
 NeoBundle 'kamichidu/vim-javaclasspath'
-NeoBundle 'vimperator/vimperator.vim'
+NeoBundleLazy 'vimperator/vimperator.vim', {
+			\	'autoload' : {'filetype' : ['vimperator']}
+			\ }
+
 NeoBundleLazy 'Valloric/MatchTagAlways', {
 			\ 	'autoload' : {'filetypes' : ['html']}
 			\ }
 NeoBundle 'cohama/lexima.vim'
 NeoBundle 'kannokanno/previm'
 NeoBundle 'keith/tmux.vim'
+NeoBundle 'vim-jp/vimdoc-ja'
+NeoBundleLazy 'scrooloose/nerdtree', {
+			\ 	'autoload' : {
+			\		'commands' : [ "NERDTree" ]
+			\	}
+			\ }
+
 call neobundle#end()
 
 "Reqired
@@ -148,6 +158,7 @@ augroup vimrcchecktime
 	autocmd InsertEnter * checktime
 augroup END
 "---------------end functions------------------------
+
 "--------------neocomplete setting--------------------
 "Disable AutoComplPop
 let g:acp_enableAtStartup = 0
@@ -340,6 +351,7 @@ function! Myfiletype()
 endfunction
 
 "------------end lightline-----------------
+
 "-----------setting anzu------------------
 nmap n <Plug>(anzu-n)
 nmap N <Plug>(anzu-N)
