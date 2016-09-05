@@ -71,9 +71,7 @@ NeoBundle 'kannokanno/previm'
 NeoBundle 'keith/tmux.vim'
 NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundleLazy 'scrooloose/nerdtree', {
-			\ 	'autoload' : {
-			\		'commands' : [ "NERDTree" ]
-			\	}
+			\ 	'autoload' : {'commands' : [ "NERDTree" ]}
 			\ }
 
 call neobundle#end()
@@ -369,3 +367,9 @@ function! s:tweetvim_my_setting()
 endfunction
 
 "------------end tweetvim----------------"
+
+"---------setting nerdtree---------------"
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+nnoremap <C-n>	:NERDTreeToggle<CR>
+"------------end nerdtree----------------"
