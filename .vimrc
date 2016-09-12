@@ -205,8 +205,6 @@ if !exists('g:neocomplete#sources#omni#input_patterns')
     let g:neocomplete#sources#omni#input_patterns = {}
 endif
 
-let g:neocomplete#sources#omni#input_patterns.java = 
-            \ '\h\w\.\w*'
 "-----------------neocomplete setting end ----------------{}
 
 "---------------------unite setting------------------------
@@ -369,7 +367,5 @@ endfunction
 "------------end tweetvim----------------"
 
 "---------setting nerdtree---------------"
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 nnoremap <C-n>	:NERDTreeToggle<CR>
 "------------end nerdtree----------------"
