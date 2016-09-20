@@ -94,6 +94,7 @@ set nocp
 set autoindent
 set smartindent
 set smarttab
+set breakindent
 set autoread
 set backspace=indent,eol,start
 if !has('mac')
