@@ -63,9 +63,6 @@ NeoBundleLazy 'vimperator/vimperator.vim', {
 			\	'autoload' : {'filetype' : ['vimperator']}
 			\ }
 
-NeoBundleLazy 'Valloric/MatchTagAlways', {
-			\ 	'autoload' : {'filetypes' : ['html']}
-			\ }
 NeoBundle 'cohama/lexima.vim'
 NeoBundle 'kannokanno/previm'
 NeoBundle 'keith/tmux.vim'
@@ -131,6 +128,8 @@ nnoremap j gj
 nnoremap k gk
 nnoremap <Up> gk
 nnoremap <Down> gj
+inoremap <Up> <C-o>gk
+inoremap <Down> <C-o>gj
 
 "------------------functions------------------------
 "最後の編集箇所に移動
