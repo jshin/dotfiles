@@ -104,4 +104,6 @@ export PATH="/usr/local/Cellar/openssl/1.0.2a-1/bin:/usr/local/bin:/opt/local/bi
 export GREP_OPTIONS='--color=auto'
 export HOMEBREW_NO_ANALYTICS=1
 export PATH="/usr/local/sbin:$PATH"
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
