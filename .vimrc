@@ -1,3 +1,6 @@
+set encoding=utf-8
+scriptencoding utf-8
+
 "Setting NeoBundle
 if 0 | endif
 
@@ -16,7 +19,8 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 "Let NeoBundle mangaze NeoBundle
 "Required
 NeoBundleFetch 'Shougo/neobundle.vim'
-"ここに追加するプラグインについて書く
+"Write about plug-in that you want to add here
+
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/neoyank.vim'
@@ -64,7 +68,9 @@ NeoBundleLazy 'vimperator/vimperator.vim', {
 			\ }
 
 NeoBundle 'cohama/lexima.vim'
-NeoBundle 'kannokanno/previm'
+NeoBundleLazy 'kannokanno/previm', {
+			\	'autoload' : {'filetypes' : ['markdown']}
+			\}
 NeoBundle 'keith/tmux.vim'
 NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundleLazy 'scrooloose/nerdtree', {
@@ -86,6 +92,7 @@ set number
 set ruler
 set laststatus=2
 set showmatch
+source $VIMRUNTIME/macros/matchit.vim
 set helpheight=999
 set showcmd
 set wildmode=longest,list
@@ -105,10 +112,10 @@ endif
 if has('mac')
 	set clipboard=unnamed,autoselect
 endif
-set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8,cp932,euc-jp
 set fileformats=unix,dos,mac
+set ambiwidth=double
 set t_Co=256
 set background=dark
 colorscheme hybrid
@@ -188,10 +195,9 @@ inoremap <expr><C-g> neocomplete#undo_completion()
 inoremap <expr><C-l> neocomplete#complete_common_string()
 
 "<CR>: close popup and save indent
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-	return pumvisible() ? "\<C-y>" : "\<CR>"
-endfunction
+"This setting is for neocomplete closing and lexima.vim parentheses completion
+call lexima#init()
+inoremap <expr> <CR> pumvisible() ? neocomplete#close_popup() : lexima#expand('<LT>CR>', 'i')
 
 "<TAB>: completion
 "inoremap <expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -212,7 +218,21 @@ if !exists('g:neocomplete#sources#omni#input_patterns')
 	let g:neocomplete#sources#omni#input_patterns.go = '\h\w\.\w*'
 endif
 
-"-----------------neocomplete setting end ----------------{}
+"-----------------neocomplete setting end -----------------
+
+"-------------neosnippet settings----------------------
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+imap <expr><TAB> pumvisible() ? "\<C-n>" : neosnippet#jumpable() ? "\<Plug>(neosnippet_jump_or_expand)" : "\<TAB>"
+smap <expr><TAB> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+" For conceal markers.
+if has('conceal')
+	set conceallevel=2 concealcursor=niv
+endif
+"---------------end neosnippet------------------------
 
 "---------------------unite setting------------------------
 "start at insert mode 
@@ -240,20 +260,6 @@ function! s:unite_my_settings() "{{{
 
 endfunction
 "----------------end unite setting-----------------------
-
-"-------------neosnippet settings----------------------
-" Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-imap <expr><TAB> pumvisible() ? "\<C-n>" : neosnippet#jumpable() ? "\<Plug>(neosnippet_jump_or_expand)" : "\<TAB>"
-smap <expr><TAB> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-" For conceal markers.
-if has('conceal')
-	set conceallevel=2 concealcursor=niv
-endif
-"---------------end neosnippet------------------------
 
 "---------------setting watchdogs------------------------
 if executable("golint")
