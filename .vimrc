@@ -128,15 +128,16 @@ set smartcase
 set wrapscan
 set completeopt-=preview
 let java_highlight_all=1
-let java_highlight_functions="style"
+let java_highlight_functions="indent"
 let java_allow_cpp_keywords=1
+let python_highlight_all=1
 
 "マウス設定
 if has("mouse")
 	set mouse=a
 endif
 
-inoremap <C-w>   <C-o>:<C-u>w<CR>
+inoremap <C-w> <C-o>:<C-u>w<CR>
 nnoremap j gj
 nnoremap k gk
 nnoremap <Up> gk
@@ -307,7 +308,7 @@ call watchdogs#setup(g:quickrun_config)
 
 "--------------setting light line-----------------------
 let g:lightline = {
-			\   'colorscheme': 'jellybeans',
+			\   'colorscheme': 'Dracula',
 			\   'mode_map' : {
 			\		'n' : 'N',
 			\		'i'	: 'I',
