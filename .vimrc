@@ -223,9 +223,9 @@ endif
 
 "-------------neosnippet settings----------------------
 " Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
 
 imap <expr><TAB> pumvisible() ? "\<C-n>" : neosnippet#jumpable() ? "\<Plug>(neosnippet_jump_or_expand)" : "\<TAB>"
 smap <expr><TAB> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
@@ -287,7 +287,8 @@ let g:quickrun_config = {
 "let g:watchdogs_check_BufWritePost_enable = 1
 let g:watchdogs_check_BufWritePost_enables = {
 			\   "java" : 0,
-			\	"go" : 1
+			\	"go" : 1,
+			\	"cpp" : 1
 			\}
 let g:watchdogs_check_CursorHold_enable = 1
 let g:watchdogs_check_CursorHold_enables = {
@@ -299,8 +300,8 @@ autocmd BufRead * QfstatuslineUpdate
 
 augroup my_watchdogs
 	autocmd!
-	autocmd BufWritePost,TextChanged *.c,*.cpp WatchdogsRun
-	autocmd BufRead,BufNewFile *.py,*.c,*.cpp WatchdogsRun
+	autocmd BufWritePost,TextChanged *.c WatchdogsRun
+	autocmd BufRead,BufNewFile *.py,*.c WatchdogsRun
 augroup END
 
 call watchdogs#setup(g:quickrun_config)

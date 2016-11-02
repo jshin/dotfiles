@@ -1,8 +1,9 @@
 
 export LANG=ja_JP.UTF-8
-#export PATH="/usr/local/bin:$PATH"
+
+fpath=(/usr/local/share/zsh-completions $fpath)
 autoload -Uz compinit
-compinit
+compinit -u
 
 autoload -Uz colors
 colors
@@ -78,7 +79,6 @@ alias javac='javac -J-Dfile.encoding=UTF-8'
 alias java='java -Dfile.encoding=UTF-8'
 alias mics="ssh -D 1080 g1344919@cc2000.kyoto-su.ac.jp"
 alias cl="clear"
-alias e="emacs"
 alias py="python"
 alias py3="python3"
 alias v="vim"
