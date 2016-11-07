@@ -30,6 +30,7 @@ NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'osyo-manga/vim-anzu'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'joshdick/onedark.vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'Shougo/vimshell.vim'
 
@@ -62,7 +63,7 @@ NeoBundle 'osyo-manga/shabadou.vim'
 NeoBundle 'osyo-manga/vim-watchdogs'
 NeoBundle 'cohama/vim-hier'
 NeoBundle 'KazuakiM/vim-qfstatusline'
-NeoBundle 'kamichidu/vim-javaclasspath'
+"NeoBundle 'kamichidu/vim-javaclasspath'
 NeoBundleLazy 'vimperator/vimperator.vim', {
 			\	'autoload' : {'filetypes' : ['vimperator']}
 			\ }
@@ -117,8 +118,15 @@ set fileencodings=utf-8,cp932,euc-jp
 set fileformats=unix,dos,mac
 set ambiwidth=double
 set t_Co=256
-set background=dark
-colorscheme hybrid
+"setting for vim on tmux
+set t_ut=
+if $TERM_PROGRAM == "iTerm.app"
+	set termguicolors
+	colorscheme onedark
+else
+	set background=dark
+	colorscheme hybrid
+endif
 set cursorline
 hi clear CursorLine
 syntax enable
@@ -254,10 +262,12 @@ autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings() "{{{
 	"push ESC unite stop
 	nmap <buffer> <ESC> <Plug>(unite_exit)
-	"縦に分割して開く
-	inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')     
-	"横に分割して開く
-	inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')   
+	"open on split
+	inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+	"open on vsplit
+	inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+	"open on new tab
+	inoremap <silent> <buffer> <expr> <C-t> unite#do_action('tabopen')
 
 endfunction
 "----------------end unite setting-----------------------
@@ -292,11 +302,12 @@ let g:watchdogs_check_BufWritePost_enables = {
 			\}
 let g:watchdogs_check_CursorHold_enable = 1
 let g:watchdogs_check_CursorHold_enables = {
-			\   "java" : 0
+			\   "java" : 0,
+			\	"cpp" : 0
 			\}
 
 let g:Qfstatusline#UpdateCmd = function('lightline#update')
-autocmd BufRead * QfstatuslineUpdate
+autocmd BufRead,TabEnter * QfstatuslineUpdate
 
 augroup my_watchdogs
 	autocmd!
@@ -309,7 +320,7 @@ call watchdogs#setup(g:quickrun_config)
 
 "--------------setting light line-----------------------
 let g:lightline = {
-			\   'colorscheme': 'Dracula',
+			\   'colorscheme': 'onedark',
 			\   'mode_map' : {
 			\		'n' : 'N',
 			\		'i'	: 'I',
