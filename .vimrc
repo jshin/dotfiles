@@ -32,7 +32,9 @@ NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'joshdick/onedark.vim'
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'Shougo/vimshell.vim'
+NeoBundleLazy 'Shougo/vimshell.vim', {
+			\	'autoload' : {'commands' : ["VimShell"]}
+			\}
 
 "Tweetvim
 if executable('curl')
@@ -281,33 +283,41 @@ if executable("golint")
 				\}
 endif
 
+if executable("clang++")
+	let g:quickrun_config = {
+				\	"cpp/watchdogs_checker" : {
+				\		"type" : "watchdogs_checker/clang++",
+				\		"cmdopt" : "-Wall",
+				\	},
+				\}
+endif
+
 if !exists("g:quickrun_config")
 	let g:quickrun_config = {}
 endif
 
 let g:quickrun_config = {
 			\	"watchdogs_checker/_" :{
-			\		"runnner/vimproc/updatetime": 10,
+			\		"runnner" : "job",
 			\		"outputter/quickfix/open_cmd" : "",
 			\		"hook/qfstatusline_update/enable_exit" : 1,
 			\		"hook/qfstatusline_update/priority_exit" : 4,
 			\},
 			\}
 
-"let g:watchdogs_check_BufWritePost_enable = 1
-let g:watchdogs_check_BufWritePost_enables = {
-			\   "java" : 0,
-			\	"go" : 1,
-			\	"cpp" : 1
-			\}
-let g:watchdogs_check_CursorHold_enable = 1
+let g:watchdogs_check_BufWritePost_enable = 1
+"let g:watchdogs_check_BufWritePost_enables = {
+"			\   "java" : 0,
+"			\	"go" : 1,
+"			\	"cpp" : 1
+"			\}
+"let g:watchdogs_check_CursorHold_enable = 1
 let g:watchdogs_check_CursorHold_enables = {
 			\   "java" : 0,
 			\	"cpp" : 0
 			\}
 
-let g:Qfstatusline#UpdateCmd = function('lightline#update')
-autocmd BufRead,TabEnter * QfstatuslineUpdate
+let g:watchdogs_check_BufWritePost_enable_on_wq = 0
 
 augroup my_watchdogs
 	autocmd!
@@ -360,6 +370,9 @@ let g:lightline = {
 			\   'syntaxcheck' : 'error',
 			\   },
 			\}
+
+let g:Qfstatusline#UpdateCmd = function('lightline#update')
+autocmd BufRead,TabEnter * QfstatuslineUpdate
 
 function! Mymode()
 	return winwidth(0) > 30 ? lightline#mode() : ''
