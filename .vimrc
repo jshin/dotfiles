@@ -33,7 +33,7 @@ NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'joshdick/onedark.vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundleLazy 'Shougo/vimshell.vim', {
-			\	'autoload' : {'commands' : ["VimShell"]}
+			\	'autoload' : {'commands' : ['VimShell']}
 			\}
 
 "Tweetvim
@@ -41,7 +41,7 @@ if executable('curl')
 	NeoBundle 'mattn/webapi-vim'
 	NeoBundle 'tyru/open-browser.vim'
 	NeoBundle 'basyura/twibill.vim'
-	NeoBundle 'basyura/TweetVim'
+	NeoBundle 'basyura/TweetVim', {'rev' : 'dev'}
 endif
 
 NeoBundle 'Shougo/neocomplete.vim'
@@ -77,7 +77,7 @@ NeoBundleLazy 'kannokanno/previm', {
 NeoBundle 'keith/tmux.vim'
 NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundleLazy 'scrooloose/nerdtree', {
-			\ 	'autoload' : {'commands' : [ "NERDTree" ]}
+			\ 	'autoload' : {'commands' : ['NERDTree']}
 			\ }
 if has('mac')
 	NeoBundleLazy 'fatih/vim-go', {
