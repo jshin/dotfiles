@@ -66,10 +66,6 @@ NeoBundle 'osyo-manga/vim-watchdogs'
 NeoBundle 'cohama/vim-hier'
 NeoBundle 'KazuakiM/vim-qfstatusline'
 "NeoBundle 'kamichidu/vim-javaclasspath'
-NeoBundleLazy 'vimperator/vimperator.vim', {
-			\	'autoload' : {'filetypes' : ['vimperator']}
-			\ }
-
 NeoBundle 'cohama/lexima.vim'
 NeoBundleLazy 'kannokanno/previm', {
 			\	'autoload' : {'filetypes' : ['markdown']}
@@ -90,7 +86,7 @@ call neobundle#end()
 "Reqired
 filetype plugin indent on
 
-"表示設定
+"setting for showing
 set number
 set ruler
 set laststatus=2
@@ -132,7 +128,7 @@ endif
 set cursorline
 hi clear CursorLine
 syntax enable
-"検索設定
+"setting for access
 set ignorecase
 set smartcase
 set wrapscan
@@ -142,7 +138,6 @@ let java_highlight_functions="indent"
 let java_allow_cpp_keywords=1
 let python_highlight_all=1
 
-"マウス設定
 if has("mouse")
 	set mouse=a
 endif
@@ -156,25 +151,27 @@ inoremap <Up> <C-o>gk
 inoremap <Down> <C-o>gj
 
 "------------------functions------------------------
-"最後の編集箇所に移動
+"move to the last edit point
 augroup vimrcEx
 	au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
 				\ exe "normal g`\"" | endif
 augroup END
 
-"改行時に自動コメントアウトしない
+"do not auto-comment out on line feed
 augroup auto_comment_off
 	autocmd!
 	autocmd BufEnter * setlocal formatoptions-=r
 	autocmd BufEnter * setlocal formatoptions-=o
 augroup END
 
+"auto-close html tags
 augroup CompleteTag
 	autocmd!
 	autocmd FileType xml inoremap <buffer> </ </<C-x><C-o>
 	autocmd FileType html inoremap <buffer> </ </<C-x><C-o>
 augroup END
 
+"if the file is edited by  another editor, it will be updated automatically
 augroup vimrcchecktime
 	autocmd!
 	autocmd InsertEnter * checktime
@@ -259,7 +256,7 @@ nnoremap <silent> [unite]h :<C-u>Unite<Space>history/yank<CR>
 nnoremap <silent> [unite]t :<C-u>Unite tab<CR>
 nnoremap <silent> [unite]n :<C-u>Unite<Space>file/new<CR>
 
-"uniteを使っている間のキーマップ
+"key mapping for unite.vim
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings() "{{{
 	"push ESC unite stop
