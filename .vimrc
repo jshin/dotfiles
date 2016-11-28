@@ -46,7 +46,7 @@ endif
 
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neco-syntax'
-NeoBundle 'Shougo/neoinclude.vim'
+"NeoBundle 'Shougo/neoinclude.vim'
 NeoBundle 'Shougo/neco-vim'
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
@@ -65,7 +65,7 @@ NeoBundle 'osyo-manga/shabadou.vim'
 NeoBundle 'osyo-manga/vim-watchdogs'
 NeoBundle 'cohama/vim-hier'
 NeoBundle 'KazuakiM/vim-qfstatusline'
-"NeoBundle 'kamichidu/vim-javaclasspath'
+
 NeoBundle 'cohama/lexima.vim'
 NeoBundleLazy 'kannokanno/previm', {
 			\	'autoload' : {'filetypes' : ['markdown']}
@@ -160,15 +160,13 @@ augroup END
 "do not auto-comment out on line feed
 augroup auto_comment_off
 	autocmd!
-	autocmd BufEnter * setlocal formatoptions-=r
-	autocmd BufEnter * setlocal formatoptions-=o
+	autocmd BufEnter * setlocal formatoptions-=r formatoptions-=o
 augroup END
 
 "auto-close html tags
 augroup CompleteTag
 	autocmd!
-	autocmd FileType xml inoremap <buffer> </ </<C-x><C-o>
-	autocmd FileType html inoremap <buffer> </ </<C-x><C-o>
+	autocmd FileType html,xml inoremap <buffer> </ </<C-x><C-o>
 augroup END
 
 "if the file is edited by  another editor, it will be updated automatically
@@ -178,9 +176,7 @@ augroup vimrcchecktime
 augroup END
 "---------------end functions------------------------
 
-"--------------neocomplete setting--------------------
-"Disable AutoComplPop
-let g:acp_enableAtStartup = 0
+"--------------neocomplete setting-------------------
 "Use neocomplete
 let g:neocomplete#enable_at_startup = 1
 "Use smartcase
