@@ -46,7 +46,7 @@ endif
 
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neco-syntax'
-"NeoBundle 'Shougo/neoinclude.vim'
+NeoBundle 'Shougo/neoinclude.vim'
 NeoBundle 'Shougo/neco-vim'
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
@@ -181,7 +181,6 @@ augroup END
 let g:neocomplete#enable_at_startup = 1
 "Use smartcase
 let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
 "Define dictionary
 let g:neocomplete#sources#dictionary#dictionaries = {
