@@ -80,6 +80,7 @@ if has('mac')
 				\ 'autoload' : {'filetypes' : ['go']}
 				\ }
 endif
+NeoBundleLazy 'cespare/vim-toml', {'autoload': {'filetypes':['toml']}}
 
 call neobundle#end()
 
