@@ -150,7 +150,15 @@ nnoremap <Up> gk
 nnoremap <Down> gj
 inoremap <Up> <C-o>gk
 inoremap <Down> <C-o>gj
+nnoremap <Tab> gt
+nnoremap <S-Tab> gT
+nnoremap <silent> <S-t> :tabnew<CR>
 
+"Switching windows
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+noremap <C-h> <C-w>h
 "------------------functions------------------------
 "move to the last edit point
 augroup vimrcEx
