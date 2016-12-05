@@ -106,11 +106,10 @@ set smarttab
 set breakindent
 set autoread
 set backspace=indent,eol,start
-if !has('mac')
-	set clipboard=unnamedplus,autoselect
-endif
 if has('mac')
 	set clipboard=unnamed,autoselect
+else
+	set clipboard=unnamedplus,autoselect
 endif
 set fileencoding=utf-8
 set fileencodings=utf-8,cp932,euc-jp
@@ -150,8 +149,6 @@ nnoremap <Up> gk
 nnoremap <Down> gj
 inoremap <Up> <C-o>gk
 inoremap <Down> <C-o>gj
-nnoremap <Tab> gt
-nnoremap <S-Tab> gT
 nnoremap <silent> <S-t> :tabnew<CR>
 
 "Switching windows
@@ -162,7 +159,7 @@ noremap <C-h> <C-w>h
 "------------------functions------------------------
 "move to the last edit point
 augroup vimrcEx
-	au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
+	autocmd BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
 				\ exe "normal g`\"" | endif
 augroup END
 
@@ -183,6 +180,15 @@ augroup vimrcchecktime
 	autocmd!
 	autocmd InsertEnter * checktime
 augroup END
+
+"clear blanks on end of the line
+function! s:remove_dust()
+	let cursor = getpos(".")
+	%s/\s\+$//ge
+	call setpos(".", cursor)
+	unlet cursor
+endfunction
+autocmd BufWritePre * call <SID>remove_dust()
 "---------------end functions------------------------
 
 "--------------neocomplete setting-------------------
@@ -247,7 +253,7 @@ endif
 "---------------end neosnippet------------------------
 
 "---------------------unite setting------------------------
-"start at insert mode 
+"start at insert mode
 let g:unite_enable_start_insert=1
 "setting prefix key
 nmap <Space> [unite]
@@ -279,7 +285,7 @@ endfunction
 if executable("golint")
 	let g:quickrun_config = {
 				\	"go/watchdogs_checker" : {
-				\		"type" : "watchdogs_checker/golint",	
+				\		"type" : "watchdogs_checker/golint",
 				\	},
 				\}
 endif
@@ -358,7 +364,7 @@ let g:lightline = {
 			\    },
 			\   'component_function':{
 			\   'mode' : 'Mymode',
-			\   'anzu' : 'anzu#search_status', 
+			\   'anzu' : 'anzu#search_status',
 			\   'fugitive' : 'Myfugitive',
 			\   'fileformat' : 'Myfileformat',
 			\   'fileencoding': 'Myfileencoding',
