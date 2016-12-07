@@ -107,4 +107,5 @@ export HOMEBREW_NO_ANALYTICS=1
 export PATH="/usr/local/sbin:$PATH"
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
+export VISUAL="/usr/local/bin/vim"
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
