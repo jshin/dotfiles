@@ -5,12 +5,12 @@ scriptencoding utf-8
 if 0 | endif
 
 if has('vim_starting')
-	if &compatible
-		set nocompatible
-	endif
+    if &compatible
+        set nocompatible
+    endif
 
-	"Required
-	set runtimepath+=~/.vim/bundle/neobundle.vim/
+    "Required
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
 "Required
@@ -33,15 +33,15 @@ NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'joshdick/onedark.vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundleLazy 'Shougo/vimshell.vim', {
-			\	'autoload' : {'commands' : ['VimShell']}
-			\}
+            \	'autoload' : {'commands' : ['VimShell']}
+            \}
 
 "Tweetvim
 if executable('curl')
-	NeoBundle 'mattn/webapi-vim'
-	NeoBundle 'tyru/open-browser.vim'
-	NeoBundle 'basyura/twibill.vim'
-	NeoBundle 'basyura/TweetVim', {'rev' : 'dev'}
+    NeoBundle 'mattn/webapi-vim'
+    NeoBundle 'tyru/open-browser.vim'
+    NeoBundle 'basyura/twibill.vim'
+    NeoBundle 'basyura/TweetVim', {'rev' : 'dev'}
 endif
 
 NeoBundle 'Shougo/neocomplete.vim'
@@ -52,14 +52,14 @@ NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 
 NeoBundle 'Shougo/vimproc.vim', {
-			\ 'build' : {
-			\     'windows' : 'tools\\update-dll-mingw',
-			\     'cygwin' : 'make -f make_cygwin.mak',
-			\     'mac' : 'make',
-			\     'linux' : 'make',
-			\     'unix' : 'gmake',
-			\    },
-			\ }
+            \ 'build' : {
+            \     'windows' : 'tools\\update-dll-mingw',
+            \     'cygwin' : 'make -f make_cygwin.mak',
+            \     'mac' : 'make',
+            \     'linux' : 'make',
+            \     'unix' : 'gmake',
+            \    },
+            \ }
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'osyo-manga/shabadou.vim'
 NeoBundle 'osyo-manga/vim-watchdogs'
@@ -68,17 +68,17 @@ NeoBundle 'KazuakiM/vim-qfstatusline'
 
 NeoBundle 'cohama/lexima.vim'
 NeoBundleLazy 'kannokanno/previm', {
-			\	'autoload' : {'filetypes' : ['markdown']}
-			\}
+            \	'autoload' : {'filetypes' : ['markdown']}
+            \}
 NeoBundle 'keith/tmux.vim'
 NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundleLazy 'scrooloose/nerdtree', {
-			\ 	'autoload' : {'commands' : ['NERDTree']}
-			\ }
+            \ 	'autoload' : {'commands' : ['NERDTree']}
+            \ }
 if has('mac')
-	NeoBundleLazy 'fatih/vim-go', {
-				\ 'autoload' : {'filetypes' : ['go']}
-				\ }
+    NeoBundleLazy 'fatih/vim-go', {
+                \ 'autoload' : {'filetypes' : ['go']}
+                \ }
 endif
 NeoBundleLazy 'cespare/vim-toml', {'autoload': {'filetypes':['toml']}}
 
@@ -97,7 +97,7 @@ set helpheight=999
 set showcmd
 set wildmode=longest,list
 set tabstop=4
-"set expandtab
+set expandtab
 set shiftwidth=4
 set nocp
 set autoindent
@@ -107,23 +107,25 @@ set breakindent
 set autoread
 set backspace=indent,eol,start
 if has('mac')
-	set clipboard=unnamed,autoselect
+    set clipboard=unnamed,autoselect
 else
-	set clipboard=unnamedplus,autoselect
+    set clipboard=unnamedplus,autoselect
 endif
 set fileencoding=utf-8
 set fileencodings=utf-8,cp932,euc-jp
 set fileformats=unix,dos,mac
 set ambiwidth=double
+set undodir=~/.vim/undo
+set undofile
 set t_Co=256
 "setting for vim on tmux
 set t_ut=
 if $TERM_PROGRAM == "iTerm.app"
-	set termguicolors
-	colorscheme onedark
+    set termguicolors
+    colorscheme onedark
 else
-	set background=dark
-	colorscheme hybrid
+    set background=dark
+    colorscheme hybrid
 endif
 set cursorline
 hi clear CursorLine
@@ -139,7 +141,7 @@ let java_allow_cpp_keywords=1
 let python_highlight_all=1
 
 if has("mouse")
-	set mouse=a
+    set mouse=a
 endif
 
 inoremap <C-w> <C-o>:<C-u>w<CR>
@@ -159,34 +161,34 @@ noremap <C-h> <C-w>h
 "------------------functions------------------------
 "move to the last edit point
 augroup vimrcEx
-	autocmd BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
-				\ exe "normal g`\"" | endif
+    autocmd BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
+                \ exe "normal g`\"" | endif
 augroup END
 
 "do not auto-comment out on line feed
 augroup auto_comment_off
-	autocmd!
-	autocmd BufEnter * setlocal formatoptions-=r formatoptions-=o
+    autocmd!
+    autocmd BufEnter * setlocal formatoptions-=r formatoptions-=o
 augroup END
 
 "auto-close html tags
 augroup CompleteTag
-	autocmd!
-	autocmd FileType html,xml inoremap <buffer> </ </<C-x><C-o>
+    autocmd!
+    autocmd FileType html,xml inoremap <buffer> </ </<C-x><C-o>
 augroup END
 
 "if the file is edited by  another editor, it will be updated automatically
 augroup vimrcchecktime
-	autocmd!
-	autocmd InsertEnter * checktime
+    autocmd!
+    autocmd InsertEnter * checktime
 augroup END
 
 "clear blanks on end of the line
 function! s:remove_dust()
-	let cursor = getpos(".")
-	%s/\s\+$//ge
-	call setpos(".", cursor)
-	unlet cursor
+    let cursor = getpos(".")
+    %s/\s\+$//ge
+    call setpos(".", cursor)
+    unlet cursor
 endfunction
 autocmd BufWritePre * call <SID>remove_dust()
 "---------------end functions------------------------
@@ -195,16 +197,16 @@ autocmd BufWritePre * call <SID>remove_dust()
 "Use neocomplete
 let g:neocomplete#enable_at_startup = 1
 "Use smartcase
-let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#sources#syntax#min_keyword_length = 2
 
 "Define dictionary
 let g:neocomplete#sources#dictionary#dictionaries = {
-			\'default':'',
-			\'python' : $HOME.'./.vim/dict/python.dict'
-			\}
+            \'default':'',
+            \'python' : $HOME.'./.vim/dict/python.dict'
+            \}
 "Define keyword
 if !exists('g:neocomplete#keyword_patterns')
-	let g:neocomplete#keyword_patterns = {}
+    let g:neocomplete#keyword_patterns = {}
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
@@ -232,8 +234,8 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
-	let g:neocomplete#sources#omni#input_patterns = {}
-	let g:neocomplete#sources#omni#input_patterns.go = '\h\w\.\w*'
+    let g:neocomplete#sources#omni#input_patterns = {}
+    let g:neocomplete#sources#omni#input_patterns.go = '\h\w\.\w*'
 endif
 
 "-----------------neocomplete setting end -----------------
@@ -248,7 +250,7 @@ imap <expr><TAB> pumvisible() ? "\<C-n>" : neosnippet#jumpable() ? "\<Plug>(neos
 smap <expr><TAB> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 " For conceal markers.
 if has('conceal')
-	set conceallevel=2 concealcursor=niv
+    set conceallevel=2 concealcursor=niv
 endif
 "---------------end neosnippet------------------------
 
@@ -269,48 +271,48 @@ nnoremap <silent> [unite]n :<C-u>Unite<Space>file/new<CR>
 "key mapping for unite.vim
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings() "{{{
-	"push ESC unite stop
-	nmap <buffer> <ESC> <Plug>(unite_exit)
-	"open on split
-	inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
-	"open on vsplit
-	inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
-	"open on new tab
-	inoremap <silent> <buffer> <expr> <C-t> unite#do_action('tabopen')
+    "push ESC unite stop
+    nmap <buffer> <ESC> <Plug>(unite_exit)
+    "open on split
+    inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+    "open on vsplit
+    inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+    "open on new tab
+    inoremap <silent> <buffer> <expr> <C-t> unite#do_action('tabopen')
 
 endfunction
 "----------------end unite setting-----------------------
 
 "---------------setting watchdogs------------------------
 if executable("golint")
-	let g:quickrun_config = {
-				\	"go/watchdogs_checker" : {
-				\		"type" : "watchdogs_checker/golint",
-				\	},
-				\}
+    let g:quickrun_config = {
+                \	"go/watchdogs_checker" : {
+                \		"type" : "watchdogs_checker/golint",
+                \	},
+                \}
 endif
 
 if executable("clang++")
-	let g:quickrun_config = {
-				\	"cpp/watchdogs_checker" : {
-				\		"type" : "watchdogs_checker/clang++",
-				\		"cmdopt" : "-Wall",
-				\	},
-				\}
+    let g:quickrun_config = {
+                \	"cpp/watchdogs_checker" : {
+                \		"type" : "watchdogs_checker/clang++",
+                \		"cmdopt" : "-Wall",
+                \	},
+                \}
 endif
 
 if !exists("g:quickrun_config")
-	let g:quickrun_config = {}
+    let g:quickrun_config = {}
 endif
 
 let g:quickrun_config = {
-			\	"watchdogs_checker/_" :{
-			\		"runnner" : "job",
-			\		"outputter/quickfix/open_cmd" : "",
-			\		"hook/qfstatusline_update/enable_exit" : 1,
-			\		"hook/qfstatusline_update/priority_exit" : 4,
-			\},
-			\}
+            \	"watchdogs_checker/_" :{
+            \		"runnner" : "job",
+            \		"outputter/quickfix/open_cmd" : "",
+            \		"hook/qfstatusline_update/enable_exit" : 1,
+            \		"hook/qfstatusline_update/priority_exit" : 4,
+            \},
+            \}
 
 let g:watchdogs_check_BufWritePost_enable = 1
 "let g:watchdogs_check_BufWritePost_enables = {
@@ -320,16 +322,16 @@ let g:watchdogs_check_BufWritePost_enable = 1
 "			\}
 "let g:watchdogs_check_CursorHold_enable = 1
 let g:watchdogs_check_CursorHold_enables = {
-			\   "java" : 0,
-			\	"cpp" : 0
-			\}
+            \   "java" : 0,
+            \	"cpp" : 0
+            \}
 
 let g:watchdogs_check_BufWritePost_enable_on_wq = 0
 
 augroup my_watchdogs
-	autocmd!
-	autocmd BufWritePost,TextChanged *.c WatchdogsRun
-	autocmd BufRead,BufNewFile *.py,*.c WatchdogsRun
+    autocmd!
+    autocmd BufWritePost,TextChanged *.c WatchdogsRun
+    autocmd BufRead,BufNewFile *.py,*.c WatchdogsRun
 augroup END
 
 call watchdogs#setup(g:quickrun_config)
@@ -337,68 +339,68 @@ call watchdogs#setup(g:quickrun_config)
 
 "--------------setting light line-----------------------
 let g:lightline = {
-			\   'colorscheme': 'onedark',
-			\   'mode_map' : {
-			\		'n' : 'N',
-			\		'i'	: 'I',
-			\		'R' : 'REPLACE',
-			\		'v' : 'V',
-			\		'V': 'V-LINE',
-			\		"\<C-v>": 'V-BLOCK',
-			\		"s" : "S",
-			\		"S" : "S-LINE",
-			\		"\<C-s>" : "S-BLOCK",
-			\		't' : "TERMINAL",
-			\		},
-			\   'active' : {
-			\        'left':[
-			\            ['mode','paste'],
-			\            ['readonly','fugitive', 'filename','modified', 'anzu'],
-			\        ],
-			\
-			\        'right':[
-			\            ['lineinfo','syntaxcheck'],
-			\            ['percent'],
-			\            ['charcode', 'fileformat','fileencoding', 'filetype'],
-			\        ]
-			\    },
-			\   'component_function':{
-			\   'mode' : 'Mymode',
-			\   'anzu' : 'anzu#search_status',
-			\   'fugitive' : 'Myfugitive',
-			\   'fileformat' : 'Myfileformat',
-			\   'fileencoding': 'Myfileencoding',
-			\   'filetype' : 'Myfiletype',
-			\   },
-			\   'component_expand':{
-			\   'syntaxcheck' : 'qfstatusline#Update',
-			\    },
-			\   'component_type':{
-			\   'syntaxcheck' : 'error',
-			\   },
-			\}
+            \   'colorscheme': 'onedark',
+            \   'mode_map' : {
+            \		'n' : 'N',
+            \		'i'	: 'I',
+            \		'R' : 'REPLACE',
+            \		'v' : 'V',
+            \		'V': 'V-LINE',
+            \		"\<C-v>": 'V-BLOCK',
+            \		"s" : "S",
+            \		"S" : "S-LINE",
+            \		"\<C-s>" : "S-BLOCK",
+            \		't' : "TERMINAL",
+            \		},
+            \   'active' : {
+            \        'left':[
+            \            ['mode','paste'],
+            \            ['readonly','fugitive', 'filename','modified', 'anzu'],
+            \        ],
+            \
+            \        'right':[
+            \            ['lineinfo','syntaxcheck'],
+            \            ['percent'],
+            \            ['charcode', 'fileformat','fileencoding', 'filetype'],
+            \        ]
+            \    },
+            \   'component_function':{
+            \   'mode' : 'Mymode',
+            \   'anzu' : 'anzu#search_status',
+            \   'fugitive' : 'Myfugitive',
+            \   'fileformat' : 'Myfileformat',
+            \   'fileencoding': 'Myfileencoding',
+            \   'filetype' : 'Myfiletype',
+            \   },
+            \   'component_expand':{
+            \   'syntaxcheck' : 'qfstatusline#Update',
+            \    },
+            \   'component_type':{
+            \   'syntaxcheck' : 'error',
+            \   },
+            \}
 
 let g:Qfstatusline#UpdateCmd = function('lightline#update')
 autocmd BufRead,TabEnter * QfstatuslineUpdate
 
 function! Mymode()
-	return winwidth(0) > 30 ? lightline#mode() : ''
+    return winwidth(0) > 30 ? lightline#mode() : ''
 endfunction
 
 function! Myfugitive()
-	return exists('*fugitive#head') ? fugitive#head():''
+    return exists('*fugitive#head') ? fugitive#head():''
 endfunction
 
 function! Myfileformat()
-	return winwidth(0) > 70 ? &fileformat : ''
+    return winwidth(0) > 70 ? &fileformat : ''
 endfunction
 
 function! Myfileencoding()
-	return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+    return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
 endfunction
 
 function! Myfiletype()
-	return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+    return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
 endfunction
 
 "------------end lightline-----------------
@@ -414,9 +416,9 @@ nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
 "---------tweetvim setting---------------"
 autocmd FileType tweetvim call s:tweetvim_my_setting()
 function! s:tweetvim_my_setting()
-	nnoremap <buffer>s :<C-u>TweetVimSay<CR>
-	nnoremap <silent>t :Unite tweetvim<CR>
-	let g:tweetvim_tweet_per_page = 100
+    nnoremap <buffer>s :<C-u>TweetVimSay<CR>
+    nnoremap <silent>t :Unite tweetvim<CR>
+    let g:tweetvim_tweet_per_page = 100
 endfunction
 
 "------------end tweetvim----------------"
