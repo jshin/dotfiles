@@ -1,0 +1,51 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+build = 'make'
+
+[[plugins]]
+repo = 'vim-jp/vimdoc-ja'
+
+[[plugins]]
+repo = 'joshdick/onedark.vim'
+
+[[plugins]]
+repo = 'w0ng/vim-hybrid'
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+on_source = 'onedark.vim'
+
+[[plugins]]
+repo = 'cohama/lexima.vim'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
+[[plugins]]
+repo = 'osyo-manga/vim-anzu'
+
+[[plugins]]
+repo = 'cohama/vim-hier'
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+
+[[plugins]]
+repo = 'osyo-manga/shabadou.vim'
+
+[[plugins]]
+repo = 'osyo-manga/vim-watchdogs'
+depends = ['vim-quickrun', 'shabadou.vim']
+
+[[plugins]]
+repo = 'KazuakiM/vim-qfstatusline'
+depends = 'vim-watchdogs'
+
+[[plugins]]
+repo = 'cocopon/iceberg.vim'
