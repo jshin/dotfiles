@@ -10,82 +10,30 @@ if has('vim_starting')
     endif
 
     "Required
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
+    set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
 endif
 
-"Required
-call neobundle#begin(expand('~/.vim/bundle/'))
-
-"Let NeoBundle mangaze NeoBundle
-"Required
-NeoBundleFetch 'Shougo/neobundle.vim'
-"Write about plug-in that you want to add here
-
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'Shougo/neoyank.vim'
-NeoBundle 'Shougo/unite-outline'
-
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'osyo-manga/vim-anzu'
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'w0ng/vim-hybrid'
-NeoBundle 'joshdick/onedark.vim'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundleLazy 'Shougo/vimshell.vim', {
-            \	'autoload' : {'commands' : ['VimShell']}
-            \}
-
-"Tweetvim
-if executable('curl')
-    NeoBundle 'mattn/webapi-vim'
-    NeoBundle 'tyru/open-browser.vim'
-    NeoBundle 'basyura/twibill.vim'
-    NeoBundle 'basyura/TweetVim', {'rev' : 'dev'}
+if dein#load_state('~/.vim/dein/')
+    call dein#begin('~/.vim/dein')
+    call dein#load_toml('~/dotfiles/dein.toml', {'lazy':0})
+    call dein#load_toml('~/dotfiles/dein-lazy.toml', {'lazy':1})
+    call dein#end()
+    call dein#save_state()
 endif
 
-NeoBundle 'Shougo/neocomplete.vim'
-NeoBundle 'Shougo/neco-syntax'
-NeoBundle 'Shougo/neoinclude.vim'
-NeoBundle 'Shougo/neco-vim'
-NeoBundle 'Shougo/neosnippet.vim'
-NeoBundle 'Shougo/neosnippet-snippets'
-
-NeoBundle 'Shougo/vimproc.vim', {
-            \ 'build' : {
-            \     'windows' : 'tools\\update-dll-mingw',
-            \     'cygwin' : 'make -f make_cygwin.mak',
-            \     'mac' : 'make',
-            \     'linux' : 'make',
-            \     'unix' : 'gmake',
-            \    },
-            \ }
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'osyo-manga/shabadou.vim'
-NeoBundle 'osyo-manga/vim-watchdogs'
-NeoBundle 'cohama/vim-hier'
-NeoBundle 'KazuakiM/vim-qfstatusline'
-
-NeoBundle 'cohama/lexima.vim'
-NeoBundleLazy 'kannokanno/previm', {
-            \	'autoload' : {'filetypes' : ['markdown']}
-            \}
-NeoBundle 'keith/tmux.vim'
-NeoBundle 'vim-jp/vimdoc-ja'
-NeoBundleLazy 'scrooloose/nerdtree', {
-            \ 	'autoload' : {'commands' : ['NERDTree']}
-            \ }
-if has('mac')
-    NeoBundleLazy 'fatih/vim-go', {
-                \ 'autoload' : {'filetypes' : ['go']}
-                \ }
+if dein#check_install()
+    call dein#install()
 endif
-NeoBundleLazy 'cespare/vim-toml', {'autoload': {'filetypes':['toml']}}
-
-call neobundle#end()
-
 "Reqired
 filetype plugin indent on
+
+let g:loaded_getscript = 1
+let g:loaded_getscriptPlugin = 1
+let g:loaded_logiPat = 1
+let g:loaded_spellfile_plugin = 1
+let g:loaded_rrhelper = 1
+let g:loaded_vimballPlugin = 1
+let g:loaded_vimball = 1
 
 "setting for showing
 set number
@@ -135,9 +83,6 @@ set ignorecase
 set smartcase
 set wrapscan
 set completeopt-=preview
-let java_highlight_all=1
-let java_highlight_functions="indent"
-let java_allow_cpp_keywords=1
 let python_highlight_all=1
 
 if has("mouse")
@@ -270,7 +215,7 @@ nnoremap <silent> [unite]n :<C-u>Unite<Space>file/new<CR>
 
 "key mapping for unite.vim
 autocmd FileType unite call s:unite_my_settings()
-function! s:unite_my_settings() "{{{
+function! s:unite_my_settings()
     "push ESC unite stop
     nmap <buffer> <ESC> <Plug>(unite_exit)
     "open on split
@@ -420,20 +365,4 @@ function! s:tweetvim_my_setting()
     nnoremap <silent>t :Unite tweetvim<CR>
     let g:tweetvim_tweet_per_page = 100
 endfunction
-
 "------------end tweetvim----------------"
-
-"---------setting nerdtree---------------"
-nnoremap <C-n>	:NERDTreeToggle<CR>
-"------------end nerdtree----------------"
-
-"------------setting for Go--------------"
-let g:go_highlight_functions=1
-let g:go_highlight_methods=1
-let g:go_highlight_structs=1
-let g:go_highlight_fields=1
-let g:go_highlight_types=1
-let g:go_highlight_operators=1
-let g:go_highlight_build_constraints=1
-let g:go_fmt_autosave=0
-"---------------end Go-------------------"

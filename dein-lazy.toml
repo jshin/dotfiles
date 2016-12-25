@@ -1,0 +1,65 @@
+[[plugins]]
+repo = 'Shougo/neocomplete.vim'
+on_i = 1
+
+[[plugins]]
+repo = 'Shougo/neco-syntax'
+on_source = 'neocomplete.vim'
+depends = 'neocomplete.vim'
+
+[[plugins]]
+repo = 'Shougo/neco-vim'
+on_source = 'neocomplete.vim'
+depends = 'neocomplete.vim'
+
+[[plugins]]
+repo = 'Shougo/neoinclude.vim'
+on_source = 'neocomplete.vim'
+
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+depends = 'neosnippet-snippets'
+on_i = 1
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+on_i = 1
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+on_cmd = 'Unite'
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'Shougo/unite-outline'
+on_source = 'unite.vim'
+
+[[plugins]]
+repo = 'mattn/webapi-vim'
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+
+[[plugins]]
+repo = 'basyura/twibill.vim'
+
+[[plugins]]
+repo = 'basyura/Tweetvim'
+rev = 'dev'
+depends = ['webapi-vim', 'open-browser.vim', 'twibill.vim']
+on_cmd = ['TweetVimUserStream', 'TweetVimSay', 'TweetVimCommandSay']
+
+[[plugins]]
+repo = 'keith/tmux.vim'
+on_ft = 'tmux'
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
+[[plugins]]
+repo = 'fatih/vim-go'
+on_ft = 'go'
