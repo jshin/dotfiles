@@ -81,6 +81,8 @@ alias javac='javac -J-Dfile.encoding=UTF-8'
 alias java='java -Dfile.encoding=UTF-8'
 alias mics="ssh -D 1080 g1344919@cc2000.kyoto-su.ac.jp"
 alias cl="clear"
+alias mv="mv -i"
+alias cp="cp -i"
 alias py="python"
 alias py3="python3"
 alias vi="vim"
