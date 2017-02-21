@@ -69,8 +69,8 @@ set undofile
 set t_Co=256
 "setting for vim on tmux
 set t_ut=
-set background=dark
-colorscheme hybrid
+set termguicolors
+colorscheme onedark
 set cursorline
 hi clear CursorLine
 "setting for access
