@@ -26,14 +26,15 @@ if dein#check_install()
 endif
 "Reqired
 filetype plugin indent on
+syntax enable
 
 let g:loaded_getscript = 1
 let g:loaded_getscriptPlugin = 1
 let g:loaded_logiPat = 1
 let g:loaded_spellfile_plugin = 1
 let g:loaded_rrhelper = 1
-let g:loaded_vimballPlugin = 1
 let g:loaded_vimball = 1
+let g:loaded_vimballPlugin = 1
 
 "setting for showing
 set number
@@ -68,16 +69,10 @@ set undofile
 set t_Co=256
 "setting for vim on tmux
 set t_ut=
-if $TERM_PROGRAM == "iTerm.app"
-    set termguicolors
-    colorscheme onedark
-else
-    set background=dark
-    colorscheme hybrid
-endif
+set background=dark
+colorscheme hybrid
 set cursorline
 hi clear CursorLine
-syntax enable
 "setting for access
 set ignorecase
 set smartcase
@@ -229,6 +224,9 @@ endfunction
 "----------------end unite setting-----------------------
 
 "---------------setting watchdogs------------------------
+if !exists("g:quickrun_config")
+    let g:quickrun_config = {}
+endif
 if executable("golint")
     let g:quickrun_config = {
                 \	"go/watchdogs_checker" : {
@@ -244,10 +242,6 @@ if executable("clang++")
                 \		"cmdopt" : "-Wall",
                 \	},
                 \}
-endif
-
-if !exists("g:quickrun_config")
-    let g:quickrun_config = {}
 endif
 
 let g:quickrun_config = {
@@ -363,6 +357,6 @@ autocmd FileType tweetvim call s:tweetvim_my_setting()
 function! s:tweetvim_my_setting()
     nnoremap <buffer>s :<C-u>TweetVimSay<CR>
     nnoremap <silent>t :Unite tweetvim<CR>
-    let g:tweetvim_tweet_per_page = 100
+    let g:tweetvim_tweet_per_page = 300
 endfunction
 "------------end tweetvim----------------"
