@@ -1,9 +1,6 @@
 set encoding=utf-8
 scriptencoding utf-8
 
-"Setting NeoBundle
-if 0 | endif
-
 if has('vim_starting')
     if &compatible
         set nocompatible
@@ -112,7 +109,7 @@ augroup auto_comment_off
 augroup END
 
 "auto-close html tags
-augroup CompleteTag
+augroup complete_tag
     autocmd!
     autocmd FileType html,xml inoremap <buffer> </ </<C-x><C-o>
 augroup END
