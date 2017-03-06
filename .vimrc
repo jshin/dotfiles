@@ -219,6 +219,8 @@ function! s:unite_my_settings()
     inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
     "open on new tab
     inoremap <silent> <buffer> <expr> <C-t> unite#do_action('tabopen')
+    "slelect next candidate
+    imap <buffer> <Tab> <Plug>(unite_select_next_line)
 
 endfunction
 "----------------end unite setting-----------------------
