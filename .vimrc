@@ -33,19 +33,17 @@ let g:loaded_rrhelper = 1
 let g:loaded_vimball = 1
 let g:loaded_vimballPlugin = 1
 
-"setting for showing
 set number
 set ruler
 set laststatus=2
 set showmatch
 source $VIMRUNTIME/macros/matchit.vim
 set helpheight=999
-set showcmd
+"set showcmd
 set wildmode=longest,list
 set tabstop=4
 set expandtab
 set shiftwidth=4
-set nocp
 set autoindent
 set smartindent
 set smarttab
@@ -66,8 +64,13 @@ set undofile
 set t_Co=256
 "setting for vim on tmux
 set t_ut=
-set termguicolors
-colorscheme onedark
+if has('termguicolors')
+    set termguicolors
+    colorscheme onedark
+else
+    set background=dark
+    colorscheme hybrid
+endif
 set cursorline
 hi clear CursorLine
 "setting for access
@@ -95,7 +98,7 @@ noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 noremap <C-h> <C-w>h
-"------------------functions------------------------
+"============= functions =============
 "move to the last edit point
 augroup vimrcEx
     autocmd BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -128,9 +131,9 @@ function! s:remove_dust()
     unlet cursor
 endfunction
 autocmd BufWritePre * call <SID>remove_dust()
-"---------------end functions------------------------
+"============= end functions =============
 
-"--------------neocomplete setting-------------------
+"============= neocomplete setting =============
 "Use neocomplete
 let g:neocomplete#enable_at_startup = 1
 "Use smartcase
@@ -175,9 +178,9 @@ if !exists('g:neocomplete#sources#omni#input_patterns')
     let g:neocomplete#sources#omni#input_patterns.go = '\h\w\.\w*'
 endif
 
-"-----------------neocomplete setting end -----------------
+"============= neocomplete setting end =============
 
-"-------------neosnippet settings----------------------
+"============= neosnippet settings =============
 " Plugin key-mappings.
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
@@ -189,9 +192,9 @@ smap <expr><TAB> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : 
 if has('conceal')
     set conceallevel=2 concealcursor=niv
 endif
-"---------------end neosnippet------------------------
+"============= end neosnippet =============
 
-"---------------------unite setting------------------------
+"============= unite setting =============
 "start at insert mode
 let g:unite_enable_start_insert=1
 "setting prefix key
@@ -220,9 +223,9 @@ function! s:unite_my_settings()
     imap <buffer> <Tab> <Plug>(unite_select_next_line)
 
 endfunction
-"----------------end unite setting-----------------------
+"============= end unite setting =============
 
-"---------------setting watchdogs------------------------
+"============= setting watchdogs =============
 if !exists("g:quickrun_config")
     let g:quickrun_config = {}
 endif
@@ -273,9 +276,9 @@ augroup my_watchdogs
 augroup END
 
 call watchdogs#setup(g:quickrun_config)
-"-----------------end watchdogs--------------------------
+"============= end watchdogs =============
 
-"--------------setting light line-----------------------
+"============= setting lightline =============
 let g:lightline = {
             \   'colorscheme': 'onedark',
             \   'mode_map' : {
@@ -341,21 +344,26 @@ function! Myfiletype()
     return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
 endfunction
 
-"------------end lightline-----------------
+"============= end lightline =============
 
-"-----------setting anzu------------------
+"============= setting anzu =============
 nmap n <Plug>(anzu-n)
 nmap N <Plug>(anzu-N)
 nmap * <Plug>(anzu-star)
 nmap # <Plug>(anzu-sharp)
 nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
-"----------end anuz----------------------
+"============= end anuz =============
 
-"---------tweetvim setting---------------"
+"============= tweetvim setting =============
 autocmd FileType tweetvim call s:tweetvim_my_setting()
 function! s:tweetvim_my_setting()
     nnoremap <buffer>s :<C-u>TweetVimSay<CR>
     nnoremap <silent>t :Unite tweetvim<CR>
     let g:tweetvim_tweet_per_page = 300
 endfunction
-"------------end tweetvim----------------"
+"============= end tweetvim =============
+
+"============= gundo settings =============
+let g:gundo_prefer_python3 = 1
+
+"============= end gundo =============

@@ -53,10 +53,6 @@ depends = ['webapi-vim', 'open-browser.vim', 'twibill.vim']
 on_cmd = ['TweetVimUserStream', 'TweetVimSay', 'TweetVimCommandSay', 'TweetVimHomeTimeLine']
 
 [[plugins]]
-repo = 'keith/tmux.vim'
-on_ft = 'tmux'
-
-[[plugins]]
 repo = 'cespare/vim-toml'
 on_ft = 'toml'
 
@@ -67,3 +63,7 @@ on_ft = 'go'
 [[plugins]]
 repo = 'othree/yajs.vim'
 on_ft = 'javascript'
+
+[[plugins]]
+repo = 'sjl/gundo.vim'
+on_cmd = ['GundoToggle']
