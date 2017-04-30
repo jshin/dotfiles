@@ -40,12 +40,4 @@ repo = 'thinca/vim-quickrun'
 repo = 'osyo-manga/shabadou.vim'
 
 [[plugins]]
-repo = 'osyo-manga/vim-watchdogs'
-depends = ['vim-quickrun', 'shabadou.vim']
-
-[[plugins]]
-repo = 'KazuakiM/vim-qfstatusline'
-depends = 'vim-watchdogs'
-
-[[plugins]]
 repo = 'cocopon/iceberg.vim'

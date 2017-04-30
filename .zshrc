@@ -79,7 +79,6 @@ alias mkdir='mkdir -p'
 
 alias javac='javac -J-Dfile.encoding=UTF-8'
 alias java='java -Dfile.encoding=UTF-8'
-alias mics="ssh -D 1080 g1344919@cc2000.kyoto-su.ac.jp"
 alias cl="clear"
 alias mv="mv -i"
 alias cp="cp -i"
@@ -87,7 +86,6 @@ alias py="python"
 alias py3="python3"
 alias vi="vim"
 alias ptex2pdf="ptex2pdf -l"
-alias sshcc="ssh g1344919@cc2000.kyoto-su.ac.jp"
 alias tweetvim="vim -c TweetVimUserStream"
 alias sudo='sudo '
 
@@ -113,3 +111,4 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export VISUAL="/usr/local/bin/vim"
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+export JAVA_HOME=$(/usr/libexec/java_home)

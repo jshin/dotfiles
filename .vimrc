@@ -33,13 +33,12 @@ let g:loaded_rrhelper = 1
 let g:loaded_vimball = 1
 let g:loaded_vimballPlugin = 1
 
-set number
+"set number
 set ruler
 set laststatus=2
 set showmatch
 source $VIMRUNTIME/macros/matchit.vim
 set helpheight=999
-"set showcmd
 set wildmode=longest,list
 set tabstop=4
 set expandtab
@@ -87,10 +86,10 @@ endif
 inoremap <C-w> <C-o>:<C-u>w<CR>
 nnoremap j gj
 nnoremap k gk
+nnoremap gj j
+nnoremap gk k
 nnoremap <Up> gk
 nnoremap <Down> gj
-inoremap <Up> <C-o>gk
-inoremap <Down> <C-o>gj
 nnoremap <silent> <S-t> :tabnew<CR>
 
 "Switching windows
@@ -101,6 +100,7 @@ noremap <C-h> <C-w>h
 "============= functions =============
 "move to the last edit point
 augroup vimrcEx
+    autocmd!
     autocmd BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
                 \ exe "normal g`\"" | endif
 augroup END
@@ -125,10 +125,12 @@ augroup END
 
 "clear blanks on end of the line
 function! s:remove_dust()
-    let cursor = getpos(".")
-    %s/\s\+$//ge
-    call setpos(".", cursor)
-    unlet cursor
+    if &filetype != 'markdown' "exclude markdown
+        let cursor = getpos(".")
+        %s/\s\+$//ge
+        call setpos(".", cursor)
+        unlet cursor
+    endif
 endfunction
 autocmd BufWritePre * call <SID>remove_dust()
 "============= end functions =============
@@ -170,12 +172,10 @@ autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
     let g:neocomplete#sources#omni#input_patterns = {}
-    let g:neocomplete#sources#omni#input_patterns.go = '\h\w\.\w*'
 endif
 
 "============= neocomplete setting end =============
@@ -225,58 +225,27 @@ function! s:unite_my_settings()
 endfunction
 "============= end unite setting =============
 
-"============= setting watchdogs =============
+"============= setting quickrun =============
 if !exists("g:quickrun_config")
     let g:quickrun_config = {}
 endif
-if executable("golint")
-    let g:quickrun_config = {
-                \	"go/watchdogs_checker" : {
-                \		"type" : "watchdogs_checker/golint",
-                \	},
-                \}
-endif
+"============= end quickrun =============
 
-if executable("clang++")
-    let g:quickrun_config = {
-                \	"cpp/watchdogs_checker" : {
-                \		"type" : "watchdogs_checker/clang++",
-                \		"cmdopt" : "-Wall",
-                \	},
-                \}
-endif
+"============= setting for ale =============
 
-let g:quickrun_config = {
-            \	"watchdogs_checker/_" :{
-            \		"runnner" : "job",
-            \		"outputter/quickfix/open_cmd" : "",
-            \		"hook/qfstatusline_update/enable_exit" : 1,
-            \		"hook/qfstatusline_update/priority_exit" : 4,
-            \},
+let g:ale_sign_error = '>'
+let g:ale_sign_warning = '-'
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_linters = {
+            \   'go' : ['golint'],
+            \   'cpp' : ['clang'],
             \}
-
-let g:watchdogs_check_BufWritePost_enable = 1
-"let g:watchdogs_check_BufWritePost_enables = {
-"			\   "java" : 0,
-"			\	"go" : 1,
-"			\	"cpp" : 1
-"			\}
-"let g:watchdogs_check_CursorHold_enable = 1
-let g:watchdogs_check_CursorHold_enables = {
-            \   "java" : 0,
-            \	"cpp" : 0
-            \}
-
-let g:watchdogs_check_BufWritePost_enable_on_wq = 0
-
-augroup my_watchdogs
+let g:ale_statusline_format = ['Error (%d)', 'Warning (%d)', '']
+augroup LightlineOnAle
     autocmd!
-    autocmd BufWritePost,TextChanged *.c WatchdogsRun
-    autocmd BufRead,BufNewFile *.py,*.c WatchdogsRun
+    autocmd User ALELint call lightline#update()
 augroup END
-
-call watchdogs#setup(g:quickrun_config)
-"============= end watchdogs =============
+"============= end ale =============
 
 "============= setting lightline =============
 let g:lightline = {
@@ -291,7 +260,6 @@ let g:lightline = {
             \		"s" : "S",
             \		"S" : "S-LINE",
             \		"\<C-s>" : "S-BLOCK",
-            \		't' : "TERMINAL",
             \		},
             \   'active' : {
             \        'left':[
@@ -314,15 +282,12 @@ let g:lightline = {
             \   'filetype' : 'Myfiletype',
             \   },
             \   'component_expand':{
-            \   'syntaxcheck' : 'qfstatusline#Update',
+            \   'syntaxcheck' : 'ALEGetStatusLine',
             \    },
             \   'component_type':{
             \   'syntaxcheck' : 'error',
             \   },
             \}
-
-let g:Qfstatusline#UpdateCmd = function('lightline#update')
-autocmd BufRead,TabEnter * QfstatuslineUpdate
 
 function! Mymode()
     return winwidth(0) > 30 ? lightline#mode() : ''
@@ -367,3 +332,8 @@ endfunction
 let g:gundo_prefer_python3 = 1
 
 "============= end gundo =============
+
+"============= previm settings =============
+let g:previm_enable_realtime = 1
+
+"============= end previm =============
