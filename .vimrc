@@ -37,6 +37,7 @@ let g:loaded_vimballPlugin = 1
 set ruler
 set laststatus=2
 set showmatch
+set matchtime=1
 source $VIMRUNTIME/macros/matchit.vim
 set helpheight=999
 set wildmode=longest,list
@@ -77,6 +78,7 @@ set ignorecase
 set smartcase
 set wrapscan
 set completeopt-=preview
+set pumheight=10
 let python_highlight_all=1
 
 if has("mouse")
@@ -237,7 +239,7 @@ let g:ale_sign_error = '>'
 let g:ale_sign_warning = '!'
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_linters = {
-            \   'cpp': ['clang', 'gcc'],
+            \   'cpp': ['clang', 'g++'],
             \   'scala': [],
             \}
 let g:ale_statusline_format = ['Error (%d)', 'Warning (%d)', '']
