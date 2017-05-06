@@ -41,3 +41,6 @@ repo = 'osyo-manga/shabadou.vim'
 
 [[plugins]]
 repo = 'cocopon/iceberg.vim'
+
+[[plugins]]
+repo = 'w0rp/ale'
