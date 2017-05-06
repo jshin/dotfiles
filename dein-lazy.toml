@@ -74,9 +74,5 @@ repo = 'kannokanno/previm'
 on_ft = 'markdown'
 
 [[plugins]]
-repo = 'w0rp/ale'
-on_i = 1
-
-[[plugins]]
 repo = 'zerowidth/vim-copy-as-rtf'
 on_cmd = ['CopyRTF']
