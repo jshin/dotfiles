@@ -33,7 +33,7 @@ let g:loaded_rrhelper = 1
 let g:loaded_vimball = 1
 let g:loaded_vimballPlugin = 1
 
-"set number
+set number
 set ruler
 set laststatus=2
 set showmatch
@@ -79,9 +79,9 @@ set smartcase
 set wrapscan
 set completeopt-=preview
 set pumheight=10
-let python_highlight_all=1
+let g:python_highlight_all=1
 
-if has("mouse")
+if has('mouse')
     set mouse=a
 endif
 
@@ -99,6 +99,8 @@ noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 noremap <C-h> <C-w>h
+
+nnoremap / /\v
 "============= functions =============
 "move to the last edit point
 augroup vimrcEx
@@ -127,7 +129,7 @@ augroup END
 
 "clear blanks on end of the line
 function! s:remove_dust()
-    if &filetype != 'markdown' "exclude markdown
+    if &filetype != 'markdown' && &filetype != 'tex'
         let cursor = getpos(".")
         %s/\s\+$//ge
         call setpos(".", cursor)
@@ -173,12 +175,12 @@ inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 
 " Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-    let g:neocomplete#sources#omni#input_patterns = {}
-endif
+"if !exists('g:neocomplete#sources#omni#input_patterns')
+"    let g:neocomplete#sources#omni#input_patterns = {}
+"endif
 
 "============= neocomplete setting end =============
 
@@ -202,13 +204,13 @@ let g:unite_enable_start_insert=1
 "setting prefix key
 nmap <Space> [unite]
 
-nnoremap <silent> [unite]b :<C-u>Unite<Space>buffer<Space>file<Space>file_mru<CR>
+nnoremap <silent> [unite]b :<C-u>Unite<Space>buffer file file_mru<CR>
 nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap <silent> [unite]o :<C-u>Unite<Space>outline<CR>
-nnoremap <silent> [unite]d :<C-u>Unite<Space>directory_mru<CR>
-nnoremap <silent> [unite]h :<C-u>Unite<Space>history/yank<CR>
+nnoremap <silent> [unite]o :<C-u>Unite outline<CR>
+nnoremap <silent> [unite]d :<C-u>Unite directory_mru<CR>
+nnoremap <silent> [unite]h :<C-u>Unite history/yank<CR>
 nnoremap <silent> [unite]t :<C-u>Unite tab<CR>
-nnoremap <silent> [unite]n :<C-u>Unite<Space>file/new<CR>
+nnoremap <silent> [unite]n :<C-u>Unite file/new<CR>
 
 "key mapping for unite.vim
 autocmd FileType unite call s:unite_my_settings()
@@ -242,7 +244,20 @@ let g:ale_linters = {
             \   'cpp': ['clang', 'g++'],
             \   'scala': [],
             \}
-let g:ale_statusline_format = ['Error (%d)', 'Warning (%d)', '']
+"let g:ale_statusline_format = ['Error (%d)', 'Warning (%d)', '']
+function! LinterStatus() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
+
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+
+    return l:counts.total == 0 ? '' : printf(
+                \   '%dW %dE',
+                \   all_non_errors,
+                \   all_errors
+                \)
+endfunction
+
 augroup LightlineOnAle
     autocmd!
     autocmd User ALELint call lightline#update()
@@ -284,7 +299,7 @@ let g:lightline = {
             \   'filetype' : 'Myfiletype',
             \   },
             \   'component_expand':{
-            \   'syntaxcheck' : 'ALEGetStatusLine',
+            \   'syntaxcheck' : 'LinterStatus',
             \    },
             \   'component_type':{
             \   'syntaxcheck' : 'error',
