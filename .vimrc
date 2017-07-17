@@ -71,8 +71,7 @@ else
     set background=dark
     colorscheme hybrid
 endif
-set cursorline
-hi clear CursorLine
+
 "setting for access
 set ignorecase
 set smartcase
@@ -100,10 +99,10 @@ noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 noremap <C-h> <C-w>h
 
-nnoremap / /\v
+"nnoremap / /\v
 "============= functions =============
 "move to the last edit point
-augroup vimrcEx
+augroup record_last_edit
     autocmd!
     autocmd BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
                 \ exe "normal g`\"" | endif
@@ -129,7 +128,7 @@ augroup END
 
 "clear blanks on end of the line
 function! s:remove_dust()
-    if &filetype != 'markdown' && &filetype != 'tex'
+    if &filetype != 'markdown'
         let cursor = getpos(".")
         %s/\s\+$//ge
         call setpos(".", cursor)
@@ -242,7 +241,6 @@ let g:ale_sign_warning = '!'
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_linters = {
             \   'cpp': ['clang', 'g++'],
-            \   'scala': [],
             \}
 "let g:ale_statusline_format = ['Error (%d)', 'Warning (%d)', '']
 function! LinterStatus() abort
@@ -281,7 +279,7 @@ let g:lightline = {
             \   'active' : {
             \        'left':[
             \            ['mode','paste'],
-            \            ['readonly','fugitive', 'filename','modified', 'anzu'],
+            \            ['readonly','fugitive', 'filename','modified'],
             \        ],
             \
             \        'right':[
@@ -292,7 +290,6 @@ let g:lightline = {
             \    },
             \   'component_function':{
             \   'mode' : 'Mymode',
-            \   'anzu' : 'anzu#search_status',
             \   'fugitive' : 'Myfugitive',
             \   'fileformat' : 'Myfileformat',
             \   'fileencoding': 'Myfileencoding',
@@ -328,13 +325,16 @@ endfunction
 
 "============= end lightline =============
 
-"============= setting anzu =============
-nmap n <Plug>(anzu-n)
-nmap N <Plug>(anzu-N)
-nmap * <Plug>(anzu-star)
-nmap # <Plug>(anzu-sharp)
-nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
-"============= end anuz =============
+"============= setting incsearch.vim =============
+map / <Plug>(incsearch-forward)
+map ? <Plug>(incsearch-backward)
+set hlsearch
+let g:incsearch#auto_nohlsearch = 1
+map n <Plug>(incsearch-nohl-n)
+map N <Plug>(incsearch-nohl-N)
+nmap  n <Plug>(incsearch-nohl)<Plug>(anzu-n-with-echo)
+nmap  N <Plug>(incsearch-nohl)<Plug>(anzu-N-with-echo)
+"============= end incsearch.vim =============
 
 "============= tweetvim setting =============
 autocmd FileType tweetvim call s:tweetvim_my_setting()
