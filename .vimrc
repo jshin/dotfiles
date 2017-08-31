@@ -84,7 +84,6 @@ if has('mouse')
     set mouse=a
 endif
 
-inoremap <C-w> <C-o>:<C-u>w<CR>
 nnoremap j gj
 nnoremap k gk
 nnoremap gj j
@@ -121,7 +120,7 @@ augroup complete_tag
 augroup END
 
 "if the file is edited by  another editor, it will be updated automatically
-augroup vimrcchecktime
+augroup vimrc_check_time
     autocmd!
     autocmd InsertEnter * checktime
 augroup END
@@ -180,6 +179,11 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 "if !exists('g:neocomplete#sources#omni#input_patterns')
 "    let g:neocomplete#sources#omni#input_patterns = {}
 "endif
+
+if !exists('g:neocomplete#text_mode_filetypes')
+    let g:neocomplete#text_mode_filetypes = {}
+endif
+let g:neocomplete#text_mode_filetypes = {'tex' : 1}
 
 "============= neocomplete setting end =============
 
@@ -242,7 +246,7 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_linters = {
             \   'cpp': ['clang', 'g++'],
             \}
-"let g:ale_statusline_format = ['Error (%d)', 'Warning (%d)', '']
+
 function! LinterStatus() abort
     let l:counts = ale#statusline#Count(bufnr(''))
 
@@ -332,8 +336,8 @@ set hlsearch
 let g:incsearch#auto_nohlsearch = 1
 map n <Plug>(incsearch-nohl-n)
 map N <Plug>(incsearch-nohl-N)
-nmap  n <Plug>(incsearch-nohl)<Plug>(anzu-n-with-echo)
-nmap  N <Plug>(incsearch-nohl)<Plug>(anzu-N-with-echo)
+nmap n <Plug>(incsearch-nohl)<Plug>(anzu-n-with-echo)
+nmap N <Plug>(incsearch-nohl)<Plug>(anzu-N-with-echo)
 "============= end incsearch.vim =============
 
 "============= tweetvim setting =============
