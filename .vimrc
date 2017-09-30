@@ -8,6 +8,13 @@ if has('vim_starting')
 
     "Required
     set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+
+    "In the noremal mode, a cursor is vertical bar
+    let &t_SI .= "\e[6 q"
+    "In the insert mode, a cursor is block
+    let &t_EI .= "\e[2 q"
+    "In the replace mode, a cursor is under bar
+    let &t_SE .= "\e[4 q"
 endif
 
 if dein#load_state('~/.vim/dein/')
@@ -78,6 +85,7 @@ set smartcase
 set wrapscan
 set completeopt-=preview
 set pumheight=10
+set emoji
 let g:python_highlight_all=1
 
 if has('mouse')
