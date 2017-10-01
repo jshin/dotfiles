@@ -14,7 +14,7 @@ if has('vim_starting')
     "In the insert mode, a cursor is block
     let &t_EI .= "\e[2 q"
     "In the replace mode, a cursor is under bar
-    let &t_SE .= "\e[4 q"
+    let &t_SR .= "\e[4 q"
 endif
 
 if dein#load_state('~/.vim/dein/')
