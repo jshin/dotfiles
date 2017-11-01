@@ -46,4 +46,4 @@ repo = 'cocopon/iceberg.vim'
 repo = 'w0rp/ale'
 
 [[plugins]]
-repo = 'haya14busa/incsearch.vim'
+repo = 'haya14busa/is.vim'
