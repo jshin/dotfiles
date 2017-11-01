@@ -96,8 +96,6 @@ nnoremap j gj
 nnoremap k gk
 nnoremap gj j
 nnoremap gk k
-nnoremap <Up> gk
-nnoremap <Down> gj
 nnoremap <silent> <S-t> :tabnew<CR>
 
 "Switching windows
@@ -181,7 +179,7 @@ inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType python setlocal omnifunc=python3complete#Complete
 
 " Enable heavy omni completion.
 "if !exists('g:neocomplete#sources#omni#input_patterns')
@@ -338,14 +336,10 @@ endfunction
 "============= end lightline =============
 
 "============= setting incsearch.vim =============
-map / <Plug>(incsearch-forward)
-map ? <Plug>(incsearch-backward)
 set hlsearch
-let g:incsearch#auto_nohlsearch = 1
-map n <Plug>(incsearch-nohl-n)
-map N <Plug>(incsearch-nohl-N)
-nmap n <Plug>(incsearch-nohl)<Plug>(anzu-n-with-echo)
-nmap N <Plug>(incsearch-nohl)<Plug>(anzu-N-with-echo)
+set incsearch
+map n <Plug>(is-nohl)<Plug>(anzu-n-with-echo)
+map N <Plug>(is-nohl)<Plug>(anzu-N-with-echo)
 "============= end incsearch.vim =============
 
 "============= tweetvim setting =============
