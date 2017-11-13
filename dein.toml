@@ -47,3 +47,6 @@ repo = 'w0rp/ale'
 
 [[plugins]]
 repo = 'haya14busa/is.vim'
+
+[[plugins]]
+repo = 'lambdalisue/gina.vim'
