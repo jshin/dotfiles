@@ -28,7 +28,7 @@ zstyle ':completion:*' ignore-parents parent pwd ..
 #sudo の後ろでコマンドを補完する
 zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
 
-PROMPT="%{${fg[red]}%}%n@%m%{${fg[blue]}%} [%T]%{${reset_color}%} [%4~]
+PROMPT="%{${fg[red]}%}%n@%m%{${fg[blue]}%} %T%{${reset_color}%} %4~
 $ "
 #vcs_infoロード
 autoload -Uz vcs_info
@@ -102,7 +102,7 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 alias ls='ls -G'
 
 #環境変数
-export PATH="/usr/local/Cellar/openssl/1.0.2a-1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/Library/Tex/texbin:/Users/takuro/Documents/EGGX/:/Users/takuro/Documents/EGGX/:/Applications/eclipse/android-sdk-macosx/platform-tools:/Applications/eclipse/android-sdk-macosx/tools:$PATH"
+export PATH="/usr/local/Cellar/openssl/1.0.2a-1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/Library/Tex/texbin:$PATH"
 
 export GREP_OPTIONS='--color=auto'
 export HOMEBREW_NO_ANALYTICS=1
