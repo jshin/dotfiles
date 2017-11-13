@@ -335,12 +335,12 @@ endfunction
 
 "============= end lightline =============
 
-"============= setting incsearch.vim =============
+"============= setting is.vim =============
 set hlsearch
 set incsearch
 map n <Plug>(is-nohl)<Plug>(anzu-n-with-echo)
 map N <Plug>(is-nohl)<Plug>(anzu-N-with-echo)
-"============= end incsearch.vim =============
+"============= end is.vim =============
 
 "============= tweetvim setting =============
 autocmd FileType tweetvim call s:tweetvim_my_setting()
