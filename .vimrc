@@ -17,7 +17,7 @@ if has('vim_starting')
     let &t_SR .= "\e[4 q"
 endif
 
-if has(linux)
+if has('linux')
     let g:dein#types#git#clone_depth=1
 endif
 
