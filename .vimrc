@@ -2,10 +2,6 @@ set encoding=utf-8
 scriptencoding utf-8
 
 if has('vim_starting')
-    if &compatible
-        set nocompatible
-    endif
-
     "Required
     set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
 
@@ -77,7 +73,7 @@ set t_Co=256
 set t_ut=
 if has('termguicolors')
     set termguicolors
-    colorscheme onedark
+    colorscheme iceberg
 else
     set background=dark
     colorscheme hybrid
@@ -90,6 +86,8 @@ set wrapscan
 set completeopt-=preview
 set pumheight=10
 set emoji
+set list
+set listchars=tab:^-,space:_
 let g:python_highlight_all=1
 
 if has('mouse')
@@ -98,6 +96,8 @@ endif
 
 nnoremap j gj
 nnoremap k gk
+vnoremap j gj
+vnoremap k gk
 nnoremap gj j
 nnoremap gk k
 nnoremap <silent> <S-t> :tabnew<CR>
@@ -110,7 +110,7 @@ noremap <C-h> <C-w>h
 
 "============= functions =============
 "move to the last edit point
-augroup record_last_edit
+augroup record_last_position
     autocmd!
     autocmd BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
                 \ exe "normal g`\"" | endif
@@ -220,7 +220,6 @@ nnoremap <silent> [unite]b :<C-u>Unite<Space>buffer file file_mru<CR>
 nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> [unite]o :<C-u>Unite outline<CR>
 nnoremap <silent> [unite]d :<C-u>Unite directory_mru<CR>
-nnoremap <silent> [unite]h :<C-u>Unite history/yank<CR>
 nnoremap <silent> [unite]t :<C-u>Unite tab<CR>
 nnoremap <silent> [unite]n :<C-u>Unite file/new<CR>
 
@@ -277,22 +276,22 @@ augroup END
 
 "============= setting lightline =============
 let g:lightline = {
-            \   'colorscheme': 'onedark',
+            \   'colorscheme': 'iceberg',
             \   'mode_map' : {
-            \		'n' : 'N',
-            \		'i'	: 'I',
-            \		'R' : 'REPLACE',
-            \		'v' : 'V',
-            \		'V': 'V-LINE',
-            \		"\<C-v>": 'V-BLOCK',
-            \		"s" : "S",
-            \		"S" : "S-LINE",
-            \		"\<C-s>" : "S-BLOCK",
-            \		},
+            \       'n' : 'N',
+            \       'i' : 'I',
+            \       'R' : 'REPLACE',
+            \       'v' : 'V',
+            \       'V': 'V-LINE',
+            \       "\<C-v>": 'V-BLOCK',
+            \       "s" : "S",
+            \       "S" : "S-LINE",
+            \       "\<C-s>" : "S-BLOCK",
+            \       },
             \   'active' : {
             \        'left':[
             \            ['mode','paste'],
-            \            ['readonly','fugitive', 'filename','modified'],
+            \            ['readonly','gitbranch', 'filename','modified'],
             \        ],
             \
             \        'right':[
@@ -303,7 +302,7 @@ let g:lightline = {
             \    },
             \   'component_function':{
             \   'mode' : 'Mymode',
-            \   'fugitive' : 'Myfugitive',
+            \   'gitbranch' : 'Gitbranch',
             \   'fileformat' : 'Myfileformat',
             \   'fileencoding': 'Myfileencoding',
             \   'filetype' : 'Myfiletype',
@@ -320,8 +319,8 @@ function! Mymode()
     return winwidth(0) > 30 ? lightline#mode() : ''
 endfunction
 
-function! Myfugitive()
-    return exists('*fugitive#head') ? fugitive#head():''
+function! Gitbranch()
+    return gina#component#repo#branch()
 endfunction
 
 function! Myfileformat()
