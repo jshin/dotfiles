@@ -22,9 +22,6 @@ on_source = 'onedark.vim'
 repo = 'cohama/lexima.vim'
 
 [[plugins]]
-repo = 'tpope/vim-fugitive'
-
-[[plugins]]
 repo = 'airblade/vim-gitgutter'
 
 [[plugins]]
