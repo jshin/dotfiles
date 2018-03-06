@@ -3,7 +3,7 @@ scriptencoding utf-8
 
 if has('vim_starting')
     "Required
-    set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+    set runtimepath+=~/.vim/bundles/repos/github.com/Shougo/dein.vim
 
     "In the noremal mode, a cursor is vertical bar
     let &t_SI .= "\e[6 q"
@@ -17,8 +17,8 @@ if has('linux')
     let g:dein#types#git#clone_depth=1
 endif
 
-if dein#load_state('~/.vim/dein/')
-    call dein#begin('~/.vim/dein')
+if dein#load_state('~/.vim/bundles/')
+    call dein#begin('~/.vim/bundles')
     call dein#load_toml('~/dotfiles/dein.toml', {'lazy':0})
     call dein#load_toml('~/dotfiles/dein-lazy.toml', {'lazy':1})
     call dein#end()
