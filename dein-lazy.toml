@@ -1,6 +1,6 @@
 [[plugins]]
 repo = 'Shougo/neocomplete.vim'
-on_i = 1
+on_event = ['InsertEnter']
 
 [[plugins]]
 repo = 'Shougo/neco-syntax'
@@ -9,7 +9,7 @@ depends = 'neocomplete.vim'
 
 [[plugins]]
 repo = 'Shougo/neco-vim'
-on_source = 'neocomplete.vim'
+on_ft = 'vim'
 depends = 'neocomplete.vim'
 
 [[plugins]]
@@ -23,15 +23,20 @@ on_source = 'neocomplete.vim'
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
 depends = 'neosnippet-snippets'
-on_i = 1
+on_event = ['InsertEnter']
 
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
-on_i = 1
+on_event = ['InsertEnter']
 
 [[plugins]]
 repo = 'Shougo/unite.vim'
 on_cmd = 'Unite'
+hook_post_source = '''
+    call unite#custom#profile('default','context',{
+       \ 'direction':'below',
+       \ 'prompt_direction':'top'})
+'''
 
 [[plugins]]
 repo = 'Shougo/neomru.vim'
