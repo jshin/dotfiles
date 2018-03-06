@@ -69,6 +69,7 @@ set ambiwidth=double
 set undodir=~/.vim/undo
 set undofile
 set t_Co=256
+set updatetime=1500
 "setting for vim on tmux
 set t_ut=
 if has('termguicolors')
@@ -128,7 +129,7 @@ augroup complete_tag
     autocmd FileType html,xml inoremap <buffer> </ </<C-x><C-o>
 augroup END
 
-"if the file is edited by  another editor, it will be updated automatically
+"if files are edited by another editor, it will be updated automatically
 augroup vimrc_check_time
     autocmd!
     autocmd InsertEnter * checktime
