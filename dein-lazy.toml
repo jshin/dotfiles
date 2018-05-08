@@ -58,7 +58,6 @@ repo = 'basyura/twibill.vim'
 
 [[plugins]]
 repo = 'basyura/Tweetvim'
-rev = 'dev'
 depends = ['webapi-vim', 'open-browser.vim', 'twibill.vim']
 on_cmd = ['TweetVimUserStream', 'TweetVimSay', 'TweetVimCommandSay', 'TweetVimHomeTimeLine']
 
