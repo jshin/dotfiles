@@ -79,6 +79,11 @@ repo = 'fatih/vim-go'
 on_ft = 'go'
 
 [[plugins]]
+repo = 'zchee/deoplete-go'
+on_ft = 'go'
+hook_post_update = '!make'
+
+[[plugins]]
 repo = 'othree/yajs.vim'
 on_ft = 'javascript'
 
