@@ -89,7 +89,6 @@ set pumheight=10
 set emoji
 set list
 set listchars=tab:^-,space:_
-let g:python_highlight_all=1
 
 if has('mouse')
     set mouse=a
