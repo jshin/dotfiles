@@ -108,7 +108,7 @@ noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 noremap <C-h> <C-w>h
 
-"============= functions =============
+"############# functions #############
 "move to the last edit point
 augroup record_last_position
     autocmd!
@@ -208,9 +208,9 @@ smap <expr><TAB> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : 
 if has('conceal')
     set conceallevel=2 concealcursor=niv
 endif
-"============= end neosnippet =============
+"############# end neosnippet #############
 
-"============= unite setting =============
+"############# unite setting #############
 "start at insert mode
 let g:unite_enable_start_insert=1
 "setting prefix key
@@ -238,15 +238,15 @@ function! s:unite_my_settings()
     imap <buffer> <Tab> <Plug>(unite_select_next_line)
 
 endfunction
-"============= end unite setting =============
+"############# end unite setting #############
 
-"============= setting quickrun =============
+"############# setting quickrun #############
 if !exists("g:quickrun_config")
     let g:quickrun_config = {}
 endif
-"============= end quickrun =============
+"############# end quickrun #############
 
-"============= setting for ale =============
+"############# setting for ale #############
 
 let g:ale_sign_error = '>'
 let g:ale_sign_warning = '!'
@@ -272,9 +272,9 @@ augroup LightlineOnAle
     autocmd!
     autocmd User ALELint call lightline#update()
 augroup END
-"============= end ale =============
+"############# end ale #############
 
-"============= setting lightline =============
+"############# setting lightline #############
 let g:lightline = {
             \   'colorscheme': 'iceberg',
             \   'mode_map' : {
@@ -335,30 +335,30 @@ function! Myfiletype()
     return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
 endfunction
 
-"============= end lightline =============
+"############# end lightline #############
 
-"============= setting is.vim =============
+"############# setting is.vim #############
 set hlsearch
 set incsearch
 map n <Plug>(is-nohl)<Plug>(anzu-n-with-echo)
 map N <Plug>(is-nohl)<Plug>(anzu-N-with-echo)
-"============= end is.vim =============
+"############# end is.vim #############
 
-"============= tweetvim setting =============
+"############# tweetvim setting #############
 autocmd FileType tweetvim call s:tweetvim_my_setting()
 function! s:tweetvim_my_setting()
     nnoremap <buffer>s :<C-u>TweetVimSay<CR>
     nnoremap <silent>t :Unite tweetvim<CR>
     let g:tweetvim_tweet_per_page = 300
 endfunction
-"============= end tweetvim =============
+"############# end tweetvim #############
 
-"============= gundo settings =============
+"############# gundo settings #############
 let g:gundo_prefer_python3 = 1
 
-"============= end gundo =============
+"############# end gundo #############
 
-"============= previm settings =============
+"############# previm settings #############
 let g:previm_enable_realtime = 1
 
-"============= end previm =============
+"############# end previm #############
