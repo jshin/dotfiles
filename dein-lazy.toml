@@ -3,6 +3,12 @@ repo = 'Shougo/deoplete.nvim'
 if = '''has('python3')'''
 depends = ['nvim-yarp', 'vim-hug-neovim-rpc']
 on_event = ['InsertEnter']
+hook_post_source = '''
+    call deoplete#custom#option({
+        \ 'auto_complete_delay':200,
+        \ 'yarp':v:true,
+        \ 'smart_case':v:true,})
+'''
 
 [[plugins]]
 repo = 'roxma/nvim-yarp'
