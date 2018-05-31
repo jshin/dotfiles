@@ -82,8 +82,6 @@ alias java='java -Dfile.encoding=UTF-8'
 alias cl="clear"
 alias mv="mv -i"
 alias cp="cp -i"
-alias py="python"
-alias py3="python3"
 alias vi="vim"
 alias ptex2pdf="ptex2pdf -l"
 alias tweetvim="vim -c TweetVimUserStream"
@@ -112,3 +110,4 @@ export PATH=$PATH:$GOPATH/bin
 export VISUAL="/usr/local/bin/vim"
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 export JAVA_HOME=$(/usr/libexec/java_home)
+export PATH=$HOME/.nodebrew/current/bin:$PATH
