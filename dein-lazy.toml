@@ -8,6 +8,11 @@ hook_post_source = '''
         \ 'auto_complete_delay':200,
         \ 'yarp':v:true,
         \ 'smart_case':v:true,})
+    call deoplete#custom#source('_', 'converters', [
+        \ 'converter_remove_overlap',
+        \ 'converter_truncate_abbr',
+        \ 'converter_truncate_menu',
+        \ ])
 '''
 
 [[plugins]]
@@ -37,7 +42,7 @@ on_source = ['deoplete.nvim', 'neocomplete.vim']
 
 [[plugins]]
 repo = 'ujihisa/neco-look'
-on_source = ['deoplete.nvim', 'neocomplete.vim']
+on_ft = ['tex', 'text']
 
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
@@ -55,6 +60,7 @@ hook_post_source = '''
     call unite#custom#profile('default','context',{
        \ 'direction':'below',
        \ 'prompt_direction':'top'})
+    call unite#custom#source('file_mru', 'ignore_pattern', '\v^gina:')
 '''
 
 [[plugins]]
