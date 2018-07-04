@@ -151,7 +151,9 @@ call lexima#init()
 "############# deoplete setting #############
 if dein#tap('deoplete.nvim')
     let g:deoplete#enable_at_startup = 1
-    inoremap <expr> <CR> pumvisible() ? deoplete#close_popup() : lexima#expand('<LT>CR>', 'i')
+    inoremap <expr><CR> pumvisible() ? deoplete#close_popup() : lexima#expand('<LT>CR>', 'i')
+    inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
+	inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
 
 "############# neocomplete setting #############
 elseif dein#tap('neocomplete.vim')
@@ -278,7 +280,7 @@ endfunction
 
 augroup LightlineOnAle
     autocmd!
-    autocmd User ALELint call lightline#update()
+    autocmd User ALELintPost call lightline#update()
 augroup END
 "############# end ale #############
 
@@ -370,3 +372,16 @@ let g:gundo_prefer_python3 = 1
 let g:previm_enable_realtime = 1
 
 "############# end previm #############
+
+"############# vim-startify settings #############
+let g:startify_custom_header = [
+            \ '                               ',
+            \ '            __                 ',
+            \ '    __  __ /\_\    ___ ___     ',
+            \ '   /\ \/\ \\/\ \ /'' __` __`\  ',
+            \ '   \ \ \_/ |\ \ \/\ \/\ \/\ \  ',
+            \ '    \ \___/  \ \_\ \_\ \_\ \_\ ',
+            \ '     \/__/    \/_/\/_/\/_/\/_/ ',
+            \ ]
+
+"############# end vim-startify #############
