@@ -80,7 +80,7 @@ repo = 'basyura/twibill.vim'
 [[plugins]]
 repo = 'basyura/Tweetvim'
 depends = ['webapi-vim', 'open-browser.vim', 'twibill.vim']
-on_cmd = ['TweetVimUserStream', 'TweetVimSay', 'TweetVimCommandSay', 'TweetVimHomeTimeLine']
+on_cmd = ['TweetVimSay', 'TweetVimCommandSay', 'TweetVimHomeTimeLine']
 
 [[plugins]]
 repo = 'cespare/vim-toml'
@@ -104,7 +104,7 @@ repo = 'sjl/gundo.vim'
 on_cmd = ['GundoToggle']
 
 [[plugins]]
-repo = 'kannokanno/previm'
+repo = 'previm/previm'
 on_ft = 'markdown'
 
 [[plugins]]
