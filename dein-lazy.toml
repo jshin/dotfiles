@@ -117,3 +117,8 @@ let g:deoplete#sources#jedi#python_path = '/usr/local/bin/python3'
 [[plugins]]
 repo = 'tyru/open-browser.vim'
 on_source = 'previm'
+
+[[plugins]]
+repo = 'Shougo/defx.nvim'
+on_cmd = 'Defx'
+depends = ['nvim-yarp', 'vim-hug-neovim-rpc']
