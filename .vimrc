@@ -46,8 +46,9 @@ set laststatus=2
 set showmatch
 set matchtime=1
 source $VIMRUNTIME/macros/matchit.vim
-set helpheight=999
-set wildmode=longest,list
+set helpheight=99
+set wildmenu
+set wildmode=longest:full
 set tabstop=4
 set expandtab
 set shiftwidth=4
@@ -66,6 +67,7 @@ set fileencoding=utf-8
 set fileencodings=utf-8,cp932,euc-jp
 set fileformats=unix,dos,mac
 set ambiwidth=double
+set foldlevelstart=99
 set undodir=~/.vim/undo
 set undofile
 set t_Co=256
