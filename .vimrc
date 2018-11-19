@@ -157,6 +157,11 @@ if dein#tap('deoplete.nvim')
     inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
 	inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
 
+    " Enable omni completion.
+    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+
 "############# neocomplete setting #############
 elseif dein#tap('neocomplete.vim')
 
@@ -168,7 +173,6 @@ elseif dein#tap('neocomplete.vim')
     "Define dictionary
     let g:neocomplete#sources#dictionary#dictionaries = {
                 \'default':'',
-                \'python' : $HOME.'./.vim/dict/python.dict'
                 \}
     "Define keyword
     if !exists('g:neocomplete#keyword_patterns')
@@ -209,6 +213,7 @@ elseif dein#tap('neocomplete.vim')
 endif
 
 "############# neosnippet settings #############
+let g:neosnippet#snippets_directory = '~/.vim/bundles/repos/github.com/fatih/vim-go/gosnippets/snippets'
 " Plugin key-mappings.
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
