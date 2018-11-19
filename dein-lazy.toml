@@ -5,9 +5,9 @@ depends = ['nvim-yarp', 'vim-hug-neovim-rpc']
 on_event = ['InsertEnter']
 hook_post_source = '''
     call deoplete#custom#option({
-        \ 'auto_complete_delay':200,
-        \ 'yarp':v:true,
-        \ 'smart_case':v:true,})
+        \ 'auto_complete_delay':100,
+        \ 'yarp': v:true,
+        \ 'smart_case': v:true,})
     call deoplete#custom#source('_', 'converters', [
         \ 'converter_remove_overlap',
         \ 'converter_truncate_abbr',
@@ -92,6 +92,7 @@ on_ft = 'go'
 
 [[plugins]]
 repo = 'zchee/deoplete-go'
+if = '''has('python3')'''
 on_ft = 'go'
 hook_post_update = '!make'
 
@@ -120,5 +121,6 @@ on_source = 'previm'
 
 [[plugins]]
 repo = 'Shougo/defx.nvim'
+if = '''has('python3')'''
 on_cmd = 'Defx'
 depends = ['nvim-yarp', 'vim-hug-neovim-rpc']
