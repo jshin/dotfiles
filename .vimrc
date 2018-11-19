@@ -393,3 +393,25 @@ let g:startify_custom_header = [
             \ ]
 
 "############# end vim-startify #############
+
+"############# defx.nvim settings #############
+function! s:defx_settings() abort
+    nnoremap <silent><buffer><expr> <CR> defx#do_action('drop')
+    nnoremap <silent><buffer><expr> c defx#do_action('copy')
+    nnoremap <silent><buffer><expr> h defx#do_action('cd', ['..'])
+    nnoremap <silent><buffer><expr> m defx#do_action('move')
+    nnoremap <silent><buffer><expr> m defx#do_action('paste')
+    nnoremap <silent><buffer><expr> r defx#do_action('rename')
+    nnoremap <silent><buffer><expr> q defx#do_action('quit')
+    nnoremap <silent><buffer><expr> . defx#do_action('toggle_ignored_files')
+    nnoremap <silent><buffer><expr> N defx#do_action('new_file')
+    nnoremap <silent><buffer><expr> D defx#do_action('new_directory')
+endfunction
+
+if dein#tap('defx.nvim')
+    nnoremap <silent><leader>d :Defx -toggle -split=vertical -winwidth=30 -direction=topleft
+                \ `expand('%:p:h')` -search=`expand('%:p')` <CR>
+
+    autocmd FileType defx call s:defx_settings()
+endif
+"############# end defx.nvim #############
