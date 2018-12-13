@@ -410,7 +410,7 @@ endfunction
 
 if dein#tap('defx.nvim')
     nnoremap <silent><leader>d :Defx -toggle -split=vertical -winwidth=30 -direction=topleft
-                \ `expand('%:p:h')` -search=`expand('%:p')` <CR>
+                \ -show-ignored-files `expand('%:p:h')` -search=`expand('%:p')` <CR>
 
     autocmd FileType defx call s:defx_settings()
 endif
