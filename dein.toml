@@ -3,7 +3,7 @@ repo = 'Shougo/dein.vim'
 
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
-hook_post_update = '!make'
+build = 'make'
 
 [[plugins]]
 repo = 'vim-jp/vimdoc-ja'
@@ -16,7 +16,6 @@ repo = 'w0ng/vim-hybrid'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
-on_source = 'onedark.vim'
 
 [[plugins]]
 repo = 'cohama/lexima.vim'
@@ -26,9 +25,6 @@ repo = 'airblade/vim-gitgutter'
 
 [[plugins]]
 repo = 'osyo-manga/vim-anzu'
-
-[[plugins]]
-repo = 'cohama/vim-hier'
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
@@ -50,3 +46,9 @@ repo = 'lambdalisue/gina.vim'
 
 [[plugins]]
 repo = 'mhinz/vim-startify'
+
+[[plugins]]
+repo = 'tyru/caw.vim'
+
+[[plugins]]
+repo = 'markonm/traces.vim'
