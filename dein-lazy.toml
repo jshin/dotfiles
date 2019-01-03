@@ -7,7 +7,11 @@ hook_post_source = '''
     call deoplete#custom#option({
         \ 'auto_complete_delay':100,
         \ 'yarp': v:true,
-        \ 'smart_case': v:true,})
+        \ 'smart_case': v:true,
+        \ 'skip_multibyte': v:true,})
+    call deoplete#custom#option('keyword_patterns', {
+        \ 'tex': '\\?[a-zA-Z_]+',
+        \ 'markdown': '\\?[a-zA-Z_]+',})
     call deoplete#custom#source('_', 'converters', [
         \ 'converter_remove_overlap',
         \ 'converter_truncate_abbr',
@@ -42,7 +46,7 @@ on_source = ['deoplete.nvim', 'neocomplete.vim']
 
 [[plugins]]
 repo = 'ujihisa/neco-look'
-on_ft = ['tex', 'text']
+on_ft = ['tex', 'text', 'markdown']
 
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
