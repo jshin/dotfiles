@@ -98,7 +98,7 @@ on_ft = 'go'
 repo = 'zchee/deoplete-go'
 if = '''has('python3')'''
 on_ft = 'go'
-hook_post_update = '!make'
+build = 'make'
 
 [[plugins]]
 repo = 'othree/yajs.vim'
