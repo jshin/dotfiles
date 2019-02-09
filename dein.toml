@@ -9,9 +9,6 @@ build = 'make'
 repo = 'vim-jp/vimdoc-ja'
 
 [[plugins]]
-repo = 'joshdick/onedark.vim'
-
-[[plugins]]
 repo = 'w0ng/vim-hybrid'
 
 [[plugins]]
