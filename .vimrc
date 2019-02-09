@@ -5,9 +5,9 @@ if has('vim_starting')
     "Required
     set runtimepath+=~/.vim/bundles/repos/github.com/Shougo/dein.vim
 
-    "In the noremal mode, a cursor is vertical bar
+    "In the insert mode, a cursor is vertical bar
     let &t_SI .= "\e[6 q"
-    "In the insert mode, a cursor is block
+    "In the normal mode, a cursor is block
     let &t_EI .= "\e[2 q"
     "In the replace mode, a cursor is under bar
     let &t_SR .= "\e[4 q"
@@ -93,7 +93,7 @@ set list
 set listchars=tab:^-,space:_
 
 if has('mouse')
-    set mouse=a
+    set mouse=n
 endif
 
 nnoremap j gj
@@ -102,6 +102,8 @@ vnoremap j gj
 vnoremap k gk
 nnoremap gj j
 nnoremap gk k
+vnoremap gj j
+vnoremap gk k
 nnoremap <silent> <S-t> :tabnew<CR>
 
 "Switching windows
@@ -152,15 +154,10 @@ call lexima#init()
 
 "############# deoplete setting #############
 if dein#tap('deoplete.nvim')
-    let g:deoplete#enable_at_startup = 1
+    " let g:deoplete#enable_at_startup = 1
     inoremap <expr><CR> pumvisible() ? deoplete#close_popup() : lexima#expand('<LT>CR>', 'i')
     inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
 	inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
-
-    " Enable omni completion.
-    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 
 "############# neocomplete setting #############
 elseif dein#tap('neocomplete.vim')
