@@ -3,7 +3,8 @@ repo = 'Shougo/deoplete.nvim'
 if = '''has('python3')'''
 depends = ['nvim-yarp', 'vim-hug-neovim-rpc']
 on_event = ['InsertEnter']
-hook_post_source = '''
+hook_source = '''
+    call deoplete#initialize()
     call deoplete#custom#option({
         \ 'auto_complete_delay':100,
         \ 'yarp': v:true,
@@ -17,6 +18,7 @@ hook_post_source = '''
         \ 'converter_truncate_abbr',
         \ 'converter_truncate_menu',
         \ ])
+    call deoplete#enable()
 '''
 
 [[plugins]]
@@ -84,7 +86,7 @@ repo = 'basyura/twibill.vim'
 [[plugins]]
 repo = 'basyura/Tweetvim'
 depends = ['webapi-vim', 'open-browser.vim', 'twibill.vim']
-on_cmd = ['TweetVimSay', 'TweetVimCommandSay', 'TweetVimHomeTimeLine']
+on_cmd = ['TweetVimSay', 'TweetVimCommandSay', 'TweetVimHomeTimeline']
 
 [[plugins]]
 repo = 'cespare/vim-toml'
@@ -95,7 +97,7 @@ repo = 'fatih/vim-go'
 on_ft = 'go'
 
 [[plugins]]
-repo = 'zchee/deoplete-go'
+repo = 'deoplete-plugins/deoplete-go'
 if = '''has('python3')'''
 on_ft = 'go'
 build = 'make'
@@ -113,7 +115,7 @@ repo = 'previm/previm'
 on_ft = 'markdown'
 
 [[plugins]]
-repo = 'zchee/deoplete-jedi'
+repo = 'deoplete-plugins/deoplete-jedi'
 on_ft = 'python'
 hook_add = '''
 let g:deoplete#sources#jedi#python_path = '/usr/local/bin/python3'
