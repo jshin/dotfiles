@@ -230,12 +230,13 @@ let g:unite_enable_start_insert=1
 "setting prefix key
 nmap <Space> [unite]
 
-nnoremap <silent> [unite]b :<C-u>Unite<Space>buffer file file_mru<CR>
-nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap <silent> [unite]o :<C-u>Unite outline<CR>
-nnoremap <silent> [unite]d :<C-u>Unite directory_mru<CR>
-nnoremap <silent> [unite]t :<C-u>Unite tab<CR>
-nnoremap <silent> [unite]n :<C-u>Unite file/new<CR>
+nnoremap <silent> <Space>b :<C-u>Unite<Space>buffer file file_mru<CR>
+nnoremap <silent> <Space>f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> <Space>o :<C-u>Unite outline<CR>
+nnoremap <silent> <Space>d :<C-u>Unite directory_mru<CR>
+nnoremap <silent> <Space>t :<C-u>Unite tab<CR>
+nnoremap <silent> <Space>n :<C-u>Unite file/new<CR>
+nnoremap <silent> <Space>j :<C-u>Unite jump<CR>
 
 "key mapping for unite.vim
 autocmd FileType unite call s:unite_my_settings()
@@ -397,7 +398,7 @@ function! s:defx_settings() abort
     nnoremap <silent><buffer><expr> c defx#do_action('copy')
     nnoremap <silent><buffer><expr> h defx#do_action('cd', ['..'])
     nnoremap <silent><buffer><expr> m defx#do_action('move')
-    nnoremap <silent><buffer><expr> m defx#do_action('paste')
+    nnoremap <silent><buffer><expr> p defx#do_action('paste')
     nnoremap <silent><buffer><expr> r defx#do_action('rename')
     nnoremap <silent><buffer><expr> q defx#do_action('quit')
     nnoremap <silent><buffer><expr> . defx#do_action('toggle_ignored_files')
