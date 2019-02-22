@@ -1,7 +1,20 @@
-
 export LANG=ja_JP.UTF-8
 
-fpath=(/usr/local/share/zsh-completions $fpath)
+if [[ ! -d ~/.zplug ]]; then
+    git clone https://github.com/zplug/zplug ~/.zplug
+    source ~/.zplug/init.zsh
+fi
+
+source ~/.zplug/init.zsh
+
+zplug "zplug/zplug", hook-build:"zplug --self-manage"
+zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "b4b4r07/enhancd", use:init.sh
+
+zplug load
+
 autoload -Uz compinit
 compinit -u
 
@@ -10,8 +23,8 @@ colors
 
 #setting history
 HISTFILE=~/.zsh_history
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=2000
+SAVEHIST=2000
 
 bindkey -e
 
@@ -84,7 +97,7 @@ alias mv="mv -i"
 alias cp="cp -i"
 alias vi="vim"
 alias ptex2pdf="ptex2pdf -l"
-alias tweetvim="vim -c TweetVimUserStream"
+alias tweetvim="vim -c TweetVimHomeTimeline"
 alias sudo='sudo '
 
 #グローバルエイリアス
@@ -104,10 +117,13 @@ export PATH="/usr/local/Cellar/openssl/1.0.2a-1/bin:/usr/local/bin:/usr/bin:/bin
 
 export GREP_OPTIONS='--color=auto'
 export HOMEBREW_NO_ANALYTICS=1
+# export HOMEBREW_NO_INSTALL_CLEANUP=1
 export PATH="/usr/local/sbin:$PATH"
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export VISUAL="/usr/local/bin/vim"
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 export JAVA_HOME=$(/usr/libexec/java_home)
 export PATH=$HOME/.nodebrew/current/bin:$PATH
+export ENHANCD_DISABLE_HOME=1
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
