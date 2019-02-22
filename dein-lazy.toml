@@ -102,6 +102,12 @@ if = '''has('python3')'''
 on_ft = 'go'
 build = 'make'
 
+#[[plugins]]
+#repo = 'tbodt/deoplete-tabnine'
+#if = '''has('python3')'''
+#on_source = 'deoplete.nvim'
+#build = './install.sh'
+
 [[plugins]]
 repo = 'othree/yajs.vim'
 on_ft = 'javascript'
@@ -120,6 +126,10 @@ on_ft = 'python'
 hook_add = '''
 let g:deoplete#sources#jedi#python_path = '/usr/local/bin/python3'
 '''
+
+# [[plugins]]
+# repo = 'lighttiger2505/deoplete-vim-lsp'
+# on_source = 'vim-lsp'
 
 [[plugins]]
 repo = 'tyru/open-browser.vim'
