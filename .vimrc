@@ -411,3 +411,18 @@ if dein#tap('defx.nvim')
     autocmd FileType defx call s:defx_settings()
 endif
 "############# end defx.nvim #############
+
+" let g:lsp_diagnostics_enabled = 0
+" let g:lsp_async_completion = 1
+" if executable('gopls')
+"     augroup LspGo
+"         autocmd!
+"         autocmd User lsp_setup call lsp#register_server({
+"                   \ 'name': 'go-lang',
+"                   \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
+"                   \ 'whitelist': ['go'],
+"                   \ })
+"     augroup END
+" endif
+" let g:lsp_log_verbose = 1
+" let g:lsp_log_file = expand('~/vim-lsp.log')
