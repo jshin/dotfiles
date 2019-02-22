@@ -47,5 +47,12 @@ repo = 'mhinz/vim-startify'
 [[plugins]]
 repo = 'tyru/caw.vim'
 
-[[plugins]]
-repo = 'markonm/traces.vim'
+# [[plugins]]
+# repo = 'markonm/traces.vim'
+
+# [[plugins]]
+# repo = 'prabirshrestha/async.vim'
+#
+# [[plugins]]
+# repo = 'prabirshrestha/vim-lsp'
+# depends = 'async.vim'
