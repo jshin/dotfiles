@@ -227,8 +227,6 @@ endif
 "############# unite setting #############
 "start at insert mode
 let g:unite_enable_start_insert=1
-"setting prefix key
-nmap <Space> [unite]
 
 nnoremap <silent> <Space>b :<C-u>Unite<Space>buffer file file_mru<CR>
 nnoremap <silent> <Space>f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
