@@ -13,10 +13,6 @@ if has('vim_starting')
     let &t_SR .= "\e[4 q"
 endif
 
-if has('linux')
-    let g:dein#types#git#clone_depth=1
-endif
-
 if dein#load_state('~/.vim/bundles/')
     call dein#begin('~/.vim/bundles')
     call dein#load_toml('~/dotfiles/dein.toml', {'lazy':0})
