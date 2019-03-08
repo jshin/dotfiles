@@ -39,6 +39,7 @@ let g:loaded_vimballPlugin = 1
 set number
 set ruler
 set laststatus=2
+set showtabline=2
 set showmatch
 set matchtime=1
 source $VIMRUNTIME/macros/matchit.vim
