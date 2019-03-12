@@ -1,7 +1,7 @@
 ### vim ###
 *.swp
-vim/bundles/
-vim/undo/
+.vim/bundles/
+.vim/undo/
 
 # Swap
 [._]*.s[a-v][a-z]
