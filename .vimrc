@@ -15,8 +15,8 @@ endif
 
 if dein#load_state('~/.vim/bundles/')
     call dein#begin('~/.vim/bundles')
-    call dein#load_toml('~/dotfiles/dein.toml', {'lazy':0})
-    call dein#load_toml('~/dotfiles/dein-lazy.toml', {'lazy':1})
+    call dein#load_toml('~/.vim/dein.toml', {'lazy':0})
+    call dein#load_toml('~/.vim/dein-lazy.toml', {'lazy':1})
     call dein#end()
     call dein#save_state()
 endif
