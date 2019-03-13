@@ -13,14 +13,10 @@ if has('vim_starting')
     let &t_SR .= "\e[4 q"
 endif
 
-if has('linux')
-    let g:dein#types#git#clone_depth=1
-endif
-
 if dein#load_state('~/.vim/bundles/')
     call dein#begin('~/.vim/bundles')
-    call dein#load_toml('~/dotfiles/dein.toml', {'lazy':0})
-    call dein#load_toml('~/dotfiles/dein-lazy.toml', {'lazy':1})
+    call dein#load_toml('~/.vim/dein.toml', {'lazy':0})
+    call dein#load_toml('~/.vim/dein-lazy.toml', {'lazy':1})
     call dein#end()
     call dein#save_state()
 endif
@@ -43,6 +39,7 @@ let g:loaded_vimballPlugin = 1
 set number
 set ruler
 set laststatus=2
+set showtabline=2
 set showmatch
 set matchtime=1
 source $VIMRUNTIME/macros/matchit.vim
