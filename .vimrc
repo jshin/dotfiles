@@ -1,6 +1,14 @@
 set encoding=utf-8
 scriptencoding utf-8
 
+let g:loaded_getscript = 1
+let g:loaded_getscriptPlugin = 1
+let g:loaded_logiPat = 1
+let g:loaded_spellfile_plugin = 1
+let g:loaded_rrhelper = 1
+let g:loaded_vimball = 1
+let g:loaded_vimballPlugin = 1
+
 if has('vim_starting')
     "Required
     set runtimepath+=~/.vim/bundles/repos/github.com/Shougo/dein.vim
@@ -27,14 +35,6 @@ endif
 "Reqired
 filetype plugin indent on
 syntax enable
-
-let g:loaded_getscript = 1
-let g:loaded_getscriptPlugin = 1
-let g:loaded_logiPat = 1
-let g:loaded_spellfile_plugin = 1
-let g:loaded_rrhelper = 1
-let g:loaded_vimball = 1
-let g:loaded_vimballPlugin = 1
 
 set number
 set ruler
