@@ -418,17 +418,28 @@ if dein#tap('defx.nvim')
 endif
 "############# end defx.nvim #############
 
-" let g:lsp_diagnostics_enabled = 0
-" let g:lsp_async_completion = 1
-" if executable('gopls')
-"     augroup LspGo
-"         autocmd!
-"         autocmd User lsp_setup call lsp#register_server({
-"                   \ 'name': 'go-lang',
-"                   \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
-"                   \ 'whitelist': ['go'],
-"                   \ })
-"     augroup END
-" endif
-" let g:lsp_log_verbose = 1
-" let g:lsp_log_file = expand('~/vim-lsp.log')
+let g:lsp_diagnostics_enabled = 0
+let g:lsp_async_completion = 1
+if executable('gopls')
+    augroup LspGo
+        autocmd!
+        autocmd User lsp_setup call lsp#register_server({
+                 \ 'name': 'go-lang',
+                 \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
+                 \ 'whitelist': ['go'],
+                 \ })
+        autocmd FileType go setlocal omnifunc=lsp#complete
+    augroup END
+
+endif
+
+if executable('pyls')
+    augroup LspPy
+        autocmd!
+        autocmd User lsp_setup call lsp#register_server({
+                   \ 'name': 'python',
+                   \ 'cmd': {server_info->['pyls']},
+                   \ 'whitelist': ['python'],
+                   \ })
+    augroup END
+endif
