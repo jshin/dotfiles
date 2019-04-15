@@ -22,4 +22,5 @@ if [ ! -d "${BASE_DIR}/.vim/bundles" ]; then
     cd -
 fi
 
+echo ""
 echo "Finish setup of dotfiles"
