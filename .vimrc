@@ -398,7 +398,11 @@ let g:startify_custom_header = [
 
 "############# defx.nvim settings #############
 function! s:defx_settings() abort
-    nnoremap <silent><buffer><expr> <CR> defx#do_action('drop')
+    setlocal nonumber
+    setlocal winfixwidth
+    nnoremap <silent><buffer><expr> <CR> defx#is_directory() ? defx#do_action('open_tree') : defx#do_action('drop')
+    nnoremap <silent><buffer><expr> o defx#do_action('open_or_close_tree')
+    nnoremap <silent><buffer><expr> O defx#do_action('open_tree_recursive')
     nnoremap <silent><buffer><expr> c defx#do_action('copy')
     nnoremap <silent><buffer><expr> h defx#do_action('cd', ['..'])
     nnoremap <silent><buffer><expr> m defx#do_action('move')
