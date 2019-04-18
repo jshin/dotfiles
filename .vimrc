@@ -88,6 +88,7 @@ set pumheight=10
 set emoji
 set list
 set listchars=tab:^-,space:_
+set signcolumn=yes
 
 if has('mouse')
     set mouse=n
@@ -422,7 +423,11 @@ if dein#tap('defx.nvim')
 endif
 "############# end defx.nvim #############
 
-let g:lsp_diagnostics_enabled = 0
+"############# vim-lsp settings #############
+let g:lsp_diagnostics_enabled = 1
+let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_signs_error={'text': '✘'}
+let g:lsp_signs_warning={'text': '!'}
 let g:lsp_async_completion = 1
 if executable('gopls')
     augroup LspGo
@@ -432,7 +437,7 @@ if executable('gopls')
                  \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
                  \ 'whitelist': ['go'],
                  \ })
-        autocmd FileType go setlocal omnifunc=lsp#complete
+        autocmd FileType go call s:lsp_keybinds()
     augroup END
 
 endif
@@ -444,6 +449,17 @@ if executable('pyls')
                    \ 'name': 'python',
                    \ 'cmd': {server_info->['pyls']},
                    \ 'whitelist': ['python'],
+                   \ 'workspace_config': {'pyls': {'plugins': {'pyflakes': {'enabled': v:true}}}}
                    \ })
+        autocmd FileType python call s:lsp_keybinds()
     augroup END
 endif
+
+function! s:lsp_keybinds() abort
+    nmap <buffer> gd <Plug>(lsp-definition)
+    nmap <buffer> gD <Plug>(lsp-references)
+    nmap <buffer> gn <Plug>(lsp-next-error)
+    nmap <buffer> gp <Plug>(lsp-previous-error)
+endfunction
+
+"############# end vim-lsp #############
