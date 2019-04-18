@@ -32,8 +32,8 @@ repo = 'osyo-manga/shabadou.vim'
 [[plugins]]
 repo = 'cocopon/iceberg.vim'
 
-[[plugins]]
-repo = 'w0rp/ale'
+# [[plugins]]
+# repo = 'w0rp/ale'
 
 [[plugins]]
 repo = 'haya14busa/is.vim'
@@ -50,9 +50,9 @@ repo = 'tyru/caw.vim'
 # [[plugins]]
 # repo = 'markonm/traces.vim'
 
-# [[plugins]]
-# repo = 'prabirshrestha/async.vim'
-#
-# [[plugins]]
-# repo = 'prabirshrestha/vim-lsp'
-# depends = 'async.vim'
+[[plugins]]
+repo = 'prabirshrestha/async.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+depends = 'async.vim'
