@@ -6,7 +6,6 @@ on_event = ['InsertEnter']
 hook_source = '''
     call deoplete#initialize()
     call deoplete#custom#option({
-        \ 'auto_complete_delay':100,
         \ 'yarp': v:true,
         \ 'smart_case': v:true,
         \ 'skip_multibyte': v:true,})
@@ -23,11 +22,11 @@ hook_source = '''
 
 [[plugins]]
 repo = 'roxma/nvim-yarp'
-if = '''has('python3')'''
+if = '''has('python3') && !has('nvim')'''
 
 [[plugins]]
 repo = 'roxma/vim-hug-neovim-rpc'
-if = '''has('python3')'''
+if = '''has('python3') && !has('nvim')'''
 
 [[plugins]]
 repo = 'Shougo/neocomplete.vim'
@@ -42,9 +41,9 @@ on_source = ['deoplete.nvim','neocomplete.vim']
 repo = 'Shougo/neco-vim'
 on_ft = 'vim'
 
-[[plugins]]
-repo = 'Shougo/neoinclude.vim'
-on_source = ['deoplete.nvim', 'neocomplete.vim']
+# [[plugins]]
+# repo = 'Shougo/neoinclude.vim'
+# on_source = ['deoplete.nvim', 'neocomplete.vim']
 
 [[plugins]]
 repo = 'ujihisa/neco-look'
@@ -96,17 +95,11 @@ on_ft = 'toml'
 repo = 'fatih/vim-go'
 on_ft = 'go'
 
-[[plugins]]
-repo = 'deoplete-plugins/deoplete-go'
-if = '''has('python3')'''
-on_ft = 'go'
-build = 'make'
-
-#[[plugins]]
-#repo = 'tbodt/deoplete-tabnine'
-#if = '''has('python3')'''
-#on_source = 'deoplete.nvim'
-#build = './install.sh'
+# [[plugins]]
+# repo = 'deoplete-plugins/deoplete-go'
+# if = '''has('python3')'''
+# on_ft = 'go'
+# build = 'make'
 
 [[plugins]]
 repo = 'othree/yajs.vim'
@@ -121,17 +114,6 @@ repo = 'previm/previm'
 on_ft = 'markdown'
 
 [[plugins]]
-repo = 'deoplete-plugins/deoplete-jedi'
-on_ft = 'python'
-hook_add = '''
-let g:deoplete#sources#jedi#python_path = '/usr/local/bin/python3'
-'''
-
-# [[plugins]]
-# repo = 'lighttiger2505/deoplete-vim-lsp'
-# on_source = 'vim-lsp'
-
-[[plugins]]
 repo = 'tyru/open-browser.vim'
 on_source = 'previm'
 
@@ -140,3 +122,14 @@ repo = 'Shougo/defx.nvim'
 if = '''has('python3')'''
 on_cmd = 'Defx'
 depends = ['nvim-yarp', 'vim-hug-neovim-rpc']
+hook_source = '''
+call defx#custom#column('icon', {
+    \ 'directory_icon': '▸',
+    \ 'opened_icon': '▾',
+    \ 'root_icon': ' ',
+    \ })
+'''
+
+[[plugins]]
+repo = 'lighttiger2505/deoplete-vim-lsp'
+on_ft = ['go', 'python']
