@@ -22,11 +22,11 @@ hook_source = '''
 
 [[plugins]]
 repo = 'roxma/nvim-yarp'
-if = '''has('python3') && !has('nvim')'''
+if = '''has('python3')'''
 
 [[plugins]]
 repo = 'roxma/vim-hug-neovim-rpc'
-if = '''has('python3') && !has('nvim')'''
+if = '''has('python3')'''
 
 [[plugins]]
 repo = 'Shougo/neocomplete.vim'
