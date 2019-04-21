@@ -28,10 +28,10 @@ if = '''has('python3')'''
 repo = 'roxma/vim-hug-neovim-rpc'
 if = '''has('python3')'''
 
-[[plugins]]
-repo = 'Shougo/neocomplete.vim'
-if = '''!has('python3') && has('lua')'''
-on_event = ['InsertEnter']
+# [[plugins]]
+# repo = 'Shougo/neocomplete.vim'
+# if = '''!has('python3') && has('lua')'''
+# on_event = ['InsertEnter']
 
 [[plugins]]
 repo = 'Shougo/neco-syntax'
