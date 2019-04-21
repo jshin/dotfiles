@@ -27,9 +27,6 @@ repo = 'osyo-manga/vim-anzu'
 repo = 'thinca/vim-quickrun'
 
 [[plugins]]
-repo = 'osyo-manga/shabadou.vim'
-
-[[plugins]]
 repo = 'cocopon/iceberg.vim'
 
 # [[plugins]]
