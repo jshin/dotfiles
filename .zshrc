@@ -85,8 +85,9 @@ setopt extended_glob
 
 ######################################
 #エイリアス
-alias la='ls -la'
+alias la='ls -a'
 alias ll='ls -l'
+alias lla='ls -la'
 
 alias mkdir='mkdir -p'
 
@@ -120,3 +121,7 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 export ENHANCD_DISABLE_HOME=1
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
+    zcompile ~/.zshrc
+fi
