@@ -110,16 +110,12 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 alias ls='ls -G'
 
 #環境変数
-export PATH="/usr/local/Cellar/openssl/1.0.2a-1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/Library/Tex/texbin:$PATH"
-
 export GREP_OPTIONS='--color=auto'
 export HOMEBREW_NO_ANALYTICS=1
-# export HOMEBREW_NO_INSTALL_CLEANUP=1
 export PATH="/usr/local/sbin:$PATH"
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export VISUAL="/usr/local/bin/vim"
-export JAVA_HOME=$(/usr/libexec/java_home)
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 export ENHANCD_DISABLE_HOME=1
 
