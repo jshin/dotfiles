@@ -13,12 +13,14 @@ if has('vim_starting')
     "Required
     set runtimepath+=~/.vim/bundles/repos/github.com/Shougo/dein.vim
 
-    "In the insert mode, a cursor is vertical bar
-    let &t_SI .= "\e[6 q"
-    "In the normal mode, a cursor is block
-    let &t_EI .= "\e[2 q"
-    "In the replace mode, a cursor is under bar
-    let &t_SR .= "\e[4 q"
+    if !has('nvim')
+        "In the insert mode, a cursor is vertical bar
+        let &t_SI .= "\e[6 q"
+        "In the normal mode, a cursor is block
+        let &t_EI .= "\e[2 q"
+        "In the replace mode, a cursor is under bar
+        let &t_SR .= "\e[4 q"
+    endif
 endif
 
 if dein#load_state('~/.vim/bundles/')
@@ -55,11 +57,15 @@ set smarttab
 set breakindent
 set autoread
 set backspace=indent,eol,start
-if has('mac')
+
+if has('mac') && !has('nvim')
     set clipboard=unnamed,autoselect
-else
+elseif has('linux')
     set clipboard=unnamedplus,autoselect
+else
+    set clipboard+=unnamedplus
 endif
+
 set fileencoding=utf-8
 set fileencodings=utf-8,cp932,euc-jp
 set fileformats=unix,dos,mac
@@ -92,6 +98,10 @@ set signcolumn=yes
 
 if has('mouse')
     set mouse=n
+endif
+
+if has('nvim')
+    set inccommand=split
 endif
 
 nnoremap j gj
@@ -401,6 +411,7 @@ let g:startify_custom_header = [
 function! s:defx_settings() abort
     setlocal nonumber
     setlocal winfixwidth
+    setlocal cursorline
     nnoremap <silent><buffer><expr> <CR> defx#is_directory() ? defx#do_action('open_tree') : defx#do_action('drop')
     nnoremap <silent><buffer><expr> o defx#do_action('open_or_close_tree')
     nnoremap <silent><buffer><expr> O defx#do_action('open_tree_recursive')
@@ -426,8 +437,10 @@ endif
 "############# vim-lsp settings #############
 let g:lsp_diagnostics_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
-let g:lsp_signs_error={'text': '✘'}
-let g:lsp_signs_warning={'text': '!'}
+if !has('nvim')
+    let g:lsp_signs_error={'text': '✘'}
+    let g:lsp_signs_warning={'text': '!'}
+endif
 let g:lsp_async_completion = 1
 if executable('gopls')
     augroup LspGo
