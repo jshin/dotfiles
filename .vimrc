@@ -102,6 +102,10 @@ endif
 
 if has('nvim')
     set inccommand=split
+    set noshowcmd
+    tnoremap <silent> <ESC> <C-\><C-n>
+    autocmd TermOpen * setlocal nonumber
+
 endif
 
 nnoremap j gj
