@@ -170,65 +170,19 @@ endfunction
 call lexima#init()
 
 "############# deoplete setting #############
-if dein#tap('deoplete.nvim')
-    " let g:deoplete#enable_at_startup = 1
-    inoremap <expr><CR> pumvisible() ? deoplete#close_popup() : lexima#expand('<LT>CR>', 'i')
-    inoremap <silent><expr> <TAB>
-                \ pumvisible() ? "\<C-n>" :
-                \ <SID>check_back_space() ? "\<TAB>" :
-                \ deoplete#mappings#manual_complete()
-    inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
-	inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
+" let g:deoplete#enable_at_startup = 1
+inoremap <expr><CR> pumvisible() ? deoplete#close_popup() : lexima#expand('<LT>CR>', 'i')
+inoremap <silent><expr> <TAB>
+            \ pumvisible() ? "\<C-n>" :
+            \ <SID>check_back_space() ? "\<TAB>" :
+            \ deoplete#mappings#manual_complete()
+inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
 
-"############# neocomplete setting #############
-elseif dein#tap('neocomplete.vim')
+inoremap <expr><C-g> deoplete#undo_completion()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-    "Use neocomplete
-    let g:neocomplete#enable_at_startup = 1
-    "Use smartcase
-    let g:neocomplete#sources#syntax#min_keyword_length = 2
-
-    "Define dictionary
-    let g:neocomplete#sources#dictionary#dictionaries = {
-                \'default':'',
-                \}
-    "Define keyword
-    if !exists('g:neocomplete#keyword_patterns')
-        let g:neocomplete#keyword_patterns = {}
-    endif
-    let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-    "Plugin key-mappings
-    inoremap <expr><C-g> neocomplete#undo_completion()
-    inoremap <expr><C-l> neocomplete#complete_common_string()
-
-    "<CR>: close popup and save indent
-    "This setting is for neocomplete closing and lexima.vim parentheses completion
-    inoremap <expr> <CR> pumvisible() ? neocomplete#close_popup() : lexima#expand('<LT>CR>', 'i')
-
-    "<TAB>: completion
-    "inoremap <expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-    " <C-h>, <BS>: close popup and delete backword char.
-    inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-    inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-
-    " Enable omni completion.
-    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType python setlocal omnifunc=python3complete#Complete
-
-    " Enable heavy omni completion.
-    "if !exists('g:neocomplete#sources#omni#input_patterns')
-    "    let g:neocomplete#sources#omni#input_patterns = {}
-    "endif
-
-    if !exists('g:neocomplete#text_mode_filetypes')
-        let g:neocomplete#text_mode_filetypes = {}
-    endif
-    let g:neocomplete#text_mode_filetypes = {'tex' : 1}
-    "############# neocomplete setting end #############
-endif
+"############# end deoplete #############
 
 "############# neosnippet settings #############
 let g:neosnippet#snippets_directory = '~/.vim/bundles/repos/github.com/fatih/vim-go/gosnippets/snippets'
