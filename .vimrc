@@ -426,6 +426,16 @@ if executable('pyls')
     augroup END
 endif
 
+augroup LspPHP
+    autocmd!
+    autocmd User lsp_setup call lsp#register_server({
+              \ 'name': 'php',
+              \ 'cmd': {server_info->['php', expand('~/.ghq/github.com/felixfbecker/php-language-server/bin/php-language-server.php')]},
+              \ 'whitelist': ['php'],
+              \ })
+    autocmd FileType php call s:lsp_keybinds()
+augroup END
+
 function! s:lsp_keybinds() abort
     nmap <buffer> gd <Plug>(lsp-definition)
     nmap <buffer> gD <Plug>(lsp-references)
