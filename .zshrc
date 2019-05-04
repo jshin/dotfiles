@@ -1,4 +1,11 @@
 export LANG=ja_JP.UTF-8
+export GREP_OPTIONS='--color=auto'
+export VISUAL="/usr/local/bin/vim"
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+export HOMEBREW_NO_ANALYTICS=1
+export ENHANCD_DISABLE_HOME=1
+export FZF_DEFAULT_OPTS='--height 40% --reverse'
 
 if [[ ! -d ~/.zplug ]]; then
     git clone https://github.com/zplug/zplug ~/.zplug
@@ -109,16 +116,6 @@ export CLICOLORS=true
 export TERM=xterm-256color
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 alias ls='ls -G'
-
-#環境変数
-export GREP_OPTIONS='--color=auto'
-export HOMEBREW_NO_ANALYTICS=1
-export PATH="/usr/local/sbin:$PATH"
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
-export VISUAL="/usr/local/bin/vim"
-export PATH=$HOME/.nodebrew/current/bin:$PATH
-export ENHANCD_DISABLE_HOME=1
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
