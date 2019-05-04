@@ -20,3 +20,6 @@ Session.vim
 tags
 # Persistent undo
 [._]*.un~
+
+# karabiner
+.config/karabiner/automatic_backups/
