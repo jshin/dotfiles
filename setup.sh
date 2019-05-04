@@ -12,6 +12,9 @@ for file in .??*; do
     fi
 done
 
+# for neovim
+ln -sfv $BASE_DIR/.vim/after $BASE_DIR/.config/nvim
+
 # dein.vim install
 if [ ! -d "${BASE_DIR}/.vim/bundles" ]; then
     echo "Start installing dein.vim..."
