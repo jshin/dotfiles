@@ -2,7 +2,7 @@
 *.swp
 .vim/bundles/
 .vim/undo/
-.config/nvim/after
+.config/nvim/ftplugin
 
 # Swap
 [._]*.s[a-v][a-z]
