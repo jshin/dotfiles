@@ -91,7 +91,7 @@ setopt hist_reduce_blanks
 setopt extended_glob
 
 ######################################
-#エイリアス
+#aliases
 alias la='ls -a'
 alias ll='ls -l'
 alias lla='ls -la'
@@ -103,7 +103,7 @@ alias java='java -Dfile.encoding=UTF-8'
 alias cl="clear"
 alias mv="mv -i"
 alias cp="cp -i"
-alias vi="vim"
+alias lg="lazygit"
 alias ptex2pdf="ptex2pdf -l"
 alias tweetvim="vim -c TweetVimHomeTimeline"
 alias sudo='sudo '
