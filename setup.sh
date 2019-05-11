@@ -13,7 +13,7 @@ for file in .??*; do
 done
 
 # for neovim
-ln -sfv $BASE_DIR/.vim/after $BASE_DIR/.config/nvim
+ln -sfv $BASE_DIR/.vim/after/ftplugin $BASE_DIR/.config/nvim
 
 # dein.vim install
 if [ ! -d "${BASE_DIR}/.vim/bundles" ]; then
