@@ -106,6 +106,10 @@ repo = 'othree/yajs.vim'
 on_ft = 'javascript'
 
 [[plugins]]
+repo = 'plasticboy/vim-markdown'
+on_ft = 'markdown'
+
+[[plugins]]
 repo = 'sjl/gundo.vim'
 on_cmd = ['GundoToggle']
 
