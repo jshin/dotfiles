@@ -1,6 +1,6 @@
 export LANG=ja_JP.UTF-8
 export GREP_OPTIONS='--color=auto'
-export VISUAL="/usr/local/bin/vim"
+export VISUAL="/usr/local/bin/nvim"
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export HOMEBREW_NO_ANALYTICS=1
