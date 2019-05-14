@@ -93,6 +93,7 @@ on_ft = 'toml'
 
 [[plugins]]
 repo = 'fatih/vim-go'
+if = '''executable('go')'''
 on_ft = 'go'
 
 # [[plugins]]
