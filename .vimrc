@@ -350,7 +350,6 @@ endfunction
 "############# end lightline #############
 
 "############# setting is.vim #############
-set hlsearch
 set incsearch
 map n <Plug>(is-nohl)<Plug>(anzu-n-with-echo)
 map N <Plug>(is-nohl)<Plug>(anzu-N-with-echo)
@@ -393,6 +392,7 @@ function! s:defx_settings() abort
     setlocal nonumber
     setlocal winfixwidth
     setlocal cursorline
+    setlocal signcolumn=auto
     nnoremap <silent><buffer><expr> <CR> defx#is_directory() ? defx#do_action('open_tree') : defx#do_action('drop')
     nnoremap <silent><buffer><expr> o defx#do_action('open_or_close_tree')
     nnoremap <silent><buffer><expr> O defx#do_action('open_tree_recursive')
