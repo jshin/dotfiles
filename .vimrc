@@ -203,13 +203,13 @@ endif
 "start at insert mode
 let g:unite_enable_start_insert=1
 
-nnoremap <silent> <Space>b :<C-u>Unite<Space>buffer file file_mru<CR>
-nnoremap <silent> <Space>f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap <silent> <Space>o :<C-u>Unite outline<CR>
-nnoremap <silent> <Space>d :<C-u>Unite directory_mru<CR>
-nnoremap <silent> <Space>t :<C-u>Unite tab<CR>
-nnoremap <silent> <Space>n :<C-u>Unite file/new<CR>
-nnoremap <silent> <Space>j :<C-u>Unite jump<CR>
+" nnoremap <silent> <Space>b :<C-u>Unite<Space>buffer file file_mru<CR>
+" nnoremap <silent> <Space>f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+" nnoremap <silent> <Space>o :<C-u>Unite outline<CR>
+" nnoremap <silent> <Space>d :<C-u>Unite directory_mru<CR>
+" nnoremap <silent> <Space>t :<C-u>Unite tab<CR>
+" nnoremap <silent> <Space>n :<C-u>Unite file/new<CR>
+" nnoremap <silent> <Space>j :<C-u>Unite jump<CR>
 
 "key mapping for unite.vim
 autocmd FileType unite call s:unite_my_settings()
@@ -227,6 +227,29 @@ function! s:unite_my_settings()
 
 endfunction
 "############# end unite setting #############
+
+"############# denite setting #############
+
+nnoremap <silent> <Space>b :<C-u>Denite<Space>buffer file file_mru<CR>
+nnoremap <silent> <Space>f :<C-u>DeniteBufferDir -buffer-name=files file<CR>
+nnoremap <silent> <Space>h :<C-u>Denite command_history<CR>
+nnoremap <silent> <Space>j :<C-u>Denite jump<CR>
+nnoremap <silent> <Space>o :<C-u>Denite unite:outline<CR>
+nnoremap <silent> <Space>r :<C-u>Denite file/rec<CR>
+
+autocmd FileType denite call s:denite_settings()
+function! s:denite_settings() abort
+    nnoremap <silent><buffer><expr> <CR>
+                \ denite#do_map('do_action')
+    nnoremap <silent><buffer><expr> p
+                \ denite#do_map('do_action', 'preview')
+    nnoremap <silent><buffer><expr> q
+                \ denite#do_map('quit')
+    nnoremap <silent><buffer><expr> i
+                \ denite#do_map('open_filter_buffer')
+    nnoremap <silent><buffer><expr> <Space>
+                \ denite#do_map('toggle_select').'j'
+endfunction
 
 "############# setting quickrun #############
 if !exists("g:quickrun_config")

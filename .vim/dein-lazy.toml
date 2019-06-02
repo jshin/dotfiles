@@ -60,21 +60,22 @@ on_event = ['InsertEnter']
 
 [[plugins]]
 repo = 'Shougo/unite.vim'
-on_cmd = 'Unite'
+on_source = ['denite.nvim']
 hook_post_source = '''
     call unite#custom#profile('default','context',{
        \ 'direction':'below',
        \ 'prompt_direction':'top'})
     call unite#custom#source('file_mru', 'ignore_pattern', '\v^gina:')
 '''
+# on_cmd = 'Unite'
 
 [[plugins]]
 repo = 'Shougo/neomru.vim'
-on_source = 'unite.vim'
+on_source = ['denite.nvim']
 
 [[plugins]]
 repo = 'Shougo/unite-outline'
-on_source = 'unite.vim'
+on_source = ['unite.vim', 'denite.nvim']
 
 [[plugins]]
 repo = 'mattn/webapi-vim'
@@ -138,3 +139,7 @@ call defx#custom#column('icon', {
 [[plugins]]
 repo = 'lighttiger2505/deoplete-vim-lsp'
 on_ft = ['go', 'python', 'php']
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+on_cmd = 'Denite'
