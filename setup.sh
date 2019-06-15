@@ -12,6 +12,9 @@ for file in .??*; do
     fi
 done
 
+git config --global user.name 'jshin'
+git config --global user.email '9659726+jshin@users.noreply.github.com'
+
 # for neovim
 ln -sfv $BASE_DIR/.vim/after/ftplugin $BASE_DIR/.config/nvim
 
