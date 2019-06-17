@@ -448,7 +448,9 @@ if executable('pyls')
                    \ 'name': 'python',
                    \ 'cmd': {server_info->['pyls']},
                    \ 'whitelist': ['python'],
-                   \ 'workspace_config': {'pyls': {'plugins': {'pyflakes': {'enabled': v:true}}}}
+                   \ 'workspace_config': {'pyls': {'plugins': {
+                   \ 'pyflakes': {'enabled': v:true},
+                   \ 'autopep8': {'enabled': v:true},}}}
                    \ })
         autocmd FileType python call s:lsp_keybinds()
     augroup END
