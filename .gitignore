@@ -25,3 +25,6 @@ tags
 # karabiner
 .config/karabiner/automatic_backups/
 .config/karabiner/karabiner.json
+
+# node
+.config/configstore/
