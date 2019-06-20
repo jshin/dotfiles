@@ -456,14 +456,23 @@ if executable('pyls')
     augroup END
 endif
 
+" augroup LspPHP
+"     autocmd!
+"     autocmd User lsp_setup call lsp#register_server({
+"              \ 'name': 'php',
+"              \ 'cmd': {server_info->['php', expand('~/.ghq/github.com/felixfbecker/php-language-server/bin/php-language-server.php')]},
+"              \ 'whitelist': ['php'],
+"              \ })
+"     autocmd FileType php call s:lsp_keybinds()
+" augroup END
 augroup LspPHP
     autocmd!
     autocmd User lsp_setup call lsp#register_server({
-              \ 'name': 'php',
-              \ 'cmd': {server_info->['php', expand('~/.ghq/github.com/felixfbecker/php-language-server/bin/php-language-server.php')]},
-              \ 'whitelist': ['php'],
-              \ })
-    autocmd FileType php call s:lsp_keybinds()
+                \ 'name': 'php',
+                \ 'cmd': {server_info->['node', expand('~/.nodebrew/current/lib/node_modules/intelephense/lib/intelephense.js'), '--stdio']},
+                \ 'initialization_options': {'storagePath': expand('~/.cache/intelephense/')},
+                \ 'whitelist': ['php'],
+                \ })
 augroup END
 
 function! s:lsp_keybinds() abort
