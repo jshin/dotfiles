@@ -142,4 +142,6 @@ on_ft = ['go', 'python', 'php']
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
+if = '''has('python3')'''
 on_cmd = 'Denite'
+depends = ['nvim-yarp', 'vim-hug-neovim-rpc']
