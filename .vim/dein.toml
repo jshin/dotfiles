@@ -53,3 +53,10 @@ repo = 'prabirshrestha/async.vim'
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
 depends = 'async.vim'
+
+[[plugins]]
+repo = 'rhysd/vim-operator-surround'
+depends = 'kana/vim-operator-user'
+
+[[plugins]]
+repo = 'kana/vim-operator-user'
