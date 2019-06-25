@@ -356,9 +356,9 @@ map N <Plug>(is-nohl)<Plug>(anzu-N-with-echo)
 "############# end is.vim #############
 
 "############# vim-operator-surround #############
-    map <silent>sa <Plug>(operator-surround-append)
-    map <silent>sd <Plug>(operator-surround-delete)
-    map <silent>sr <Plug>(operator-surround-replace)
+map <silent>sa <Plug>(operator-surround-append)
+map <silent>sd <Plug>(operator-surround-delete)
+map <silent>sr <Plug>(operator-surround-replace)
 "############# end vim-operator-surround #############
 
 "############# tweetvim setting #############
