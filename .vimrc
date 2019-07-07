@@ -74,7 +74,7 @@ set foldlevelstart=99
 set undodir=~/.vim/undo
 set undofile
 set t_Co=256
-set updatetime=1500
+set updatetime=500
 "setting for vim on tmux
 set t_ut=
 if has('termguicolors')
@@ -424,6 +424,7 @@ endif
 "############# vim-lsp settings #############
 let g:lsp_diagnostics_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_async_completion = 1
 if has('nvim')
     let g:lsp_highlights_enabled = 0
 else
@@ -433,7 +434,6 @@ if !has('nvim')
     let g:lsp_signs_error={'text': '✘'}
     let g:lsp_signs_warning={'text': '!'}
 endif
-let g:lsp_async_completion = 1
 if executable('gopls')
     augroup LspGo
         autocmd!
@@ -471,15 +471,18 @@ endif
 "              \ })
 "     autocmd FileType php call s:lsp_keybinds()
 " augroup END
-augroup LspPHP
-    autocmd!
-    autocmd User lsp_setup call lsp#register_server({
-                \ 'name': 'php',
-                \ 'cmd': {server_info->['node', expand('~/.nodebrew/current/lib/node_modules/intelephense/lib/intelephense.js'), '--stdio']},
-                \ 'initialization_options': {'storagePath': expand('~/.cache/intelephense/')},
-                \ 'whitelist': ['php'],
-                \ })
-augroup END
+if executable('intelephense')
+    augroup LspPHP
+        autocmd!
+        autocmd User lsp_setup call lsp#register_server({
+                    \ 'name': 'php',
+                    \ 'cmd': {server_info->['node', expand('~/.nodebrew/current/lib/node_modules/intelephense/lib/intelephense.js'), '--stdio']},
+                    \ 'initialization_options': {'storagePath': expand('~/.cache/intelephense/')},
+                    \ 'whitelist': ['php'],
+                    \ })
+        autocmd FileType php call s:lsp_keybinds()
+    augroup END
+endif
 
 function! s:lsp_keybinds() abort
     nmap <buffer> gd <Plug>(lsp-definition)
