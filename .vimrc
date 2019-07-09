@@ -411,11 +411,14 @@ function! s:defx_settings() abort
     nnoremap <silent><buffer><expr> . defx#do_action('toggle_ignored_files')
     nnoremap <silent><buffer><expr> N defx#do_action('new_file')
     nnoremap <silent><buffer><expr> D defx#do_action('new_directory')
+    nnoremap <silent><buffer><expr> S defx#do_action('add_session')
 endfunction
 
 if dein#tap('defx.nvim')
-    nnoremap <silent><leader>d :Defx -toggle -split=vertical -winwidth=30 -direction=topleft
-                \ -show-ignored-files `expand('%:p:h')` -search=`expand('%:p')` <CR>
+    " nnoremap <silent><leader>d :Defx -toggle -split=vertical -winwidth=25 -direction=topleft
+    "            \ -show-ignored-files `expand('%:p:h')` -search=`expand('%:p')` <CR>
+    nnoremap <silent><leader>d :Defx -toggle -split=vertical -winwidth=25 -direction=topleft
+                \ -show-ignored-files -session-file=`expand('~/.vim/session/defx_session')` <CR>
 
     autocmd FileType defx call s:defx_settings()
 endif
