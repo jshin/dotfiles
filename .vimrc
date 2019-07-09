@@ -403,7 +403,7 @@ function! s:defx_settings() abort
     nnoremap <silent><buffer><expr> o defx#do_action('open_or_close_tree')
     nnoremap <silent><buffer><expr> O defx#do_action('open_tree_recursive')
     nnoremap <silent><buffer><expr> c defx#do_action('copy')
-    nnoremap <silent><buffer><expr> h defx#do_action('cd', ['..'])
+    nnoremap <silent><buffer><expr> u defx#do_action('cd', ['..'])
     nnoremap <silent><buffer><expr> m defx#do_action('move')
     nnoremap <silent><buffer><expr> p defx#do_action('paste')
     nnoremap <silent><buffer><expr> r defx#do_action('rename')
@@ -489,6 +489,7 @@ function! s:lsp_keybinds() abort
     nmap <buffer> gD <Plug>(lsp-references)
     nmap <buffer> gn <Plug>(lsp-next-error)
     nmap <buffer> gp <Plug>(lsp-previous-error)
+    nmap <buffer> gh <Plug>(lsp-hover)
 endfunction
 
 "############# end vim-lsp #############
