@@ -489,7 +489,7 @@ endif
 
 function! s:lsp_keybinds() abort
     nmap <buffer> gd <Plug>(lsp-definition)
-    nmap <buffer> gD <Plug>(lsp-references)
+    nmap <buffer> gr <Plug>(lsp-references)
     nmap <buffer> gn <Plug>(lsp-next-error)
     nmap <buffer> gp <Plug>(lsp-previous-error)
     nmap <buffer> gh <Plug>(lsp-hover)
