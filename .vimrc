@@ -108,6 +108,9 @@ if has('nvim')
 
 endif
 
+noremap ; :
+noremap : ;
+
 nnoremap j gj
 nnoremap k gk
 vnoremap j gj
