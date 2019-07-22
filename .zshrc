@@ -104,6 +104,7 @@ alias java='java -Dfile.encoding=UTF-8'
 alias cl="clear"
 alias mv="mv -i"
 alias cp="cp -i"
+alias rm="rm -i"
 alias lg="lazygit"
 alias ptex2pdf="ptex2pdf -l"
 alias tweetvim="vim -c TweetVimHomeTimeline"
