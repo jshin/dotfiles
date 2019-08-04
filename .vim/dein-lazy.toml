@@ -134,7 +134,7 @@ call defx#custom#column('icon', {
 
 [[plugins]]
 repo = 'lighttiger2505/deoplete-vim-lsp'
-on_ft = ['go', 'python', 'php']
+on_source = 'deoplete.nvim'
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
