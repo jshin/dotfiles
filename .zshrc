@@ -120,6 +120,7 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 alias ls='ls -G'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.zshrc.`hostname -s` ] && source ~/.zshrc.`hostname -s`
 
 if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
     zcompile ~/.zshrc
