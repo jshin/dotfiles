@@ -202,35 +202,6 @@ if has('conceal')
 endif
 "############# end neosnippet #############
 
-"############# unite setting #############
-"start at insert mode
-let g:unite_enable_start_insert=1
-
-" nnoremap <silent> <Space>b :<C-u>Unite<Space>buffer file file_mru<CR>
-" nnoremap <silent> <Space>f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-" nnoremap <silent> <Space>o :<C-u>Unite outline<CR>
-" nnoremap <silent> <Space>d :<C-u>Unite directory_mru<CR>
-" nnoremap <silent> <Space>t :<C-u>Unite tab<CR>
-" nnoremap <silent> <Space>n :<C-u>Unite file/new<CR>
-" nnoremap <silent> <Space>j :<C-u>Unite jump<CR>
-
-"key mapping for unite.vim
-autocmd FileType unite call s:unite_my_settings()
-function! s:unite_my_settings()
-    "push ESC unite stop
-    nmap <buffer> <ESC> <Plug>(unite_exit)
-    "open on split
-    inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
-    "open on vsplit
-    inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
-    "open on new tab
-    inoremap <silent> <buffer> <expr> <C-t> unite#do_action('tabopen')
-    "slelect next candidate
-    imap <buffer> <Tab> <Plug>(unite_select_next_line)
-
-endfunction
-"############# end unite setting #############
-
 "############# denite setting #############
 
 nnoremap <silent> <Space>b :<C-u>Denite<Space>buffer file file_mru<CR>
@@ -468,15 +439,6 @@ if executable('pyls')
     augroup END
 endif
 
-" augroup LspPHP
-"     autocmd!
-"     autocmd User lsp_setup call lsp#register_server({
-"              \ 'name': 'php',
-"              \ 'cmd': {server_info->['php', expand('~/.ghq/github.com/felixfbecker/php-language-server/bin/php-language-server.php')]},
-"              \ 'whitelist': ['php'],
-"              \ })
-"     autocmd FileType php call s:lsp_keybinds()
-" augroup END
 if executable('intelephense')
     augroup LspPHP
         autocmd!
