@@ -452,8 +452,10 @@ endif
 function! s:lsp_keybinds() abort
     nmap <buffer> gd <Plug>(lsp-definition)
     nmap <buffer> gr <Plug>(lsp-references)
-    nmap <buffer> gn <Plug>(lsp-next-error)
-    nmap <buffer> gp <Plug>(lsp-previous-error)
+    nmap <buffer> gne <Plug>(lsp-next-error)
+    nmap <buffer> gpe <Plug>(lsp-previous-error)
+    nmap <buffer> gnr <Plug>(lsp-next-reference)
+    nmap <buffer> gpr <Plug>(lsp-previous-reference)
     nmap <buffer> gh <Plug>(lsp-hover)
 endfunction
 
