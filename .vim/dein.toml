@@ -56,3 +56,6 @@ depends = 'async.vim'
 
 [[plugins]]
 repo = 'machakann/vim-sandwich'
+
+[[plugins]]
+repo = 'sgur/vim-editorconfig'
