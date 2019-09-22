@@ -28,11 +28,6 @@ if = '''has('python3')'''
 repo = 'roxma/vim-hug-neovim-rpc'
 if = '''has('python3')'''
 
-# [[plugins]]
-# repo = 'Shougo/neocomplete.vim'
-# if = '''!has('python3') && has('lua')'''
-# on_event = ['InsertEnter']
-
 [[plugins]]
 repo = 'Shougo/neco-syntax'
 on_source = ['deoplete.nvim','neocomplete.vim']
@@ -67,7 +62,6 @@ hook_post_source = '''
        \ 'prompt_direction':'top'})
     call unite#custom#source('file_mru', 'ignore_pattern', '\v^gina:')
 '''
-# on_cmd = 'Unite'
 
 [[plugins]]
 repo = 'Shougo/neomru.vim'
@@ -96,12 +90,6 @@ on_ft = 'toml'
 repo = 'fatih/vim-go'
 if = '''executable('go')'''
 on_ft = 'go'
-
-# [[plugins]]
-# repo = 'deoplete-plugins/deoplete-go'
-# if = '''has('python3')'''
-# on_ft = 'go'
-# build = 'make'
 
 [[plugins]]
 repo = 'othree/yajs.vim'
