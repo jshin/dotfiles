@@ -129,3 +129,7 @@ repo = 'Shougo/denite.nvim'
 if = '''has('python3')'''
 on_cmd = 'Denite'
 depends = ['nvim-yarp', 'vim-hug-neovim-rpc']
+
+[[plugins]]
+repo = 'rhysd/git-messenger.vim'
+on_cmd = 'GitMessenger'
