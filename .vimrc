@@ -364,6 +364,10 @@ let g:startify_custom_header = [
 
 "############# end vim-startify #############
 
+"############# gitgutter settings #############
+let g:gitgutter_preview_win_floating = 1
+"############# end gitgutter #############
+
 "############# defx.nvim settings #############
 function! s:defx_settings() abort
     setlocal nonumber
@@ -401,7 +405,7 @@ let g:lsp_diagnostics_echo_cursor = 1
 let g:lsp_async_completion = 1
 if has('nvim')
     let g:lsp_highlights_enabled = 0
-    let g:lsp_virtual_text_enabled=0
+    " let g:lsp_virtual_text_enabled=0
 else
     let g:lsp_textprop_enabled = 0
 endif
