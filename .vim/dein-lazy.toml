@@ -6,7 +6,6 @@ on_event = ['InsertEnter']
 hook_source = '''
     call deoplete#initialize()
     call deoplete#custom#option({
-        \ 'yarp': v:true,
         \ 'smart_case': v:true,
         \ 'skip_multibyte': v:true,})
     call deoplete#custom#option('keyword_patterns', {
