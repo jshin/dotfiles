@@ -1,0 +1,16 @@
+add_newline = false
+
+[character]
+symbol = "(@'-')"
+
+[directory]
+truncation_length = 3
+style = "blue"
+
+[git_branch]
+symbol = ""
+style = "green"
+
+[hostname]
+ssh_only = false
+style = "white"
