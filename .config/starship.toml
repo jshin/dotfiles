@@ -1,7 +1,7 @@
 add_newline = false
 
 [character]
-symbol = "ξ（✿ ❛‿❛）ξ"
+symbol = "ξ（✿ ❛‿❛)ξ"
 style_success = "yellow"
 
 [directory]
