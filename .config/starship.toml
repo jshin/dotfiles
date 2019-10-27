@@ -1,7 +1,8 @@
 add_newline = false
 
 [character]
-symbol = "(@'-')"
+symbol = "ξ（✿ ❛‿❛）ξ"
+style_success = "yellow"
 
 [directory]
 truncation_length = 3
