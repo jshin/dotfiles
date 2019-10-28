@@ -27,14 +27,15 @@ add_newline = false
 
 [character]
 symbol = "ξ(✿ ❛‿❛)ξ"
+error_symbol = "人◕ ‿‿ ◕人"
 style_success = "yellow"
+use_symbol_for_status = true
 
 [directory]
 truncation_length = 3
 style = "purple"
 
 [git_branch]
-symbol = ""
 style = "green"
 
 [hostname]
