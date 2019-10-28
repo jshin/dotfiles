@@ -1,12 +1,37 @@
+prompt_order = [
+    "username",
+    "hostname",
+    "time",
+    "kubernetes",
+    "directory",
+    "git_branch",
+    "git_state",
+    "git_status",
+    "package",
+    "golang",
+    "java",
+    "nodejs",
+    "python",
+    "ruby",
+    "rust",
+    "conda",
+    "memory_usage",
+    "aws",
+    "env_var",
+    "line_break",
+    "jobs",
+    "battery",
+    "character",
+]
 add_newline = false
 
 [character]
-symbol = "ξ（✿ ❛‿❛)ξ"
+symbol = "ξ(✿ ❛‿❛)ξ"
 style_success = "yellow"
 
 [directory]
 truncation_length = 3
-style = "blue"
+style = "purple"
 
 [git_branch]
 symbol = ""
@@ -14,4 +39,8 @@ style = "green"
 
 [hostname]
 ssh_only = false
-style = "white"
+style = "blue"
+
+[time]
+disabled = false
+style = "red"
