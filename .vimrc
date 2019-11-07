@@ -108,6 +108,8 @@ if has('nvim')
 
 endif
 
+let mapleader = "\<Space>"
+
 noremap ; :
 noremap : ;
 
@@ -207,12 +209,12 @@ endif
 
 "############# denite setting #############
 
-nnoremap <silent> <Space>b :<C-u>Denite<Space>buffer file file_mru<CR>
-nnoremap <silent> <Space>f :<C-u>DeniteBufferDir -buffer-name=files file<CR>
-nnoremap <silent> <Space>h :<C-u>Denite command_history<CR>
-nnoremap <silent> <Space>j :<C-u>Denite jump<CR>
-nnoremap <silent> <Space>o :<C-u>Denite unite:outline<CR>
-nnoremap <silent> <Space>r :<C-u>Denite file/rec<CR>
+nnoremap <silent> <Leader>b :<C-u>Denite buffer file file_mru<CR>
+nnoremap <silent> <Leader>f :<C-u>DeniteBufferDir -buffer-name=files file<CR>
+nnoremap <silent> <Leader>c :<C-u>Denite command_history<CR>
+nnoremap <silent> <Leader>j :<C-u>Denite jump<CR>
+nnoremap <silent> <Leader>o :<C-u>Denite unite:outline<CR>
+nnoremap <silent> <Leader>r :<C-u>Denite file/rec<CR>
 
 autocmd FileType denite call s:denite_settings()
 function! s:denite_settings() abort
