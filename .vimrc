@@ -44,7 +44,6 @@ set laststatus=2
 set showtabline=2
 set showmatch
 set matchtime=1
-source $VIMRUNTIME/macros/matchit.vim
 set helpheight=99
 set wildmenu
 set wildmode=longest:full
