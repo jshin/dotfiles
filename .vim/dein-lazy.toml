@@ -29,15 +29,11 @@ if = '''has('python3')'''
 
 [[plugins]]
 repo = 'Shougo/neco-syntax'
-on_source = ['deoplete.nvim','neocomplete.vim']
+on_source = 'deoplete.nvim'
 
 [[plugins]]
 repo = 'Shougo/neco-vim'
 on_ft = 'vim'
-
-# [[plugins]]
-# repo = 'Shougo/neoinclude.vim'
-# on_source = ['deoplete.nvim', 'neocomplete.vim']
 
 [[plugins]]
 repo = 'ujihisa/neco-look'
