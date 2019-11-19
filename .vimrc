@@ -448,7 +448,11 @@ if executable('intelephense')
                     \ 'cmd': {server_info->['node', expand('~/.nodebrew/current/lib/node_modules/intelephense/lib/intelephense.js'), '--stdio']},
                     \ 'initialization_options': {'storagePath': expand('~/.cache/intelephense/')},
                     \ 'whitelist': ['php'],
-                    \ 'workspace_config' : {'intelephense': {'stubs' : [
+                    \ 'workspace_config': {'intelephense': {
+                    \ 'files': {'associations': ['*.php', '*.phtml']},
+                    \ 'completion': {'insertUserDeclaration': v:true,
+                    \ 'fullyQualifyGlobalConstantsAndFunctions': v:false},
+                    \ 'stubs': [
                     \ 'apache',
                     \ 'bcmath',
                     \ 'bz2',
