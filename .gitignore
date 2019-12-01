@@ -23,12 +23,8 @@ tags
 # Persistent undo
 [._]*.un~
 
-# karabiner
-.config/karabiner/automatic_backups/
-.config/karabiner/karabiner.json
-
-# node
-.config/configstore/
-
-# gcloud
-.config/gcloud/
+# config
+.config/*
+!.config/nvim/
+!.config/starship.toml
+!.config/karabiner/assets/
