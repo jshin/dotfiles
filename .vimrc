@@ -237,31 +237,31 @@ endif
 
 "############# setting for ale #############
 
-let g:ale_sign_error = '>'
-let g:ale_sign_warning = '!'
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_enter = 0
-let g:ale_linters = {
-            \   'cpp': ['clang', 'g++'],
-            \}
+" let g:ale_sign_error = '>'
+" let g:ale_sign_warning = '!'
+" let g:ale_lint_on_text_changed = 'never'
+" let g:ale_lint_on_enter = 0
+" let g:ale_linters = {
+"            \   'cpp': ['clang', 'g++'],
+"            \}
+"
+" function! LinterStatus() abort
+"     let l:counts = ale#statusline#Count(bufnr(''))
+"
+"     let l:all_errors = l:counts.error + l:counts.style_error
+"     let l:all_non_errors = l:counts.total - l:all_errors
+"
+"     return l:counts.total == 0 ? '' : printf(
+"                \   '%dW %dE',
+"                \   all_non_errors,
+"                \   all_errors
+"                \)
+" endfunction
 
-function! LinterStatus() abort
-    let l:counts = ale#statusline#Count(bufnr(''))
-
-    let l:all_errors = l:counts.error + l:counts.style_error
-    let l:all_non_errors = l:counts.total - l:all_errors
-
-    return l:counts.total == 0 ? '' : printf(
-                \   '%dW %dE',
-                \   all_non_errors,
-                \   all_errors
-                \)
-endfunction
-
-augroup LightlineOnAle
-    autocmd!
-    autocmd User ALELintPost call lightline#update()
-augroup END
+" augroup LightlineOnAle
+"     autocmd!
+"     autocmd User ALELintPost call lightline#update()
+" augroup END
 "############# end ale #############
 
 "############# setting lightline #############
@@ -298,7 +298,7 @@ let g:lightline = {
             \   'filetype' : 'Myfiletype',
             \   },
             \   'component_expand':{
-            \   'syntaxcheck' : 'LinterStatus',
+            \   'syntaxcheck' : 'Lsp_diagnostics_status',
             \    },
             \   'component_type':{
             \   'syntaxcheck' : 'error',
@@ -412,6 +412,22 @@ else
 endif
 let g:lsp_signs_error={'text': '✘'}
 let g:lsp_signs_warning={'text': '!'}
+
+function! Lsp_diagnostics_status() abort
+    let l:counts = lsp#get_buffer_diagnostics_counts()
+
+    return count(counts, 0) == 4 ? '' : printf(
+                \ '%dW %dE',
+                \ counts['warning'],
+                \ counts['error']
+                \ )
+endfunction
+
+augroup LightlineOnLSP
+    autocmd!
+    autocmd CursorMoved * call lightline#update()
+augroup END
+
 if executable('gopls')
     augroup LspGo
         autocmd!
