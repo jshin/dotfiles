@@ -450,7 +450,7 @@ if executable('pyls')
                    \ 'whitelist': ['python'],
                    \ 'workspace_config': {'pyls': {'plugins': {
                    \ 'pyflakes': {'enabled': v:true},
-                   \ 'autopep8': {'enabled': v:true},}}}
+                   \ 'black': {'enabled': v:true},}}}
                    \ })
         autocmd FileType python call s:lsp_keybinds()
     augroup END
