@@ -456,6 +456,17 @@ if executable('pyls')
     augroup END
 endif
 
+if executable('bash-language-server')
+    augroup LspBash
+        autocmd User lsp_setup call lsp#register_server({
+                    \ 'name': 'bash',
+                    \ 'cmd': {server_info->[&shell, &shellcmdflag, 'bash-language-server start']},
+                    \ 'whitelist': ['sh'],
+                    \ })
+        autocmd FileType sh call s:lsp_keybinds()
+    augroup END
+endif
+
 if executable('intelephense')
     augroup LspPHP
         autocmd!
