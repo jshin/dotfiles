@@ -50,22 +50,7 @@ zstyle ':completion:*' ignore-parents parent pwd ..
 zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
 
 eval "$(starship init zsh)"
-# PROMPT="%{${fg[red]}%}%n@%m%{${fg[blue]}%} %T%{${reset_color}%} %4~
-# $ "
-# #vcs_infoロード
-# autoload -Uz vcs_info
-# #PROMPT変数内で変数参照する
-# setopt prompt_subst
-# zstyle ':vcs_info:git:*' check-for-changes true
-# zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
-# zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
-# zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
-# zstyle ':vcs_info:*' actionformats '[%b|%a]'
-#
-# #vcs表示
-# ##プロンプト表示前にvcs_info呼び出し
-# precmd() { vcs_info }
-# RPROMPT='${vcs_info_msg_0_}'
+
 ####################################
 #オプション
 setopt print_eight_bit
