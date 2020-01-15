@@ -91,8 +91,8 @@ repo = 'othree/yajs.vim'
 on_ft = 'javascript'
 
 [[plugins]]
-repo = 'sjl/gundo.vim'
-on_cmd = ['GundoToggle']
+repo = 'mbbill/undotree'
+on_cmd = ['UndotreeToggle', 'UndotreeShow']
 
 [[plugins]]
 repo = 'previm/previm'
