@@ -91,10 +91,6 @@ repo = 'othree/yajs.vim'
 on_ft = 'javascript'
 
 [[plugins]]
-repo = 'mbbill/undotree'
-on_cmd = ['UndotreeToggle', 'UndotreeShow']
-
-[[plugins]]
 repo = 'previm/previm'
 on_ft = 'markdown'
 
