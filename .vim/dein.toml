@@ -29,9 +29,6 @@ repo = 'thinca/vim-quickrun'
 [[plugins]]
 repo = 'cocopon/iceberg.vim'
 
-# [[plugins]]
-# repo = 'w0rp/ale'
-
 [[plugins]]
 repo = 'haya14busa/is.vim'
 

@@ -235,35 +235,6 @@ if !exists("g:quickrun_config")
 endif
 "############# end quickrun #############
 
-"############# setting for ale #############
-
-" let g:ale_sign_error = '>'
-" let g:ale_sign_warning = '!'
-" let g:ale_lint_on_text_changed = 'never'
-" let g:ale_lint_on_enter = 0
-" let g:ale_linters = {
-"            \   'cpp': ['clang', 'g++'],
-"            \}
-"
-" function! LinterStatus() abort
-"     let l:counts = ale#statusline#Count(bufnr(''))
-"
-"     let l:all_errors = l:counts.error + l:counts.style_error
-"     let l:all_non_errors = l:counts.total - l:all_errors
-"
-"     return l:counts.total == 0 ? '' : printf(
-"                \   '%dW %dE',
-"                \   all_non_errors,
-"                \   all_errors
-"                \)
-" endfunction
-
-" augroup LightlineOnAle
-"     autocmd!
-"     autocmd User ALELintPost call lightline#update()
-" augroup END
-"############# end ale #############
-
 "############# setting lightline #############
 let g:lightline = {
             \   'colorscheme': 'iceberg',
