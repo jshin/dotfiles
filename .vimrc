@@ -313,11 +313,6 @@ function! s:tweetvim_my_setting()
 endfunction
 "############# end tweetvim #############
 
-"############# gundo settings #############
-let g:gundo_prefer_python3 = 1
-
-"############# end gundo #############
-
 "############# previm settings #############
 let g:previm_enable_realtime = 1
 
