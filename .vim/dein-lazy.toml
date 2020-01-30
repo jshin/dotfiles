@@ -7,15 +7,23 @@ hook_source = '''
     call deoplete#initialize()
     call deoplete#custom#option({
         \ 'smart_case': v:true,
-        \ 'skip_multibyte': v:true,})
+        \ 'skip_multibyte': v:true,
+        \ 'num_processes': 6,
+        \ })
     call deoplete#custom#option('keyword_patterns', {
-        \ 'tex': '\\?[a-zA-Z_]+',
-        \ 'markdown': '\\?[a-zA-Z_]+',})
+        \ 'php': '\k+',
+        \ 'markdown': '\\?[a-zA-Z_]+',
+        \ })
     call deoplete#custom#source('_', 'converters', [
         \ 'converter_remove_overlap',
         \ 'converter_truncate_abbr',
         \ 'converter_truncate_menu',
         \ ])
+    call deoplete#custom#option('sources', {
+        \ 'go': ['neosnippet', 'lsp', 'file'],
+        \ 'php': ['neosnippet', 'lsp', 'file', 'buffer'],
+        \ 'python': ['neosnippet', 'lsp', 'file', 'buffer'],
+        \ })
     call deoplete#enable()
 '''
 
