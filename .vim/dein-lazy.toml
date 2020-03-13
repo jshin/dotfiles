@@ -21,7 +21,7 @@ hook_source = '''
         \ ])
     call deoplete#custom#option('sources', {
         \ 'go': ['neosnippet', 'lsp', 'file'],
-        \ 'php': ['neosnippet', 'lsp', 'file', 'buffer'],
+        \ 'php': ['neosnippet', 'lsp', 'file'],
         \ 'python': ['neosnippet', 'lsp', 'file', 'around'],
         \ })
     call deoplete#enable()

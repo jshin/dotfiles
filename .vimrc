@@ -447,6 +447,7 @@ if executable('intelephense')
                     \ 'files': {'associations': ['*.php', '*.phtml']},
                     \ 'completion': {'insertUserDeclaration': v:true,
                     \ 'fullyQualifyGlobalConstantsAndFunctions': v:false},
+                    \ 'diagnostics': {'deprecated': v:false},
                     \ 'stubs': [
                     \ 'apache',
                     \ 'bcmath',
