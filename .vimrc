@@ -435,6 +435,14 @@ if executable('bash-language-server')
     augroup END
 endif
 
+if executable('docker-langserver')
+    autocmd User lsp_setup call lsp#register_server({
+                \ 'name': 'dockerfile',
+                \ 'cmd': {server_info->[&shell, &shellcmdflag, 'docker-langserver --stdio']},
+                \ 'whitelist': ['dockerfile'],
+                \ })
+endif
+
 if executable('intelephense')
     augroup LspPHP
         autocmd!
