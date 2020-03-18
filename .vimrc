@@ -461,6 +461,7 @@ if executable('yaml-language-server')
                     \   }
                     \ }
                     \ })
+        autocmd FileType sh call s:lsp_keybinds()
     augroup END
 endif
 
