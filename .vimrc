@@ -337,6 +337,10 @@ let g:startify_custom_header = [
 let g:gitgutter_preview_win_floating = 1
 "############# end gitgutter #############
 
+"############# vim-matchup settings #############
+let g:matchup_matchparen_offscreen = {'method': ''}
+"############# end vim-matchup #############
+
 "############# defx.nvim settings #############
 function! s:defx_settings() abort
     setlocal nonumber
