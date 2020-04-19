@@ -453,14 +453,14 @@ if executable('yaml-language-server')
         autocmd User lsp_setup call lsp#register_server({
                     \ 'name': 'yaml-language-server',
                     \ 'cmd': {server_info->['yaml-language-server', '--stdio']},
-                    \ 'whitelist': ['yaml', 'yaml.ansible'],
+                    \ 'whitelist': ['yaml', 'yaml.docker-compose'],
                     \   'workspace_config': {
                     \   'yaml': {
                     \   'validate': v:true,
                     \   'hover': v:true,
                     \   'completion': v:true,
                     \   'customTags': [],
-                    \   'schemes': {},
+                    \   'schemas': {'https://raw.githubusercontent.com/docker/compose/master/compose/config/config_schema_v3.4.json': '/docker-compose.*',},
                     \   'schemeStore': { 'enable': v:true },
                     \   }
                     \ }
