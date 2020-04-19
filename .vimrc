@@ -397,7 +397,7 @@ endfunction
 
 augroup LightlineOnLSP
     autocmd!
-    autocmd CursorMoved * call lightline#update()
+    autocmd  User lsp_diagnostics_updated call lightline#update()
 augroup END
 
 if executable('gopls')
