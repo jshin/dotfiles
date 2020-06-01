@@ -107,6 +107,10 @@ repo = 'tyru/open-browser.vim'
 on_source = 'previm'
 
 [[plugins]]
+repo = 'tyru/capture.vim'
+on_cmd = ['Capture']
+
+[[plugins]]
 repo = 'Shougo/defx.nvim'
 if = '''has('python3')'''
 on_cmd = 'Defx'
