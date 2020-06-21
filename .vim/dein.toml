@@ -45,11 +45,7 @@ repo = 'tyru/caw.vim'
 # repo = 'markonm/traces.vim'
 
 [[plugins]]
-repo = 'prabirshrestha/async.vim'
-
-[[plugins]]
 repo = 'prabirshrestha/vim-lsp'
-depends = 'async.vim'
 
 [[plugins]]
 repo = 'machakann/vim-sandwich'
