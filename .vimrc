@@ -406,7 +406,7 @@ if executable('gopls')
         autocmd User lsp_setup call lsp#register_server({
                  \ 'name': 'go-lang',
                  \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
-                 \ 'whitelist': ['go'],
+                 \ 'allowlist': ['go'],
                  \ })
         autocmd FileType go call s:lsp_keybinds()
     augroup END
@@ -419,7 +419,7 @@ if executable('pyls')
         autocmd User lsp_setup call lsp#register_server({
                    \ 'name': 'python',
                    \ 'cmd': {server_info->['pyls']},
-                   \ 'whitelist': ['python'],
+                   \ 'allowlist': ['python'],
                    \ 'workspace_config': {'pyls': {'plugins': {
                    \ 'pyflakes': {'enabled': v:true},
                    \ 'black': {'enabled': v:true},}}}
@@ -433,7 +433,7 @@ if executable('bash-language-server')
         autocmd User lsp_setup call lsp#register_server({
                     \ 'name': 'bash',
                     \ 'cmd': {server_info->[&shell, &shellcmdflag, 'bash-language-server start']},
-                    \ 'whitelist': ['sh'],
+                    \ 'allowlist': ['sh'],
                     \ })
         autocmd FileType sh call s:lsp_keybinds()
     augroup END
@@ -443,7 +443,7 @@ if executable('docker-langserver')
     autocmd User lsp_setup call lsp#register_server({
                 \ 'name': 'dockerfile',
                 \ 'cmd': {server_info->[&shell, &shellcmdflag, 'docker-langserver --stdio']},
-                \ 'whitelist': ['dockerfile'],
+                \ 'allowlist': ['dockerfile'],
                 \ })
 endif
 
@@ -453,7 +453,7 @@ if executable('yaml-language-server')
         autocmd User lsp_setup call lsp#register_server({
                     \ 'name': 'yaml-language-server',
                     \ 'cmd': {server_info->['yaml-language-server', '--stdio']},
-                    \ 'whitelist': ['yaml', 'yaml.docker-compose'],
+                    \ 'allowlist': ['yaml', 'yaml.docker-compose'],
                     \   'workspace_config': {
                     \   'yaml': {
                     \   'validate': v:true,
@@ -476,7 +476,7 @@ if executable('intelephense')
                     \ 'name': 'php',
                     \ 'cmd': {server_info->['node', expand('~/.nodebrew/current/lib/node_modules/intelephense/lib/intelephense.js'), '--stdio']},
                     \ 'initialization_options': {'storagePath': expand('~/.cache/intelephense/')},
-                    \ 'whitelist': ['php'],
+                    \ 'allowlist': ['php'],
                     \ 'workspace_config': {'intelephense': {
                     \ 'files': {'associations': ['*.php', '*.phtml']},
                     \ 'completion': {'insertUserDeclaration': v:true,
