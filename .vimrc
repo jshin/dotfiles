@@ -319,6 +319,10 @@ let g:previm_enable_realtime = 1
 "############# end previm #############
 
 "############# vim-startify settings #############
+let g:startify_commands = [
+    \ ['Plugins Update', 'call dein#update()'],
+    \ ['Plugins Recache', 'call dein#recache_runtimepath()'],
+    \]
 let g:startify_change_to_dir = 0
 let g:startify_change_to_vcs_root = 1
 let g:startify_custom_header = [
