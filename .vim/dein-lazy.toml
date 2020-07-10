@@ -90,8 +90,7 @@ repo = 'cespare/vim-toml'
 on_ft = 'toml'
 
 [[plugins]]
-repo = 'fatih/vim-go'
-if = '''executable('go')'''
+repo = 'jshin/vim-go-syntax'
 on_ft = 'go'
 
 [[plugins]]
