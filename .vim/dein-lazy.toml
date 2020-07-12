@@ -94,6 +94,10 @@ repo = 'jshin/vim-go-syntax'
 on_ft = 'go'
 
 [[plugins]]
+repo = 'mattn/vim-goimports'
+on_ft = 'go'
+
+[[plugins]]
 repo = 'othree/yajs.vim'
 on_ft = 'javascript'
 
