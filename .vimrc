@@ -354,6 +354,7 @@ function! s:defx_settings() abort
     nnoremap <silent><buffer><expr> <CR> defx#is_directory() ? defx#do_action('open_tree') : defx#do_action('drop')
     nnoremap <silent><buffer><expr> o defx#do_action('open_tree', 'toggle')
     nnoremap <silent><buffer><expr> O defx#do_action('open_tree', 'recursive')
+    nnoremap <silent><buffer><expr> P defx#do_action('preview')
     nnoremap <silent><buffer><expr> c defx#do_action('copy')
     nnoremap <silent><buffer><expr> u defx#do_action('cd', ['..'])
     nnoremap <silent><buffer><expr> m defx#do_action('move')
@@ -370,6 +371,7 @@ if dein#tap('defx.nvim')
     " nnoremap <silent><leader>d :Defx -toggle -split=vertical -winwidth=25 -direction=topleft
     "            \ -show-ignored-files `expand('%:p:h')` -search=`expand('%:p')` <CR>
     nnoremap <silent><leader>d :Defx -toggle -split=vertical -winwidth=25 -direction=topleft
+                \ -vertical-preview -preview-height=50 -preview-width=70 -floating-preview
                 \ -show-ignored-files -session-file=`expand('~/.vim/session/defx_session')` <CR>
 
     autocmd FileType defx call s:defx_settings()
