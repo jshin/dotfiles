@@ -300,6 +300,7 @@ endfunction
 
 "############# setting is.vim #############
 set incsearch
+set hlsearch
 map n <Plug>(is-nohl)<Plug>(anzu-n-with-echo)
 map N <Plug>(is-nohl)<Plug>(anzu-N-with-echo)
 "############# end is.vim #############
