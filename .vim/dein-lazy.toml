@@ -151,9 +151,7 @@ call denite#custom#var('file/rec', 'command',
     \  (has('win32') ? '-g:' : '-g='), ''])
 if has('nvim')
 call denite#custom#option('default', {
-    \ 'source_names': 'short',
-    \ 'split': 'floating',
-    \ 'filter_split_direction': 'floating'})
+    \ 'source_names': 'short'})
 endif
 '''
 
