@@ -467,7 +467,7 @@ if executable('yaml-language-server')
                     \   'hover': v:true,
                     \   'completion': v:true,
                     \   'customTags': [],
-                    \   'schemas': {'https://raw.githubusercontent.com/docker/compose/master/compose/config/config_schema_v3.4.json': '/docker-compose.*',},
+                    \   'schemas': {'https://raw.githubusercontent.com/docker/compose/master/compose/config/config_schema_compose_spec.json': '/docker-compose.*',},
                     \   'schemeStore': { 'enable': v:true },
                     \   }
                     \ }
