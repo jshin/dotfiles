@@ -373,7 +373,7 @@ if dein#tap('defx.nvim')
     "            \ -show-ignored-files `expand('%:p:h')` -search=`expand('%:p')` <CR>
     nnoremap <silent><leader>d :Defx -toggle -split=vertical -winwidth=25 -direction=topleft
                 \ -vertical-preview -preview-height=50 -preview-width=70 -floating-preview
-                \ -show-ignored-files -session-file=`expand('~/.vim/session/defx_session')` <CR>
+                \ -show-ignored-files -resume <CR>
 
     autocmd FileType defx call s:defx_settings()
 endif
