@@ -1,25 +1,24 @@
-prompt_order = [
-    "username",
-    "hostname",
-    "time",
-    "kubernetes",
-    "directory",
-    "git_branch",
-    "git_state",
-    "git_status",
-    "aws",
-    "env_var",
-    "line_break",
-    "jobs",
-    "battery",
-    "character",
-]
+format = """\
+  $username\
+  $hostname\
+  $time\
+  $kubernetes\
+  $directory\
+  $git_branch\
+  $git_state\
+  $git_status\
+  $aws\
+  $env_var\
+  $line_break\
+  $jobs\
+  $battery\
+  $character\
+"""
 add_newline = false
 
 [character]
-symbol = "ξ(✿ ❛‿❛)ξ"
-error_symbol = "人◕ ‿‿ ◕人"
-style_success = "yellow"
+success_symbol = "[ξ\\(✿ ❛‿❛\\)ξ](yellow)"
+error_symbol = "[人◕ ‿‿ ◕人](red)"
 use_symbol_for_status = true
 
 [directory]
