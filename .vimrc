@@ -382,6 +382,7 @@ endif
 "############# vim-lsp settings #############
 let g:lsp_diagnostics_enabled = 1
 let g:lsp_diagnostics_float_cursor = 1
+let g:lsp_highlight_references_delay = 2000
 let g:lsp_async_completion = 1
 if has('nvim')
     let g:lsp_highlights_enabled = 0
@@ -467,7 +468,7 @@ if executable('yaml-language-server')
                     \   'hover': v:true,
                     \   'completion': v:true,
                     \   'customTags': [],
-                    \   'schemas': {'https://raw.githubusercontent.com/docker/compose/master/compose/config/config_schema_compose_spec.json': '/docker-compose.*',},
+                    \   'schemas': {'https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json': '/docker-compose.*',},
                     \   'schemeStore': { 'enable': v:true },
                     \   }
                     \ }
