@@ -320,6 +320,12 @@ let g:previm_enable_realtime = 1
 "############# end previm #############
 
 "############# vim-startify settings #############
+let g:startify_lists = [
+            \ { 'type': 'dir', 'header': ['   MRU'. getcwd()] },
+            \ { 'type': 'files', 'header': ['   MRU'] },
+            \ { 'type': 'sessions', 'header': ['   Sessions'] },
+            \ { 'type': 'commands', 'header': ['   Commands'] },
+            \ ]
 let g:startify_commands = [
     \ ['Plugins Update', 'call dein#update()'],
     \ ['Plugins Recache', 'call dein#recache_runtimepath()'],
