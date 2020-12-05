@@ -321,7 +321,7 @@ let g:previm_enable_realtime = 1
 
 "############# vim-startify settings #############
 let g:startify_lists = [
-            \ { 'type': 'dir', 'header': ['   MRU'. getcwd()] },
+            \ { 'type': 'dir', 'header': ['   MRU '. getcwd()] },
             \ { 'type': 'files', 'header': ['   MRU'] },
             \ { 'type': 'sessions', 'header': ['   Sessions'] },
             \ { 'type': 'commands', 'header': ['   Commands'] },
