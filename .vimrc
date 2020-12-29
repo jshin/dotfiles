@@ -349,7 +349,9 @@ let g:gitgutter_preview_win_floating = 1
 "############# end gitgutter #############
 
 "############# vim-matchup settings #############
-let g:matchup_matchparen_offscreen = {'method': ''}
+let g:matchup_matchparen_offscreen = {'method': 'popup', 'scrolloff': 1}
+let g:matchup_matchparen_deferred = 1
+let g:matchup_matchparen_deferred_show_delay = 100
 "############# end vim-matchup #############
 
 "############# defx.nvim settings #############
