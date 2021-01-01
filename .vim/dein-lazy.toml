@@ -57,22 +57,8 @@ repo = 'Shougo/neosnippet-snippets'
 on_event = ['InsertEnter']
 
 [[plugins]]
-repo = 'Shougo/unite.vim'
-on_source = ['denite.nvim']
-hook_post_source = '''
-    call unite#custom#profile('default','context',{
-       \ 'direction':'below',
-       \ 'prompt_direction':'top'})
-    call unite#custom#source('file_mru', 'ignore_pattern', '\v^gina:')
-'''
-
-[[plugins]]
 repo = 'Shougo/neomru.vim'
 on_source = ['denite.nvim']
-
-[[plugins]]
-repo = 'Shougo/unite-outline'
-on_source = ['unite.vim', 'denite.nvim']
 
 [[plugins]]
 repo = 'mattn/webapi-vim'
