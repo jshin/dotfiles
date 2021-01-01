@@ -212,7 +212,7 @@ nnoremap <silent> <Leader>b :<C-u>Denite buffer file file_mru<CR>
 nnoremap <silent> <Leader>f :<C-u>DeniteBufferDir -buffer-name=files file<CR>
 nnoremap <silent> <Leader>c :<C-u>Denite command_history<CR>
 nnoremap <silent> <Leader>j :<C-u>Denite jump<CR>
-nnoremap <silent> <Leader>o :<C-u>Denite unite:outline<CR>
+nnoremap <silent> <Leader>o :<C-u>Denite outline<CR>
 nnoremap <silent> <Leader>r :<C-u>Denite file/rec<CR>
 
 autocmd FileType denite call s:denite_settings()

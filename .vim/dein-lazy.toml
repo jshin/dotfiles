@@ -101,6 +101,7 @@ call denite#custom#var('grep', {
     \ })
 call denite#custom#var('file/rec', 'command',
     \ ['rg', '--files', '--glob', '!.git', '--color', 'never'])
+call denite#custom#var('outline', 'ignore_types', ['v', 's', 'c', 'm'])
 if has('nvim')
 call denite#custom#option('default', {
     \ 'source_names': 'short'})
