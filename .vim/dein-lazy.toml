@@ -28,14 +28,6 @@ hook_source = '''
 '''
 
 [[plugins]]
-repo = 'roxma/nvim-yarp'
-if = '''has('python3')'''
-
-[[plugins]]
-repo = 'roxma/vim-hug-neovim-rpc'
-if = '''has('python3')'''
-
-[[plugins]]
 repo = 'Shougo/neco-syntax'
 on_source = 'deoplete.nvim'
 
@@ -44,16 +36,8 @@ repo = 'Shougo/neco-vim'
 on_ft = 'vim'
 
 [[plugins]]
-repo = 'ujihisa/neco-look'
-on_ft = ['tex', 'text', 'markdown']
-
-[[plugins]]
 repo = 'Shougo/neosnippet.vim'
 depends = 'neosnippet-snippets'
-on_event = ['InsertEnter']
-
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
 on_event = ['InsertEnter']
 
 [[plugins]]
@@ -61,31 +45,13 @@ repo = 'Shougo/neomru.vim'
 on_source = ['denite.nvim']
 
 [[plugins]]
-repo = 'mattn/webapi-vim'
-
-[[plugins]]
-repo = 'basyura/twibill.vim'
-
-[[plugins]]
 repo = 'basyura/Tweetvim'
 depends = ['webapi-vim', 'open-browser.vim', 'twibill.vim']
 on_cmd = ['TweetVimSay', 'TweetVimCommandSay', 'TweetVimHomeTimeline']
 
 [[plugins]]
-repo = 'cespare/vim-toml'
-on_ft = 'toml'
-
-[[plugins]]
-repo = 'jshin/vim-go-syntax'
-on_ft = 'go'
-
-[[plugins]]
 repo = 'mattn/vim-goimports'
 on_ft = 'go'
-
-[[plugins]]
-repo = 'othree/yajs.vim'
-on_ft = 'javascript'
 
 [[plugins]]
 repo = 'previm/previm'
