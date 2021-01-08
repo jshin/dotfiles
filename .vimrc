@@ -214,6 +214,7 @@ nnoremap <silent> <Leader>c :<C-u>Denite command_history<CR>
 nnoremap <silent> <Leader>j :<C-u>Denite jump<CR>
 nnoremap <silent> <Leader>o :<C-u>Denite outline<CR>
 nnoremap <silent> <Leader>r :<C-u>Denite file/rec<CR>
+nnoremap <silent> <Leader>g :<C-u>Denite grep<CR>
 
 autocmd FileType denite call s:denite_settings()
 function! s:denite_settings() abort
@@ -304,6 +305,7 @@ set hlsearch
 map n <Plug>(is-nohl)<Plug>(anzu-n-with-echo)
 map N <Plug>(is-nohl)<Plug>(anzu-N-with-echo)
 "############# end is.vim #############
+let g:traces_preview_window = "vertical botright new"
 
 "############# tweetvim setting #############
 autocmd FileType tweetvim call s:tweetvim_my_setting()
