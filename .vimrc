@@ -418,169 +418,123 @@ augroup LightlineOnLSP
     autocmd  User lsp_diagnostics_updated call lightline#update()
 augroup END
 
-if executable('gopls')
-    augroup LspGo
-        autocmd!
-        autocmd User lsp_setup call lsp#register_server({
-                 \ 'name': 'go-lang',
-                 \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
-                 \ 'allowlist': ['go'],
-                 \ })
-        autocmd FileType go call s:lsp_keybinds()
-    augroup END
+let g:lsp_settings = {
+            \ 'bash-language-server': {
+            \   'disabled': 1,
+            \ },
+            \ 'pyls': {
+            \   'workspace_config': {
+            \       'pyls': {'plugins': {
+            \       'pyflakes': {'enabled': v:true},
+            \       'black': {'enabled': v:true},}}}
+            \ },
+            \ 'yaml-language-server': {
+            \   'allowlist': ['yaml', 'yaml.docker-compose'],
+            \   'workspace_config': {
+            \       'yaml': {
+            \           'validate': v:true,
+            \           'hover': v:true,
+            \           'completion': v:true,
+            \           'schmes': {'https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json': '/docker-compose.*',},
+            \           'schemeStore': {'enable': v:true},
+            \       }
+            \   }
+            \ },
+            \ 'intelephense': {
+            \   'initialization_options': {'storagePath': expand('~/.cache/intelephense/')},
+            \   'workspace_config': {'intelephense': {
+            \       'files': {'associations': ['*.php', '*.phtml']},
+            \       'completion': {'insertUserDeclaration': v:true,
+            \       'fullyQualifyGlobalConstantsAndFunctions': v:false},
+            \       'diagnostics': {'deprecated': v:false},
+            \           'stubs': [
+            \           'apache',
+            \           'bcmath',
+            \           'bz2',
+            \           'calender',
+            \           'com_dotnet',
+            \           'Core',
+            \           'ctype',
+            \           'curl',
+            \           'date',
+            \           'dba',
+            \           'dom',
+            \           'enchant',
+            \           'exif',
+            \           'fileinfo',
+            \           'filter',
+            \           'fpm',
+            \           'ftp',
+            \           'gd',
+            \           'hash',
+            \           'iconv',
+            \           'imap',
+            \           'interbase',
+            \           'intl',
+            \           'json',
+            \           'ldap',
+            \           'libxml',
+            \           'mbstring',
+            \           'mcrypt',
+            \           'meta',
+            \           'mssql',
+            \           'mysql',
+            \           'oci8',
+            \           'odbc',
+            \           'openssl',
+            \           'pcntl',
+            \           'pcre',
+            \           'PDO',
+            \           'pdo_ibm',
+            \           'pdo_mysql',
+            \           'pdo_pgsql',
+            \           'pdo_sqlite',
+            \           'pgsql',
+            \           'Phar',
+            \           'posix',
+            \           'pspell',
+            \           'readline',
+            \           'recode',
+            \           'Reflection',
+            \           'regex',
+            \           'session',
+            \           'session',
+            \           'shmop',
+            \           'SimpleXML',
+            \           'snmp',
+            \           'soap',
+            \           'sockets',
+            \           'sodium',
+            \           'SPL',
+            \           'sqlite3',
+            \           'standard',
+            \           'superglobals',
+            \           'sybase',
+            \           'sysvmsg',
+            \           'sysvsem',
+            \           'sysvshm',
+            \           'tidy',
+            \           'tokenizer',
+            \           'wddx',
+            \           'xml',
+            \           'xmlreader',
+            \           'xmlrpc',
+            \           'xmlwriter',
+            \           'Zend OPcache',
+            \           'zip',
+            \           'zlib']
+            \ }}
+            \ }
+            \}
 
-endif
-
-if executable('pyls')
-    augroup LspPy
-        autocmd!
-        autocmd User lsp_setup call lsp#register_server({
-                   \ 'name': 'python',
-                   \ 'cmd': {server_info->['pyls']},
-                   \ 'allowlist': ['python'],
-                   \ 'workspace_config': {'pyls': {'plugins': {
-                   \ 'pyflakes': {'enabled': v:true},
-                   \ 'black': {'enabled': v:true},}}}
-                   \ })
-        autocmd FileType python call s:lsp_keybinds()
-    augroup END
-endif
-
-if executable('bash-language-server')
-    augroup LspBash
-        autocmd User lsp_setup call lsp#register_server({
-                    \ 'name': 'bash',
-                    \ 'cmd': {server_info->[&shell, &shellcmdflag, 'bash-language-server start']},
-                    \ 'allowlist': ['sh'],
-                    \ })
-        autocmd FileType sh call s:lsp_keybinds()
-    augroup END
-endif
-
-if executable('docker-langserver')
-    autocmd User lsp_setup call lsp#register_server({
-                \ 'name': 'dockerfile',
-                \ 'cmd': {server_info->[&shell, &shellcmdflag, 'docker-langserver --stdio']},
-                \ 'allowlist': ['dockerfile'],
-                \ })
-endif
-
-if executable('yaml-language-server')
-    augroup LspYaml
-        autocmd!
-        autocmd User lsp_setup call lsp#register_server({
-                    \ 'name': 'yaml-language-server',
-                    \ 'cmd': {server_info->['yaml-language-server', '--stdio']},
-                    \ 'allowlist': ['yaml', 'yaml.docker-compose'],
-                    \   'workspace_config': {
-                    \   'yaml': {
-                    \   'validate': v:true,
-                    \   'hover': v:true,
-                    \   'completion': v:true,
-                    \   'customTags': [],
-                    \   'schemas': {'https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json': '/docker-compose.*',},
-                    \   'schemeStore': { 'enable': v:true },
-                    \   }
-                    \ }
-                    \ })
-        autocmd FileType yaml call s:lsp_keybinds()
-    augroup END
-endif
-
-if executable('intelephense')
-    augroup LspPHP
-        autocmd!
-        autocmd User lsp_setup call lsp#register_server({
-                    \ 'name': 'php',
-                    \ 'cmd': {server_info->['node', expand('~/.nodebrew/current/lib/node_modules/intelephense/lib/intelephense.js'), '--stdio']},
-                    \ 'initialization_options': {'storagePath': expand('~/.cache/intelephense/')},
-                    \ 'allowlist': ['php'],
-                    \ 'workspace_config': {'intelephense': {
-                    \ 'files': {'associations': ['*.php', '*.phtml']},
-                    \ 'completion': {'insertUserDeclaration': v:true,
-                    \ 'fullyQualifyGlobalConstantsAndFunctions': v:false},
-                    \ 'diagnostics': {'deprecated': v:false},
-                    \ 'stubs': [
-                    \ 'apache',
-                    \ 'bcmath',
-                    \ 'bz2',
-                    \ 'calender',
-                    \ 'com_dotnet',
-                    \ 'Core',
-                    \ 'ctype',
-                    \ 'curl',
-                    \ 'date',
-                    \ 'dba',
-                    \ 'dom',
-                    \ 'enchant',
-                    \ 'exif',
-                    \ 'fileinfo',
-                    \ 'filter',
-                    \ 'fpm',
-                    \ 'ftp',
-                    \ 'gd',
-                    \ 'hash',
-                    \ 'iconv',
-                    \ 'imap',
-                    \ 'interbase',
-                    \ 'intl',
-                    \ 'json',
-                    \ 'ldap',
-                    \ 'libxml',
-                    \ 'mbstring',
-                    \ 'mcrypt',
-                    \ 'meta',
-                    \ 'mssql',
-                    \ 'mysql',
-                    \ 'oci8',
-                    \ 'odbc',
-                    \ 'openssl',
-                    \ 'pcntl',
-                    \ 'pcre',
-                    \ 'PDO',
-                    \ 'pdo_ibm',
-                    \ 'pdo_mysql',
-                    \ 'pdo_pgsql',
-                    \ 'pdo_sqlite',
-                    \ 'pgsql',
-                    \ 'Phar',
-                    \ 'posix',
-                    \ 'pspell',
-                    \ 'readline',
-                    \ 'recode',
-                    \ 'Reflection',
-                    \ 'regex',
-                    \ 'session',
-                    \ 'session',
-                    \ 'shmop',
-                    \ 'SimpleXML',
-                    \ 'snmp',
-                    \ 'soap',
-                    \ 'sockets',
-                    \ 'sodium',
-                    \ 'SPL',
-                    \ 'sqlite3',
-                    \ 'standard',
-                    \ 'superglobals',
-                    \ 'sybase',
-                    \ 'sysvmsg',
-                    \ 'sysvsem',
-                    \ 'sysvshm',
-                    \ 'tidy',
-                    \ 'tokenizer',
-                    \ 'wddx',
-                    \ 'xml',
-                    \ 'xmlreader',
-                    \ 'xmlrpc',
-                    \ 'xmlwriter',
-                    \ 'Zend OPcache',
-                    \ 'zip',
-                    \ 'zlib'
-                    \ ]}}
-                    \ })
-        autocmd FileType php call s:lsp_keybinds()
-    augroup END
-endif
+augroup LspPHP
+    autocmd FileType dockerfile call s:lsp_keybinds()
+    autocmd FileType go call s:lsp_keybinds()
+    autocmd FileType php call s:lsp_keybinds()
+    autocmd FileType python call s:lsp_keybinds()
+    autocmd FileType sh call s:lsp_keybinds()
+    autocmd FileType yaml call s:lsp_keybinds()
+augroup END
 
 function! s:lsp_keybinds() abort
     nmap <buffer> gd <Plug>(lsp-definition)

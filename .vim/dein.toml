@@ -49,6 +49,9 @@ if = '''!has('nvim')'''
 repo = 'prabirshrestha/vim-lsp'
 
 [[plugins]]
+repo = 'mattn/vim-lsp-settings'
+
+[[plugins]]
 repo = 'machakann/vim-sandwich'
 
 [[plugins]]
