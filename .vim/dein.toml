@@ -41,8 +41,9 @@ repo = 'mhinz/vim-startify'
 [[plugins]]
 repo = 'tyru/caw.vim'
 
-# [[plugins]]
-# repo = 'markonm/traces.vim'
+[[plugins]]
+repo = 'markonm/traces.vim'
+if = '''!has('nvim')'''
 
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
