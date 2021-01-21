@@ -49,8 +49,6 @@ zstyle ':completion:*' ignore-parents parent pwd ..
 #sudo の後ろでコマンドを補完する
 zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
 
-eval "$(starship init zsh)"
-
 ####################################
 #オプション
 setopt print_eight_bit
@@ -106,6 +104,7 @@ alias ls='ls -G'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.zshrc.`hostname -s` ] && source ~/.zshrc.`hostname -s`
 
+eval "$(starship init zsh)"
 if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
     zcompile ~/.zshrc
 fi
