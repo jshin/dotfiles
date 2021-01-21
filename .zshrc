@@ -7,6 +7,7 @@ export HOMEBREW_NO_ANALYTICS=1
 export ENHANCD_DISABLE_HOME=1
 export FZF_DEFAULT_OPTS='--height 40% --reverse'
 export PATH=$PATH:$HOME/.nodebrew/current/bin
+export PATH="$HOME/.anyenv/bin:$PATH"
 
 if [[ ! -d ~/.zplug ]]; then
     git clone https://github.com/zplug/zplug ~/.zplug
