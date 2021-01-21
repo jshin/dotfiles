@@ -105,6 +105,7 @@ alias ls='ls -G'
 [ -f ~/.zshrc.`hostname -s` ] && source ~/.zshrc.`hostname -s`
 
 eval "$(starship init zsh)"
+eval "$(anyenv init -)"
 if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
     zcompile ~/.zshrc
 fi
