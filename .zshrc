@@ -76,20 +76,18 @@ setopt extended_glob
 
 ######################################
 #aliases
+alias cp='cp -i'
+alias grep='grep --color=auto'
+alias mkdir='mkdir -p'
+alias mv='mv -i'
+alias rm='rm -i'
+alias sudo='sudo '
+
 alias la='ls -a'
 alias ll='ls -l'
 alias lla='ls -la'
-
-alias mkdir='mkdir -p'
-
-alias javac='javac -J-Dfile.encoding=UTF-8'
-alias java='java -Dfile.encoding=UTF-8'
-alias mv='mv -i'
-alias cp='cp -i'
-alias rm='rm -i'
 alias lg='lazygit'
 alias tweetvim='vim -c TweetVimHomeTimeline'
-alias sudo='sudo '
 
 #グローバルエイリアス
 alias -g L='| less'
