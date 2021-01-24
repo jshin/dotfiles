@@ -1,12 +1,10 @@
 export LANG=ja_JP.UTF-8
-export GREP_OPTIONS='--color=auto'
 export VISUAL="/usr/local/bin/nvim"
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export HOMEBREW_NO_ANALYTICS=1
 export ENHANCD_DISABLE_HOME=1
 export FZF_DEFAULT_OPTS='--height 40% --reverse'
-export PATH=$PATH:$HOME/.nodebrew/current/bin
 export PATH="$HOME/.anyenv/bin:$PATH"
 
 if [[ ! -d ~/.zplug ]]; then
