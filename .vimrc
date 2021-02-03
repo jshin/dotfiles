@@ -76,11 +76,11 @@ set t_Co=256
 set updatetime=500
 "setting for vim on tmux
 set t_ut=
+set background=dark
 if has('termguicolors')
     set termguicolors
     colorscheme iceberg
 else
-    set background=dark
     colorscheme hybrid
 endif
 
@@ -393,7 +393,6 @@ endif
 let g:lsp_diagnostics_enabled = 1
 let g:lsp_diagnostics_float_cursor = 1
 let g:lsp_highlight_references_delay = 2000
-let g:lsp_async_completion = 1
 if has('nvim')
     let g:lsp_highlights_enabled = 0
     let g:lsp_virtual_text_enabled=0
@@ -419,9 +418,6 @@ augroup LightlineOnLSP
 augroup END
 
 let g:lsp_settings = {
-            \ 'bash-language-server': {
-            \   'disabled': 1,
-            \ },
             \ 'pyls': {
             \   'workspace_config': {
             \       'pyls': {'plugins': {
