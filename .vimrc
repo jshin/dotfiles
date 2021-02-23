@@ -220,6 +220,8 @@ autocmd FileType denite call s:denite_settings()
 function! s:denite_settings() abort
     nnoremap <silent><buffer><expr> <CR>
                 \ denite#do_map('do_action')
+    nnoremap <silent><buffer><expr> a
+                \ denite#do_map('choose_action')
     nnoremap <silent><buffer><expr> p
                 \ denite#do_map('do_action', 'preview')
     nnoremap <silent><buffer><expr> q
@@ -349,6 +351,13 @@ let g:startify_custom_header = [
 "############# gitgutter settings #############
 let g:gitgutter_preview_win_floating = 1
 "############# end gitgutter #############
+
+"############# git-messenger settings #############
+if !has('nvim')
+    let g:git_messenger_close_on_cursor_moved = v:false
+endif
+nmap <Leader>gm <Plug>(git-messenger)
+"############# end git-messenger #############
 
 "############# vim-matchup settings #############
 let g:matchup_matchparen_offscreen = {'method': 'popup', 'scrolloff': 1}
@@ -523,7 +532,7 @@ let g:lsp_settings = {
             \ }
             \}
 
-augroup LspPHP
+augroup MyLSP
     autocmd FileType dockerfile call s:lsp_keybinds()
     autocmd FileType go call s:lsp_keybinds()
     autocmd FileType php call s:lsp_keybinds()
