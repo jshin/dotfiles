@@ -362,7 +362,7 @@ nmap <Leader>gm <Plug>(git-messenger)
 "############# vim-matchup settings #############
 let g:matchup_matchparen_offscreen = {'method': 'popup', 'scrolloff': 1}
 let g:matchup_matchparen_deferred = 1
-let g:matchup_matchparen_deferred_show_delay = 100
+let g:matchup_matchparen_deferred_show_delay = 200
 "############# end vim-matchup #############
 
 "############# defx.nvim settings #############
@@ -401,7 +401,8 @@ endif
 "############# vim-lsp settings #############
 let g:lsp_diagnostics_enabled = 1
 let g:lsp_diagnostics_float_cursor = 1
-let g:lsp_highlight_references_delay = 2000
+let g:lsp_document_highlight_enabled = 0
+let g:lsp_diagnostics_float_delay = 1000
 if has('nvim')
     let g:lsp_highlights_enabled = 0
     let g:lsp_virtual_text_enabled=0
@@ -539,6 +540,7 @@ augroup MyLSP
     autocmd FileType python call s:lsp_keybinds()
     autocmd FileType sh call s:lsp_keybinds()
     autocmd FileType yaml call s:lsp_keybinds()
+    autocmd FileType c call s:lsp_keybinds()
 augroup END
 
 function! s:lsp_keybinds() abort
