@@ -91,3 +91,6 @@ if = '''has('python3')'''
 
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'ruanyl/vim-gh-line'
