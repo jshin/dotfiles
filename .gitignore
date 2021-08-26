@@ -1,7 +1,6 @@
 ### vim ###
 *.swp
 .vim/bundles/
-.vim/undo/
 .vim/session/
 .config/nvim/ftplugin
 
