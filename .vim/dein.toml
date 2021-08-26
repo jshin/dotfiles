@@ -94,3 +94,6 @@ repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
 repo = 'ruanyl/vim-gh-line'
+
+[[plugins]]
+repo = 'bfrg/vim-cpp-modern'
