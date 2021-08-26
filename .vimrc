@@ -68,9 +68,8 @@ endif
 set fileencoding=utf-8
 set fileencodings=utf-8,cp932,euc-jp
 set fileformats=unix,dos,mac
-set ambiwidth=double
+set ambiwidth=single
 set foldlevelstart=99
-set undodir=~/.vim/undo
 set undofile
 set t_Co=256
 set updatetime=500
@@ -82,6 +81,12 @@ if has('termguicolors')
     colorscheme iceberg
 else
     colorscheme hybrid
+endif
+
+if has('nvim')
+    set undodir=~/.cache/undo/nvim
+else
+    set undodir=~/.cache/undo/vim
 endif
 
 "setting for access
@@ -541,6 +546,7 @@ augroup MyLSP
     autocmd FileType sh call s:lsp_keybinds()
     autocmd FileType yaml call s:lsp_keybinds()
     autocmd FileType c call s:lsp_keybinds()
+    autocmd FileType cpp call s:lsp_keybinds()
 augroup END
 
 function! s:lsp_keybinds() abort
