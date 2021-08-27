@@ -11,7 +11,7 @@ let g:loaded_vimballPlugin = 1
 
 if has('vim_starting')
     "Required
-    set runtimepath+=~/.vim/bundles/repos/github.com/Shougo/dein.vim
+    set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
     if !has('nvim')
         "In the insert mode, a cursor is vertical bar
@@ -23,8 +23,8 @@ if has('vim_starting')
     endif
 endif
 
-if dein#load_state('~/.vim/bundles/')
-    call dein#begin('~/.vim/bundles')
+if dein#load_state('~/.cache/dein/')
+    call dein#begin('~/.cache/dein/')
     call dein#load_toml('~/.vim/dein.toml', {'lazy':0})
     call dein#load_toml('~/.vim/dein-lazy.toml', {'lazy':1})
     call dein#end()

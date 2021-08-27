@@ -19,10 +19,10 @@ git config --global user.email '9659726+jshin@users.noreply.github.com'
 ln -sfv $BASE_DIR/.vim/after/ftplugin $BASE_DIR/.config/nvim
 
 # dein.vim install
-if [ ! -d "${BASE_DIR}/.vim/bundles" ]; then
+if [ ! -d "${HOME}/.cache/dein" ]; then
     echo "Start installing dein.vim..."
-    mkdir $BASE_DIR/.vim/bundles
-    cd $BASE_DIR/.vim/bundles
+    mkdir ${HOME}/.cache/dein
+    cd ${HOME}/.cache/dein
     curl https://raw.githubusercontent.com/shougo/dein.vim/master/bin/installer.sh > installer.sh
     sh ./installer.sh .
     cd -
