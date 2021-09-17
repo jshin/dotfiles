@@ -182,33 +182,33 @@ endfunction
 call lexima#init()
 
 "############# deoplete setting #############
-" let g:deoplete#enable_at_startup = 1
-inoremap <expr><CR> pumvisible() ? deoplete#close_popup() : lexima#expand('<LT>CR>', 'i')
-inoremap <silent><expr> <TAB>
-            \ pumvisible() ? "\<C-n>" :
-            \ <SID>check_back_space() ? "\<TAB>" :
-            \ deoplete#mappings#manual_complete()
-inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
-
-inoremap <expr><C-g> deoplete#undo_completion()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+"let g:deoplete#enable_at_startup = 1
+" inoremap <expr><CR> pumvisible() ? deoplete#close_popup() : lexima#expand('<LT>CR>', 'i')
+" inoremap <silent><expr> <TAB>
+"          \ pumvisible() ? "\<C-n>" :
+"          \ <SID>check_back_space() ? "\<TAB>" :
+"          \ deoplete#mappings#manual_complete()
+" inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
+" inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
+"
+" inoremap <expr><C-g> deoplete#undo_completion()
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 "############# end deoplete #############
 
-"############# neosnippet settings #############
-let g:neosnippet#snippets_directory = '~/.vim/bundles/repos/github.com/fatih/vim-go/gosnippets/snippets'
-" Plugin key-mappings.
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_target)
-
-imap <expr><TAB> pumvisible() ? "\<C-n>" : neosnippet#jumpable() ? "\<Plug>(neosnippet_jump_or_expand)" : "\<TAB>"
-smap <expr><TAB> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-" For conceal markers.
-if has('conceal')
-    set conceallevel=2 concealcursor=niv
-endif
+" "############# neosnippet settings #############
+" let g:neosnippet#snippets_directory = '~/.vim/bundles/repos/github.com/fatih/vim-go/gosnippets/snippets'
+" " Plugin key-mappings.
+" imap <C-k> <Plug>(neosnippet_expand_or_jump)
+" smap <C-k> <Plug>(neosnippet_expand_or_jump)
+" xmap <C-k> <Plug>(neosnippet_expand_target)
+"
+" imap <expr><TAB> pumvisible() ? "\<C-n>" : neosnippet#jumpable() ? "\<Plug>(neosnippet_jump_or_expand)" : "\<TAB>"
+" smap <expr><TAB> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+" " For conceal markers.
+" if has('conceal')
+"     set conceallevel=2 concealcursor=niv
+" endif
 "############# end neosnippet #############
 
 "############# denite setting #############
@@ -433,6 +433,9 @@ augroup LightlineOnLSP
 augroup END
 
 let g:lsp_settings = {
+            \ 'gopls': {
+            \   'initialization_options': {'usePlaceholders': v:true},
+            \ },
             \ 'pyls': {
             \   'workspace_config': {
             \       'pyls': {'plugins': {
