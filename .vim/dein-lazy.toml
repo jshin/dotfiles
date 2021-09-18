@@ -111,3 +111,7 @@ endif
 [[plugins]]
 repo = 'rhysd/git-messenger.vim'
 on_cmd = 'GitMessenger'
+
+[[plugins]]
+repo = 'google/vim-jsonnet'
+on_ft = 'jsonnet'
