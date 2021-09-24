@@ -131,9 +131,9 @@ call ddc#custom#patch_global('sourceOptions', {
     \ 'around': {'mark': 'A'},
     \ 'look': {'mark': 'look'},
     \ 'necovim': {'mark': 'vim'},
-    \ 'ddc-vim-lsp': {
+    \ 'vim-lsp': {
     \   'mark': 'lsp',
-    \   'forceCompletionPattern': '\\.|:|->',
+    \   'forceCompletionPattern': '\.\w*|:\w*|->\w*',
     \   'minAutoCompleteLength': 1
     \ },
     \ 'vsnip': {
@@ -148,7 +148,7 @@ call ddc#custom#patch_filetype(
 
 call ddc#custom#patch_filetype(
     \ ['c', 'cpp', 'dockerfile', 'go', 'php', 'python', 'sh', 'yaml'], 'sources',
-    \ ['vsnip', 'ddc-vim-lsp', 'around']
+    \ ['vsnip', 'vim-lsp', 'around']
     \ )
 
 inoremap <silent><expr> <TAB>
