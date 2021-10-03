@@ -162,6 +162,14 @@ augroup vimrc_check_time
     autocmd InsertEnter * checktime
 augroup END
 
+" for WSL2
+if system('uname -a | grep microsoft') != ''
+    augroup myYank
+        autocmd!
+        autocmd TextYankPost * :call system('clip.exe', @")
+    augroup END
+endif
+
 "clear blanks on end of the line
 function! s:remove_dust()
     if &filetype != 'markdown'
