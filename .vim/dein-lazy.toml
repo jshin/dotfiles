@@ -134,7 +134,6 @@ call ddc#custom#patch_global('sourceOptions', {
     \ 'vim-lsp': {
     \   'mark': 'lsp',
     \   'forceCompletionPattern': '\.\w*|:\w*|->\w*',
-    \   'minAutoCompleteLength': 1
     \ },
     \ 'vsnip': {
     \   'mark': 'snip'
