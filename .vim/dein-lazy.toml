@@ -150,6 +150,7 @@ call ddc#custom#patch_filetype(
     \ ['vsnip', 'vim-lsp', 'around']
     \ )
 
+call lexima#init()
 inoremap <silent><expr> <TAB>
     \ pumvisible() ? "\<C-n>" :
     \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
