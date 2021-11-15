@@ -179,7 +179,6 @@ function! s:check_back_space() abort
 endfunction
 "############# end functions #############
 
-call lexima#init()
 
 "############# deoplete setting #############
 "let g:deoplete#enable_at_startup = 1
@@ -405,6 +404,7 @@ endif
 
 "############# vim-lsp settings #############
 let g:lsp_diagnostics_enabled = 1
+let g:lsp_settings_enable_suggestions = 0
 let g:lsp_diagnostics_float_cursor = 1
 let g:lsp_document_highlight_enabled = 0
 let g:lsp_diagnostics_float_delay = 1000
