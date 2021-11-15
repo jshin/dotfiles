@@ -197,3 +197,6 @@ smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l
 imap <expr> <Tab> pumvisible() ? "\<C-n>" : vsnip#jumpable(1) ? "\<Plug>(vsnip-jump-next)" : "\<Tab>"
 smap <expr> <Tab> vsnip#jumpable(1) ? "\<Plug>(vsnip-jump-next)" : "\<Tab>"
 '''
+
+repo = 'google/vim-jsonnet'
+on_ft = 'jsonnet'
