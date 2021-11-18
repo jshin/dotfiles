@@ -200,3 +200,7 @@ smap <expr> <Tab> vsnip#jumpable(1) ? "\<Plug>(vsnip-jump-next)" : "\<Tab>"
 
 [[plugins]]
 repo = 'rafamadriz/friendly-snippets'
+
+[[plugins]]
+repo = 'google/vim-jsonnet'
+on_ft = 'jsonnet'
