@@ -190,10 +190,13 @@ on_source = 'ddc.vim'
 [[plugins]]
 repo = 'hrsh7th/vim-vsnip'
 on_event = ['InsertEnter']
-depends = ['vim-vsnip-integ']
+depends = ['vim-vsnip-integ', 'friendly-snippets']
 hook_source = '''
 imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
 smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
 imap <expr> <Tab> pumvisible() ? "\<C-n>" : vsnip#jumpable(1) ? "\<Plug>(vsnip-jump-next)" : "\<Tab>"
 smap <expr> <Tab> vsnip#jumpable(1) ? "\<Plug>(vsnip-jump-next)" : "\<Tab>"
 '''
+
+[[plugins]]
+repo = 'rafamadriz/friendly-snippets'
