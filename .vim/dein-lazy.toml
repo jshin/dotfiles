@@ -1,31 +1,31 @@
-[[plugins]]
-repo = 'Shougo/deoplete.nvim'
-if = '''has('python3')'''
-depends = ['nvim-yarp', 'vim-hug-neovim-rpc']
-on_event = ['InsertEnter']
-hook_source = '''
-    call deoplete#initialize()
-    call deoplete#custom#option({
-        \ 'smart_case': v:true,
-        \ 'skip_multibyte': v:true,
-        \ 'num_processes': 6,
-        \ })
-    call deoplete#custom#option('keyword_patterns', {
-        \ 'php': '\k+',
-        \ 'markdown': '\\?[a-zA-Z_]+',
-        \ })
-    call deoplete#custom#source('_', 'converters', [
-        \ 'converter_remove_overlap',
-        \ 'converter_truncate_abbr',
-        \ 'converter_truncate_menu',
-        \ ])
-    call deoplete#custom#option('sources', {
-        \ 'go': ['neosnippet', 'lsp', 'file'],
-        \ 'php': ['neosnippet', 'lsp', 'file'],
-        \ 'python': ['neosnippet', 'lsp', 'file', 'around'],
-        \ })
-    call deoplete#enable()
-'''
+# [[plugins]]
+# repo = 'Shougo/deoplete.nvim'
+# if = '''has('python3')'''
+# depends = ['nvim-yarp', 'vim-hug-neovim-rpc']
+# on_event = ['InsertEnter']
+# hook_source = '''
+#     call deoplete#initialize()
+#     call deoplete#custom#option({
+#         \ 'smart_case': v:true,
+#         \ 'skip_multibyte': v:true,
+#         \ 'num_processes': 6,
+#         \ })
+#     call deoplete#custom#option('keyword_patterns', {
+#         \ 'php': '\k+',
+#         \ 'markdown': '\\?[a-zA-Z_]+',
+#         \ })
+#     call deoplete#custom#source('_', 'converters', [
+#         \ 'converter_remove_overlap',
+#         \ 'converter_truncate_abbr',
+#         \ 'converter_truncate_menu',
+#         \ ])
+#     call deoplete#custom#option('sources', {
+#         \ 'go': ['vsnip', 'lsp', 'file'],
+#         \ 'php': ['neosnippet', 'lsp', 'file'],
+#         \ 'python': ['neosnippet', 'lsp', 'file', 'around'],
+#         \ })
+#     call deoplete#enable()
+# '''
 
 [[plugins]]
 repo = 'Shougo/neco-syntax'
@@ -33,12 +33,12 @@ on_source = 'deoplete.nvim'
 
 [[plugins]]
 repo = 'Shougo/neco-vim'
-on_ft = 'vim'
+on_ft = ['vim', 'toml']
 
-[[plugins]]
-repo = 'Shougo/neosnippet.vim'
-depends = 'neosnippet-snippets'
-on_event = ['InsertEnter']
+# [[plugins]]
+# repo = 'Shougo/neosnippet.vim'
+# depends = 'neosnippet-snippets'
+# on_event = ['InsertEnter']
 
 [[plugins]]
 repo = 'Shougo/neomru.vim'
@@ -78,12 +78,12 @@ call defx#custom#column('icon', {
     \ })
 '''
 
-[[plugins]]
-repo = 'lighttiger2505/deoplete-vim-lsp'
-on_source = 'deoplete.nvim'
-hook_source = '''
-let g:deoplete#sources#vim_lsp#show_info = 1
-'''
+# [[plugins]]
+# repo = 'lighttiger2505/deoplete-vim-lsp'
+# on_source = 'deoplete.nvim'
+# hook_source = '''
+# let g:deoplete#sources#vim_lsp#show_info = 1
+# '''
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
@@ -111,6 +111,95 @@ endif
 [[plugins]]
 repo = 'rhysd/git-messenger.vim'
 on_cmd = 'GitMessenger'
+
+[[plugins]]
+repo = 'vim-denops/denops.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc.vim'
+depends = ['denops.vim']
+on_event = ['InsertEnter']
+hook_source = '''
+call ddc#custom#patch_global('sources', ['around', 'look'])
+call ddc#custom#patch_global('sourceOptions', {
+    \ '_': {
+    \   'ignoreCase': v:true,
+    \   'matchers': ['matcher_fuzzy', 'matcher_length'],
+    \   'sorters': ['sorter_rank'],
+    \   'converters': ['converter_remove_overlap'],
+    \ },
+    \ 'around': {'mark': 'A'},
+    \ 'look': {'mark': 'look'},
+    \ 'necovim': {'mark': 'vim'},
+    \ 'vim-lsp': {
+    \   'mark': 'lsp',
+    \   'forceCompletionPattern': '\.\w*|:\w*|->\w*',
+    \ },
+    \ 'vsnip': {
+    \   'mark': 'snip'
+    \ },
+    \ })
+
+call ddc#custom#patch_filetype(
+    \ ['vim', 'toml'], 'sources',
+    \ ['necovim', 'around']
+    \ )
+
+call ddc#custom#patch_filetype(
+    \ ['c', 'cpp', 'dockerfile', 'go', 'php', 'python', 'sh', 'yaml'], 'sources',
+    \ ['vsnip', 'vim-lsp', 'around']
+    \ )
+
+call lexima#init()
+inoremap <silent><expr> <TAB>
+    \ pumvisible() ? "\<C-n>" :
+    \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+    \ "\<TAB>" : ddc#manual_complete()
+
+call ddc#enable()
+'''
+
+[[plugins]]
+repo = 'Shougo/ddc-around'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'shun/ddc-vim-lsp'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'octaltree/cmp-look'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-sorter_rank'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'matsui54/ddc-matcher_fuzzy'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-matcher_length'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-converter_remove_overlap'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'hrsh7th/vim-vsnip'
+on_event = ['InsertEnter']
+depends = ['vim-vsnip-integ', 'friendly-snippets']
+hook_source = '''
+imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+imap <expr> <Tab> pumvisible() ? "\<C-n>" : vsnip#jumpable(1) ? "\<Plug>(vsnip-jump-next)" : "\<Tab>"
+smap <expr> <Tab> vsnip#jumpable(1) ? "\<Plug>(vsnip-jump-next)" : "\<Tab>"
+'''
+
+[[plugins]]
+repo = 'rafamadriz/friendly-snippets'
 
 [[plugins]]
 repo = 'google/vim-jsonnet'
