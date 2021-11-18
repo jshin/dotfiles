@@ -100,3 +100,7 @@ repo = 'ruanyl/vim-gh-line'
 
 [[plugins]]
 repo = 'bfrg/vim-cpp-modern'
+
+[[plugins]]
+repo = 'lambdalisue/pastefix.vim'
+if = '''has('nvim')'''
