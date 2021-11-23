@@ -70,16 +70,10 @@ repo = 'rhysd/clever-f.vim'
 repo = 'othree/yajs.vim'
 
 [[plugins]]
-repo = 'basyura/twibill.vim'
-
-[[plugins]]
 repo = 'jshin/vim-go-syntax'
 
 [[plugins]]
 repo = 'ujihisa/neco-look'
-
-[[plugins]]
-repo = 'mattn/webapi-vim'
 
 [[plugins]]
 repo = 'cespare/vim-toml'
@@ -91,9 +85,6 @@ if = '''has('python3')'''
 [[plugins]]
 repo = 'roxma/vim-hug-neovim-rpc'
 if = '''has('python3')'''
-
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
 repo = 'ruanyl/vim-gh-line'

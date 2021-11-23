@@ -187,37 +187,6 @@ function! s:check_back_space() abort
 endfunction
 "############# end functions #############
 
-
-"############# deoplete setting #############
-"let g:deoplete#enable_at_startup = 1
-" inoremap <expr><CR> pumvisible() ? deoplete#close_popup() : lexima#expand('<LT>CR>', 'i')
-" inoremap <silent><expr> <TAB>
-"          \ pumvisible() ? "\<C-n>" :
-"          \ <SID>check_back_space() ? "\<TAB>" :
-"          \ deoplete#mappings#manual_complete()
-" inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
-" inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
-"
-" inoremap <expr><C-g> deoplete#undo_completion()
-" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-"############# end deoplete #############
-
-" "############# neosnippet settings #############
-" let g:neosnippet#snippets_directory = '~/.vim/bundles/repos/github.com/fatih/vim-go/gosnippets/snippets'
-" " Plugin key-mappings.
-" imap <C-k> <Plug>(neosnippet_expand_or_jump)
-" smap <C-k> <Plug>(neosnippet_expand_or_jump)
-" xmap <C-k> <Plug>(neosnippet_expand_target)
-"
-" imap <expr><TAB> pumvisible() ? "\<C-n>" : neosnippet#jumpable() ? "\<Plug>(neosnippet_jump_or_expand)" : "\<TAB>"
-" smap <expr><TAB> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-" " For conceal markers.
-" if has('conceal')
-"     set conceallevel=2 concealcursor=niv
-" endif
-"############# end neosnippet #############
-
 "############# denite setting #############
 
 nnoremap <silent> <Leader>b :<C-u>Denite buffer file file_mru<CR>
@@ -319,16 +288,10 @@ set hlsearch
 map n <Plug>(is-nohl)<Plug>(anzu-n-with-echo)
 map N <Plug>(is-nohl)<Plug>(anzu-N-with-echo)
 "############# end is.vim #############
-let g:traces_preview_window = "vertical botright new"
 
-"############# tweetvim setting #############
-autocmd FileType tweetvim call s:tweetvim_my_setting()
-function! s:tweetvim_my_setting()
-    nnoremap <buffer>s :<C-u>TweetVimSay<CR>
-    nnoremap <silent>t :Unite tweetvim<CR>
-    let g:tweetvim_tweet_per_page = 300
-endfunction
-"############# end tweetvim #############
+"############# setting traces.vim #############
+let g:traces_preview_window = "vertical botright new"
+"############# end traces.vim #############
 
 "############# previm settings #############
 let g:previm_enable_realtime = 1
