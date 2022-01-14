@@ -71,6 +71,7 @@ repo = 'othree/yajs.vim'
 
 [[plugins]]
 repo = 'jshin/vim-go-syntax'
+if = '''!has('nvim')'''
 
 [[plugins]]
 repo = 'ujihisa/neco-look'
@@ -95,3 +96,8 @@ repo = 'bfrg/vim-cpp-modern'
 [[plugins]]
 repo = 'lambdalisue/pastefix.vim'
 if = '''has('nvim')'''
+
+[[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter'
+if = '''has('nvim')'''
+merged = 0
