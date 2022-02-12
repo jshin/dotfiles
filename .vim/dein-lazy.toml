@@ -96,7 +96,7 @@ call ddc#custom#patch_filetype(
     \ )
 
 call ddc#custom#patch_filetype(
-    \ ['c', 'cpp', 'dockerfile', 'go', 'php', 'python', 'sh', 'yaml'], 'sources',
+    \ ['c', 'cpp', 'dockerfile', 'go', 'php', 'python', 'sh', 'yaml', 'typescript'], 'sources',
     \ ['vsnip', 'vim-lsp', 'around']
     \ )
 
