@@ -158,3 +158,76 @@ on_ft = 'jsonnet'
 [[plugins]]
 repo = 'lambdalisue/suda.vim'
 on_cmd = ['SudaRead', 'SudaWrite']
+
+[[plugins]]
+repo = 'Shougo/ddu.vim'
+depends = ['denops.vim']
+on_source = ['denops.vim']
+hook_source = '''
+call ddu#custom#patch_global({
+    \ 'ui': 'ff',
+    \ 'sourceOptions': {
+    \   '_': {
+    \       'ignoreCase': v:true,
+    \       'matchers': ['matcher_fzf'],
+    \   },
+    \ },
+    \ 'uiParams': {
+    \   'ff': {
+    \       'prompt': '> ',
+    \       'filterSplitDirection': 'floating',
+    \       'displaySourceName': 'short',
+    \       'previewHeight': 20,
+    \   }
+    \ },
+    \ 'kindOptions': {
+    \   'file': {
+    \       'defaultAction': 'open',
+    \   },
+    \   'action': {
+    \       'defaultAction': 'do',
+    \   },
+    \ }
+    \ })
+'''
+
+[[plugins]]
+repo = 'Shougo/ddu-commands.vim'
+depends = 'ddu.vim'
+on_cmd = ['Ddu']
+
+[[plugins]]
+repo = 'Shougo/ddu-ui-ff'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-kind-file'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'yuki-yano/ddu-filter-fzf'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-action'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-file'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-file_rec'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-file_old'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-line'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'shun/ddu-source-rg'
+on_source = 'ddu.vim'
