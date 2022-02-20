@@ -287,8 +287,10 @@ endfunction
 "############# setting is.vim #############
 set incsearch
 set hlsearch
-map n <Plug>(is-nohl)<Plug>(anzu-n-with-echo)
-map N <Plug>(is-nohl)<Plug>(anzu-N-with-echo)
+if !has('nvim')
+    map n <Plug>(is-nohl)<Plug>(anzu-n-with-echo)
+    map N <Plug>(is-nohl)<Plug>(anzu-N-with-echo)
+endif
 "############# end is.vim #############
 
 "############# setting traces.vim #############
@@ -523,6 +525,7 @@ augroup MyLSP
     autocmd FileType yaml call s:lsp_keybinds()
     autocmd FileType c call s:lsp_keybinds()
     autocmd FileType cpp call s:lsp_keybinds()
+    autocmd FileType typescript call s:lsp_keybinds()
 augroup END
 
 function! s:lsp_keybinds() abort
