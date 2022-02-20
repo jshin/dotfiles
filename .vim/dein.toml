@@ -2,10 +2,6 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'Shougo/vimproc.vim'
-build = 'make'
-
-[[plugins]]
 repo = 'vim-jp/vimdoc-ja'
 
 [[plugins]]
@@ -22,9 +18,10 @@ repo = 'airblade/vim-gitgutter'
 
 [[plugins]]
 repo = 'osyo-manga/vim-anzu'
+if = '''!has('nvim')'''
 
-[[plugins]]
-repo = 'thinca/vim-quickrun'
+# [[plugins]]
+# repo = 'thinca/vim-quickrun'
 
 [[plugins]]
 repo = 'cocopon/iceberg.vim'
@@ -72,9 +69,6 @@ repo = 'othree/yajs.vim'
 [[plugins]]
 repo = 'jshin/vim-go-syntax'
 if = '''!has('nvim')'''
-
-[[plugins]]
-repo = 'ujihisa/neco-look'
 
 [[plugins]]
 repo = 'cespare/vim-toml'
