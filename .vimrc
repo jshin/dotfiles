@@ -34,7 +34,9 @@ endif
 if dein#check_install()
     call dein#install()
 endif
-"Reqired
+
+let g:dein#install_progress_type = 'floating'
+
 filetype plugin indent on
 syntax enable
 
