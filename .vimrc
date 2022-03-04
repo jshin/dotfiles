@@ -170,6 +170,11 @@ if system('uname -a | grep microsoft') != ''
         autocmd!
         autocmd TextYankPost * :call system('clip.exe', @")
     augroup END
+
+    augroup disable_ime
+        autocmd!
+        autocmd InsertLeave * call s:disable_ime_on_mintty()
+    augroup END
 endif
 
 "clear blanks on end of the line
@@ -187,6 +192,16 @@ function! s:check_back_space() abort
     let col = col('.') - 1
     return !col || getline('.')[col - 1] =~ '\s'
 endfunction
+
+function! s:disable_ime_on_mintty() abort
+    let l:tty = '/dev/'.system('ps -o tty= $(ps -o ppid= $(ps -o ppid= $$))')
+    if $TERM_PROGRAM == 'tmux'
+        silent execute "!printf '\ePtmux;\e\e[<0t\e\\' > " l:tty
+    else
+        silent execute "!printf '\e[<0t' > " l:tty
+    endif
+endfunction
+
 "############# end functions #############
 
 "############# denite setting #############
