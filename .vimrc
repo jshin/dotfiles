@@ -398,6 +398,7 @@ let g:lsp_settings_enable_suggestions = 0
 let g:lsp_diagnostics_float_cursor = 1
 let g:lsp_document_highlight_enabled = 0
 let g:lsp_diagnostics_float_delay = 1000
+let g:lsp_signature_help_enabled = 0
 if has('nvim')
     let g:lsp_highlights_enabled = 0
     let g:lsp_virtual_text_enabled=0

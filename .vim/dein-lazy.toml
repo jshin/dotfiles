@@ -138,6 +138,13 @@ repo = 'Shougo/ddc-converter_remove_overlap'
 on_source = 'ddc.vim'
 
 [[plugins]]
+repo = 'matsui54/denops-signature_help'
+on_source = 'ddc.vim'
+hook_source = '''
+call signature_help#enable()
+'''
+
+[[plugins]]
 repo = 'hrsh7th/vim-vsnip'
 on_event = ['InsertEnter']
 depends = ['vim-vsnip-integ', 'friendly-snippets']
