@@ -5,6 +5,7 @@ export PATH=$PATH:$GOPATH/bin
 export HOMEBREW_NO_ANALYTICS=1
 export FZF_DEFAULT_OPTS='--height 40% --reverse'
 
+. $HOME/.asdf/asdf.sh
 
 source <(afx init)
 
