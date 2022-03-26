@@ -28,3 +28,4 @@ tags
 !.config/starship.toml
 !.config/karabiner/assets/
 !.config/spotify-tui/config.yml
+!.config/afx/

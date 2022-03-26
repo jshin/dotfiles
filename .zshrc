@@ -3,24 +3,10 @@ export VISUAL="/usr/local/bin/nvim"
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export HOMEBREW_NO_ANALYTICS=1
-export ENHANCD_DISABLE_HOME=1
 export FZF_DEFAULT_OPTS='--height 40% --reverse'
-export PATH="$HOME/.anyenv/bin:$PATH"
 
-if [[ ! -d ~/.zplug ]]; then
-    git clone https://github.com/zplug/zplug ~/.zplug
-    source ~/.zplug/init.zsh
-fi
 
-source ~/.zplug/init.zsh
-
-zplug "zplug/zplug", hook-build:"zplug --self-manage"
-zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-zplug "b4b4r07/enhancd", use:init.sh
-
-zplug load
+source <(afx init)
 
 autoload -Uz compinit
 compinit -u
@@ -102,7 +88,6 @@ alias ls='ls -G'
 [ -f ~/.zshrc.`hostname -s` ] && source ~/.zshrc.`hostname -s`
 
 eval "$(starship init zsh)"
-eval "$(anyenv init -)"
 if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
     zcompile ~/.zshrc
 fi

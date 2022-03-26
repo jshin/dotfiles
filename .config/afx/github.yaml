@@ -1,0 +1,34 @@
+github:
+  - name: zsh-users/zsh-completions
+    owner: zsh-users
+    repo: zsh-completions
+    plugin:
+      sources:
+        - zsh-completions.plugin.zsh
+  - name: zsh-users/zsh-autosuggestions
+    owner: zsh-users
+    repo: zsh-autosuggestions
+    plugin:
+      sources:
+        - zsh-autosuggestions.plugin.zsh
+  - name: zdharma-continuum/fast-syntax-highlighting
+    owner: zdharma-continuum
+    repo: fast-syntax-highlighting
+    plugin:
+      sources:
+        - fast-syntax-highlighting.plugin.zsh
+  - name: b4b4r07/enhancd
+    owner: b4b4r07
+    repo: enhancd
+    plugin:
+      sources:
+        - init.sh
+      env:
+        ENHANCD_DISABLE_HOME: 1
+  - name: tmux-plugins/tpm
+    owner: tmux-plugins
+    repo: tpm
+    command:
+      link:
+      - from: .
+        to: $HOME/.tmux/plugins/tpm
