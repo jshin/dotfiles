@@ -70,7 +70,13 @@ repo = 'Shougo/ddc.vim'
 depends = ['denops.vim']
 on_event = ['InsertEnter']
 hook_source = '''
-call ddc#custom#patch_global('sources', ['around', 'look'])
+setlocal dictionary+=/usr/share/dict/words
+call ddc#custom#patch_global('sourceParams', {
+    \ 'dictionary': {'dictPaths': ['/usr/share/dict/words'],
+    \ 'smartCase': v:true,
+    \ 'showMenu': v:false,}
+    \ })
+call ddc#custom#patch_global('sources', ['around', 'dictionary'])
 call ddc#custom#patch_global('sourceOptions', {
     \ '_': {
     \   'ignoreCase': v:true,
@@ -79,7 +85,7 @@ call ddc#custom#patch_global('sourceOptions', {
     \   'converters': ['converter_remove_overlap'],
     \ },
     \ 'around': {'mark': 'A'},
-    \ 'look': {'mark': 'look'},
+    \ 'dictionary': {'mark': 'D'},
     \ 'necovim': {'mark': 'vim'},
     \ 'vim-lsp': {
     \   'mark': 'lsp',
@@ -118,7 +124,7 @@ repo = 'shun/ddc-vim-lsp'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'octaltree/cmp-look'
+repo = 'matsui54/ddc-dictionary'
 on_source = 'ddc.vim'
 
 [[plugins]]
