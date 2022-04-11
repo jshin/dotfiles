@@ -63,9 +63,6 @@ repo = 'rhysd/git-messenger.vim'
 on_cmd = 'GitMessenger'
 
 [[plugins]]
-repo = 'vim-denops/denops.vim'
-
-[[plugins]]
 repo = 'Shougo/ddc.vim'
 depends = ['denops.vim']
 on_event = ['InsertEnter']
@@ -102,7 +99,7 @@ call ddc#custom#patch_filetype(
     \ )
 
 call ddc#custom#patch_filetype(
-    \ ['c', 'cpp', 'dockerfile', 'go', 'php', 'python', 'sh', 'yaml', 'typescript'], 'sources',
+    \ ['c', 'cpp', 'dockerfile', 'go', 'php', 'python', 'sh', 'yaml', 'typescript', 'javascript'], 'sources',
     \ ['vsnip', 'vim-lsp', 'around']
     \ )
 
