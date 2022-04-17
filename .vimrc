@@ -359,38 +359,42 @@ let g:matchup_matchparen_deferred = 1
 let g:matchup_matchparen_deferred_show_delay = 200
 "############# end vim-matchup #############
 
-"############# defx.nvim settings #############
-function! s:defx_settings() abort
+"############# fern.vim settings #############
+let g:fern#renderer = 'nerdfont'
+let g:fern#default_hidden = 1
+
+function! s:init_fern() abort
     setlocal nonumber
-    setlocal winfixwidth
     setlocal cursorline
-    setlocal signcolumn=auto
-    nnoremap <silent><buffer><expr> <CR> defx#is_directory() ? defx#do_action('open_tree') : defx#do_action('drop')
-    nnoremap <silent><buffer><expr> o defx#do_action('open_tree', 'toggle')
-    nnoremap <silent><buffer><expr> O defx#do_action('open_tree', 'recursive')
-    nnoremap <silent><buffer><expr> P defx#do_action('preview')
-    nnoremap <silent><buffer><expr> c defx#do_action('copy')
-    nnoremap <silent><buffer><expr> u defx#do_action('cd', ['..'])
-    nnoremap <silent><buffer><expr> m defx#do_action('move')
-    nnoremap <silent><buffer><expr> p defx#do_action('paste')
-    nnoremap <silent><buffer><expr> r defx#do_action('rename')
-    nnoremap <silent><buffer><expr> q defx#do_action('quit')
-    nnoremap <silent><buffer><expr> . defx#do_action('toggle_ignored_files')
-    nnoremap <silent><buffer><expr> N defx#do_action('new_file')
-    nnoremap <silent><buffer><expr> D defx#do_action('new_directory')
-    nnoremap <silent><buffer><expr> S defx#do_action('add_session')
+    setlocal winfixwidth
+    nmap <buffer><expr>
+        \ <Plug>(fern-my-expand-or-enter)
+        \ fern#smart#drawer(
+        \   "\<Plug>(fern-action-open-or-expand)",
+        \   "\<Plug>(fern-action-open-or-enter)"
+        \ )
+    nmap <buffer><expr>
+        \ <Plug>(fern-my-expand-or-collapse)
+        \ fern#smart#leaf(
+        \   "\<Plug>(fern-action-collapse)",
+        \   "\<Plug>(fern-action-expand)",
+        \   "\<Plug>(fern-action-collapse)"
+        \ )
+    nmap <silent><buffer> d <Plug>(fern-action-enter)
+    nmap <silent><buffer> D <Plug>(fern-action-new-dir)
+    nmap <silent><buffer> u <Plug>(fern-action-leave)
+    nmap <silent><buffer> <CR> <Plug>(fern-my-expand-or-enter)
+    nmap <silent><buffer> o <Plug>(fern-my-expand-or-collapse)
 endfunction
 
-if dein#tap('defx.nvim')
-    " nnoremap <silent><leader>d :Defx -toggle -split=vertical -winwidth=25 -direction=topleft
-    "            \ -show-ignored-files `expand('%:p:h')` -search=`expand('%:p')` <CR>
-    nnoremap <silent><leader>d :Defx -toggle -split=vertical -winwidth=25 -direction=topleft
-                \ -vertical-preview -preview-height=50 -preview-width=70 -floating-preview
-                \ -show-ignored-files -resume <CR>
-
-    autocmd FileType defx call s:defx_settings()
+if dein#tap('fern.vim')
+    nnoremap <silent><leader>d :Fern -drawer -toggle . <CR>
+    augroup my-fern
+        autocmd! *
+        autocmd FileType fern call s:init_fern()
+    augroup END
 endif
-"############# end defx.nvim #############
+"############# end fern.vim #############
 
 "############# vim-lsp settings #############
 let g:lsp_diagnostics_enabled = 1

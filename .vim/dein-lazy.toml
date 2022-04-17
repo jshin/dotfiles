@@ -23,19 +23,6 @@ repo = 'tyru/capture.vim'
 on_cmd = ['Capture']
 
 [[plugins]]
-repo = 'Shougo/defx.nvim'
-if = '''has('python3')'''
-on_source = 'denite.nvim'
-depends = ['nvim-yarp', 'vim-hug-neovim-rpc']
-hook_source = '''
-call defx#custom#column('icon', {
-    \ 'directory_icon': '▸',
-    \ 'opened_icon': '▾',
-    \ 'root_icon': ' ',
-    \ })
-'''
-
-[[plugins]]
 repo = 'Shougo/denite.nvim'
 if = '''has('python3')'''
 on_cmd = 'Denite'

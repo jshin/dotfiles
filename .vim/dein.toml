@@ -98,3 +98,19 @@ merged = 0
 
 [[plugins]]
 repo = 'vim-denops/denops.vim'
+
+[[plugins]]
+repo = 'lambdalisue/nerdfont.vim'
+
+[[plugins]]
+repo = 'lambdalisue/fern.vim'
+depends = ['nerdfont.vim', 'fern-renderer-nerdfont.vim', 'fern-hijack.vim', 'fern-git-status.vim']
+
+[[plugins]]
+repo = 'lambdalisue/fern-renderer-nerdfont.vim'
+
+[[plugins]]
+repo = 'lambdalisue/fern-hijack.vim'
+
+[[plugins]]
+repo = 'lambdalisue/fern-git-status.vim'
