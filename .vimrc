@@ -10,7 +10,7 @@ let g:loaded_vimball = 1
 let g:loaded_vimballPlugin = 1
 
 if has('vim_starting')
-    "Required
+    let mapleader = "\<Space>"
     set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
     if !has('nvim')
@@ -61,7 +61,7 @@ set backspace=indent,eol,start
 
 if has('mac') && !has('nvim')
     set clipboard=unnamed,autoselect
-elseif has('linux')
+elseif has('linux') && !has('nvim')
     set clipboard=unnamedplus,autoselect
 else
     set clipboard+=unnamedplus
@@ -114,8 +114,6 @@ if has('nvim')
 
 endif
 
-let mapleader = "\<Space>"
-
 noremap ; :
 noremap : ;
 
@@ -130,13 +128,12 @@ nnoremap gj j
 nnoremap gk k
 vnoremap gj j
 vnoremap gk k
-nnoremap <silent> <S-t> :tabnew<CR>
 
 "Switching windows
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
-noremap <C-h> <C-w>h
+" noremap <C-j> <C-w>j
+" noremap <C-k> <C-w>k
+" noremap <C-l> <C-w>l
+" noremap <C-h> <C-w>h
 
 "############# functions #############
 "move to the last edit point
