@@ -17,7 +17,7 @@ format = """\
 add_newline = false
 
 [character]
-success_symbol = "[ξ\\(✿ ❛‿❛\\)ξ](yellow)"
+success_symbol = "[ξ\\(✿ '‿'\\)ξ](yellow)"
 error_symbol = "[人◕ ‿‿ ◕人](red)"
 
 [directory]
