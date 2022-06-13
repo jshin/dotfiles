@@ -114,7 +114,6 @@ if has('nvim')
 
 endif
 
-noremap ; :
 noremap : ;
 
 nmap s <Nop>

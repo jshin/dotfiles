@@ -50,9 +50,12 @@ repo = 'rhysd/git-messenger.vim'
 on_cmd = 'GitMessenger'
 
 [[plugins]]
+repo = 'Shougo/pum.vim'
+
+[[plugins]]
 repo = 'Shougo/ddc.vim'
-depends = ['denops.vim']
-on_event = ['InsertEnter']
+depends = ['denops.vim', 'pum.vim']
+on_event = ['InsertEnter', 'CursorHold']
 hook_source = '''
 setlocal dictionary+=/usr/share/dict/words
 call ddc#custom#patch_global('sourceParams', {
@@ -60,6 +63,8 @@ call ddc#custom#patch_global('sourceParams', {
     \ 'smartCase': v:true,
     \ 'showMenu': v:false,}
     \ })
+call ddc#custom#patch_global('autoCompleteEvents',
+    \ ['InsertEnter', 'TextChangedI', 'TextChangedP', 'CmdlineChanged', 'CmdlineEnter'])
 call ddc#custom#patch_global('sources', ['around', 'dictionary'])
 call ddc#custom#patch_global('sourceOptions', {
     \ '_': {
@@ -96,7 +101,64 @@ inoremap <silent><expr> <TAB>
     \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
     \ "\<TAB>" : ddc#manual_complete()
 
+cnoremap <expr> <Tab>
+    \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
+    \ exists('b:ddc_cmdline_completion') ?
+    \ ddc#manual_complete() : nr2char(&wildcharm)
+cnoremap <C-y>   <Cmd>call pum#map#confirm()<CR>
+cnoremap <C-c>   <Cmd>call pum#map#cancel()<CR>
+cnoremap <C-n>   <Cmd>call pum#map#insert_relative(+1)<CR>
+cnoremap <C-p>   <Cmd>call pum#map#insert_relative(-1)<CR>
+
 call ddc#enable()
+'''
+hook_add = '''
+nnoremap ;       <Cmd>call CommandlinePre(':')<CR>:
+nnoremap /       <Cmd>call CommandlinePre('/')<CR>/
+nnoremap ?       <Cmd>call CommandlinePre('?')<CR>?
+
+function! CommandlinePre(mode) abort
+    set wildchar=<C-t>
+    set wildcharm=<C-t>
+
+    cnoremap <expr><buffer> <Tab>
+        \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
+        \ exists('b:ddc_cmdline_completion') ? ddc#manual_complete() : "\<C-t>"
+
+    " Overwrite sources
+    if !exists('b:prev_buffer_config')
+        let b:prev_buffer_config = ddc#custom#get_buffer()
+    endif
+
+    call ddc#custom#patch_buffer('completionMenu', 'pum.vim')
+
+    if a:mode ==# ":"
+        call ddc#custom#patch_buffer('cmdlineSources', ['cmdline', 'around'])
+        call ddc#custom#patch_buffer('keywordPattern', '[0-9a-zA-Z_:#]*')
+    else
+        call ddc#custom#patch_buffer('cmdlineSources', ['around'])
+    endif
+
+    autocmd User DDCCmdlineLeave ++once call CommandlinePost()
+    autocmd InsertEnter <buffer> ++once call CommandlinePost()
+
+    " Enable command line completion
+    call ddc#enable_cmdline_completion()
+endfunction
+
+function! CommandlinePost() abort
+    silent! cunmap <buffer> <Tab>
+
+    " Restore sources
+    if exists('b:prev_buffer_config')
+        call ddc#custom#set_buffer(b:prev_buffer_config)
+        unlet b:prev_buffer_config
+    else
+        call ddc#custom#set_buffer({})
+    endif
+
+    set wildcharm=<Tab>
+endfunction
 '''
 
 [[plugins]]
@@ -109,6 +171,10 @@ on_source = 'ddc.vim'
 
 [[plugins]]
 repo = 'matsui54/ddc-dictionary'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-cmdline'
 on_source = 'ddc.vim'
 
 [[plugins]]
