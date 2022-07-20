@@ -7,7 +7,7 @@ export FZF_DEFAULT_OPTS='--height 40% --reverse'
 
 . $HOME/.asdf/asdf.sh
 
-source <(afx init)
+# source <(afx init)
 
 autoload -Uz compinit
 compinit -u
@@ -88,6 +88,7 @@ alias ls='ls -G'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.zshrc.`hostname -s` ] && source ~/.zshrc.`hostname -s`
 
+source <(afx init)
 eval "$(starship init zsh)"
 if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
     zcompile ~/.zshrc
