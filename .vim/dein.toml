@@ -67,10 +67,6 @@ repo = 'rhysd/clever-f.vim'
 repo = 'othree/yajs.vim'
 
 [[plugins]]
-repo = 'jshin/vim-go-syntax'
-if = '''!has('nvim')'''
-
-[[plugins]]
 repo = 'cespare/vim-toml'
 
 [[plugins]]
@@ -114,3 +110,6 @@ repo = 'lambdalisue/fern-hijack.vim'
 
 [[plugins]]
 repo = 'lambdalisue/fern-git-status.vim'
+
+[[plugins]]
+repo = 'google/vim-jsonnet'
