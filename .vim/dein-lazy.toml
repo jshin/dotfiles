@@ -58,6 +58,7 @@ depends = ['denops.vim', 'pum.vim']
 on_event = ['InsertEnter', 'CursorHold']
 hook_source = '''
 setlocal dictionary+=/usr/share/dict/words
+call ddc#custom#patch_global('ui', 'native')
 call ddc#custom#patch_global('sourceParams', {
     \ 'dictionary': {'dictPaths': ['/usr/share/dict/words'],
     \ 'smartCase': v:true,
@@ -65,7 +66,7 @@ call ddc#custom#patch_global('sourceParams', {
     \ })
 call ddc#custom#patch_global('autoCompleteEvents',
     \ ['InsertEnter', 'TextChangedI', 'TextChangedP', 'CmdlineChanged', 'CmdlineEnter'])
-call ddc#custom#patch_global('sources', ['around', 'dictionary'])
+call ddc#custom#patch_global('sources', ['around', 'buffer', 'dictionary'])
 call ddc#custom#patch_global('sourceOptions', {
     \ '_': {
     \   'ignoreCase': v:true,
@@ -74,6 +75,7 @@ call ddc#custom#patch_global('sourceOptions', {
     \   'converters': ['converter_remove_overlap'],
     \ },
     \ 'around': {'mark': 'A'},
+    \ 'buffer': {'mark': 'B'},
     \ 'dictionary': {'mark': 'D'},
     \ 'necovim': {'mark': 'vim'},
     \ 'vim-lsp': {
@@ -91,7 +93,7 @@ call ddc#custom#patch_filetype(
     \ )
 
 call ddc#custom#patch_filetype(
-    \ ['c', 'cpp', 'dockerfile', 'go', 'php', 'python', 'sh', 'yaml', 'typescript', 'javascript', 'html'], 'sources',
+    \ ['c', 'cpp', 'dockerfile', 'go', 'php', 'python', 'yaml', 'typescript', 'javascript', 'html'], 'sources',
     \ ['vsnip', 'vim-lsp', 'around']
     \ )
 
@@ -130,7 +132,7 @@ function! CommandlinePre(mode) abort
         let b:prev_buffer_config = ddc#custom#get_buffer()
     endif
 
-    call ddc#custom#patch_buffer('completionMenu', 'pum.vim')
+    call ddc#custom#patch_buffer('ui', 'pum')
 
     if a:mode ==# ":"
         call ddc#custom#patch_buffer('cmdlineSources', ['cmdline', 'around'])
@@ -162,7 +164,19 @@ endfunction
 '''
 
 [[plugins]]
-repo = 'Shougo/ddc-around'
+repo = 'Shougo/ddc-ui-native'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-ui-pum'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-source-around'
+on_source = 'ddc.vim'
+
+[[plugins]]
+repo = 'matsui54/ddc-buffer'
 on_source = 'ddc.vim'
 
 [[plugins]]
@@ -174,7 +188,7 @@ repo = 'matsui54/ddc-dictionary'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc-cmdline'
+repo = 'Shougo/ddc-source-cmdline'
 on_source = 'ddc.vim'
 
 [[plugins]]
@@ -182,7 +196,7 @@ repo = 'Shougo/ddc-sorter_rank'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'matsui54/ddc-matcher_fuzzy'
+repo = 'tani/ddc-fuzzy'
 on_source = 'ddc.vim'
 
 [[plugins]]
