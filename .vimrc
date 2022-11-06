@@ -260,7 +260,7 @@ let g:lightline = {
             \    },
             \   'component_function':{
             \   'mode' : 'Mymode',
-            \   'gitbranch' : 'Gitbranch',
+            \   'gitbranch' : 'gitbranch#name',
             \   'fileformat' : 'Myfileformat',
             \   'fileencoding': 'Myfileencoding',
             \   'filetype' : 'Myfiletype',

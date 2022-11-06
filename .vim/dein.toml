@@ -11,6 +11,9 @@ repo = 'w0ng/vim-hybrid'
 repo = 'itchyny/lightline.vim'
 
 [[plugins]]
+repo = 'itchyny/vim-gitbranch'
+
+[[plugins]]
 repo = 'cohama/lexima.vim'
 
 [[plugins]]
@@ -28,9 +31,6 @@ repo = 'cocopon/iceberg.vim'
 
 [[plugins]]
 repo = 'haya14busa/is.vim'
-
-[[plugins]]
-repo = 'lambdalisue/gina.vim'
 
 [[plugins]]
 repo = 'mhinz/vim-startify'
