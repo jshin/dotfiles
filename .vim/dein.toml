@@ -113,3 +113,6 @@ repo = 'lambdalisue/fern-git-status.vim'
 
 [[plugins]]
 repo = 'google/vim-jsonnet'
+
+[[plugins]]
+repo = 'lambdalisue/guise.vim'
