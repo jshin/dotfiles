@@ -240,3 +240,93 @@ on_ft = ['yaml']
 [[plugins]]
 repo = 'lambdalisue/gina.vim'
 on_cmd = ['Gina']
+
+[[plugins]]
+repo = 'Shougo/ddu.vim'
+depends = ['denops.vim']
+on_source = ['denops.vim']
+hook_source = '''
+call ddu#custom#patch_global({
+    \ 'ui': 'ff',
+    \ 'sourceOptions': {
+    \   '_': {
+    \       'ignoreCase': v:true,
+    \       'matchers': ['matcher_substring'],
+    \   },
+    \ },
+    \ 'uiParams': {
+    \   'ff': {
+    \       'split': 'floating',
+    \       'prompt': '> ',
+    \       'filterSplitDirection': 'floating',
+    \       'displaySourceName': 'short',
+    \       'previewHeight': 20,
+    \   }
+    \ },
+    \ 'kindOptions': {
+    \   'file': {
+    \       'defaultAction': 'open',
+    \   },
+    \   'action': {
+    \       'defaultAction': 'do',
+    \   },
+    \ }
+    \ })
+
+command! DduRgLive call <SID>ddu_rg_live()
+
+function! s:ddu_rg_live() abort
+    call ddu#start({
+        \   'volatile': v:true,
+        \   'sources': [{
+        \       'name': 'rg',
+        \       'options': {'matchers':[]},
+        \   }],
+        \   'uiParams': {'ff': {
+        \       'ignoreEmpty': v:false,
+        \       'autoResize': v:false,
+        \   }}
+        \ })
+endfunction
+'''
+
+[[plugins]]
+repo = 'Shougo/ddu-commands.vim'
+depends = 'ddu.vim'
+on_cmd = ['Ddu']
+
+[[plugins]]
+repo = 'Shougo/ddu-ui-ff'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-kind-file'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-filter-matcher_substring'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-action'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-file'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-file_rec'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-file_old'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-line'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'shun/ddu-source-rg'
+on_source = 'ddu.vim'

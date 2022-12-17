@@ -200,31 +200,62 @@ endfunction
 
 "############# end functions #############
 
+"############# ddu setting #############
+
+nnoremap <silent> <Leader>b :<C-u>Ddu file file_old<CR>
+nnoremap <silent> <Leader>r :<C-u>Ddu file_rec<CR>
+nnoremap <silent> <Leader>g :<C-u>Ddu -name=search rg -source-param-input=`input('Pattern: ')`<CR>
+nnoremap <silent> <Leader>l :<C-u>Ddu line -ui-param-startFilter<CR>
+
+autocmd FileType ddu-ff call s:ddu_settings()
+autocmd FileType ddu-ff-filter call s:ddu_ff_settings()
+function! s:ddu_settings() abort
+    nnoremap <buffer><silent> <CR>
+                \ <Cmd>call ddu#ui#ff#do_action('itemAction')<CR>
+    nnoremap <buffer><silent> i
+                \ <Cmd>call ddu#ui#ff#do_action('openFilterWindow')<CR>
+    nnoremap <buffer><silent> a
+                \ <Cmd>call ddu#ui#ff#do_action('chooseAction')<CR>
+    nnoremap <buffer><silent> p
+                \ <Cmd>call ddu#ui#ff#do_action('preview')<CR>
+    nnoremap <buffer><silent> q
+               \ <Cmd>call ddu#ui#ff#do_action('quit')<CR>
+endfunction
+
+function! s:ddu_ff_settings() abort
+    inoremap <buffer><silent> <CR>
+        \ <Esc><Cmd>close<CR>
+    nnoremap <buffer><silent> <CR>
+        \ <Cmd>close<CR>
+    nnoremap <buffer><silent> q
+        \ <Cmd>close<CR>
+endfunction
+
 "############# denite setting #############
 
-nnoremap <silent> <Leader>b :<C-u>Denite buffer file file_mru<CR>
-nnoremap <silent> <Leader>f :<C-u>DeniteBufferDir -buffer-name=files file<CR>
-nnoremap <silent> <Leader>c :<C-u>Denite command_history<CR>
-nnoremap <silent> <Leader>j :<C-u>Denite jump<CR>
-nnoremap <silent> <Leader>o :<C-u>Denite outline<CR>
-nnoremap <silent> <Leader>r :<C-u>Denite file/rec<CR>
-nnoremap <silent> <Leader>g :<C-u>Denite grep<CR>
-
-autocmd FileType denite call s:denite_settings()
-function! s:denite_settings() abort
-    nnoremap <silent><buffer><expr> <CR>
-                \ denite#do_map('do_action')
-    nnoremap <silent><buffer><expr> a
-                \ denite#do_map('choose_action')
-    nnoremap <silent><buffer><expr> p
-                \ denite#do_map('do_action', 'preview')
-    nnoremap <silent><buffer><expr> q
-                \ denite#do_map('quit')
-    nnoremap <silent><buffer><expr> i
-                \ denite#do_map('open_filter_buffer')
-    nnoremap <silent><buffer><expr> <Space>
-                \ denite#do_map('toggle_select').'j'
-endfunction
+" nnoremap <silent> <Leader>b :<C-u>Denite buffer file file_mru<CR>
+" nnoremap <silent> <Leader>f :<C-u>DeniteBufferDir -buffer-name=files file<CR>
+" nnoremap <silent> <Leader>c :<C-u>Denite command_history<CR>
+" nnoremap <silent> <Leader>j :<C-u>Denite jump<CR>
+" nnoremap <silent> <Leader>o :<C-u>Denite outline<CR>
+" nnoremap <silent> <Leader>r :<C-u>Denite file/rec<CR>
+" nnoremap <silent> <Leader>g :<C-u>Denite grep<CR>
+"
+" autocmd FileType denite call s:denite_settings()
+" function! s:denite_settings() abort
+"     nnoremap <silent><buffer><expr> <CR>
+"                \ denite#do_map('do_action')
+"     nnoremap <silent><buffer><expr> a
+"                \ denite#do_map('choose_action')
+"     nnoremap <silent><buffer><expr> p
+"                \ denite#do_map('do_action', 'preview')
+"     nnoremap <silent><buffer><expr> q
+"                \ denite#do_map('quit')
+"     nnoremap <silent><buffer><expr> i
+"                \ denite#do_map('open_filter_buffer')
+"     nnoremap <silent><buffer><expr> <Space>
+"                \ denite#do_map('toggle_select').'j'
+" endfunction
 
 "############# setting quickrun #############
 if !exists("g:quickrun_config")
