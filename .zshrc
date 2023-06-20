@@ -17,8 +17,8 @@ colors
 
 #setting history
 HISTFILE=~/.zsh_history
-HISTSIZE=2000
-SAVEHIST=2000
+HISTSIZE=5000
+SAVEHIST=5000
 
 bindkey -e
 
@@ -88,7 +88,8 @@ alias ls='ls -G'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.zshrc.`hostname -s` ] && source ~/.zshrc.`hostname -s`
 
-source <(afx init)
+# source <(afx init)
+eval "$(sheldon source)"
 eval "$(starship init zsh)"
 if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
     zcompile ~/.zshrc
