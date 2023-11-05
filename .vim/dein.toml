@@ -116,3 +116,6 @@ repo = 'google/vim-jsonnet'
 
 [[plugins]]
 repo = 'lambdalisue/guise.vim'
+
+[[plugins]]
+repo = 'hashivim/vim-terraform'
