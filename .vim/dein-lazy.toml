@@ -94,7 +94,7 @@ call ddc#custom#patch_filetype(
 
 call ddc#custom#patch_filetype(
     \ ['c', 'cpp', 'dockerfile', 'go', 'php', 'python', 'yaml', 'typescript', 'javascript', 'html'], 'sources',
-    \ ['vsnip', 'vim-lsp', 'around']
+    \ ['vsnip', 'vim-lsp', 'around', 'buffer']
     \ )
 
 call lexima#init()
@@ -207,12 +207,12 @@ on_source = 'ddc.vim'
 repo = 'Shougo/ddc-converter_remove_overlap'
 on_source = 'ddc.vim'
 
-[[plugins]]
-repo = 'matsui54/denops-signature_help'
-on_source = 'ddc.vim'
-hook_source = '''
-call signature_help#enable()
-'''
+#[[plugins]]
+#repo = 'matsui54/denops-signature_help'
+#on_source = 'ddc.vim'
+#hook_source = '''
+#call signature_help#enable()
+#'''
 
 [[plugins]]
 repo = 'hrsh7th/vim-vsnip'
@@ -226,6 +226,10 @@ smap <expr> <Tab> vsnip#jumpable(1) ? "\<Plug>(vsnip-jump-next)" : "\<Tab>"
 '''
 
 [[plugins]]
+repo = 'uga-rosa/ddc-source-vsnip'
+on_source = 'ddc.vim'
+
+[[plugins]]
 repo = 'rafamadriz/friendly-snippets'
 
 [[plugins]]
@@ -236,6 +240,9 @@ on_cmd = ['SudaRead', 'SudaWrite']
 repo = 'lukas-reineke/indent-blankline.nvim'
 if = '''has('nvim')'''
 on_ft = ['yaml']
+lua_source = '''
+require("ibl").setup()
+'''
 
 [[plugins]]
 repo = 'lambdalisue/gina.vim'
