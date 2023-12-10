@@ -22,7 +22,7 @@ github = "b4b4r07/enhancd"
 github = "romkatv/zsh-defer"
 
 [templates]
-defer = "{{ hooks | get: \"pre\" | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks | get: \"post\" | nl }}"
+defer = "{{ hooks?.pre | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks?.pre | nl }}"
 
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
