@@ -5,9 +5,6 @@ repo = 'Shougo/dein.vim'
 repo = 'vim-jp/vimdoc-ja'
 
 [[plugins]]
-repo = 'w0ng/vim-hybrid'
-
-[[plugins]]
 repo = 'itchyny/lightline.vim'
 
 [[plugins]]
@@ -18,6 +15,7 @@ repo = 'cohama/lexima.vim'
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
+if = '''!has('nvim')'''
 
 [[plugins]]
 repo = 'osyo-manga/vim-anzu'
@@ -44,12 +42,14 @@ if = '''!has('nvim')'''
 
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
+if = '''!has('nvim')'''
 
 [[plugins]]
 repo = 'mattn/vim-lsp-settings'
+if = '''!has('nvim')'''
 
-[[plugins]]
-repo = 'hrsh7th/vim-vsnip-integ'
+# [[plugins]]
+# repo = 'hrsh7th/vim-vsnip-integ'
 
 [[plugins]]
 repo = 'machakann/vim-sandwich'
@@ -62,9 +62,6 @@ repo = 'andymass/vim-matchup'
 
 [[plugins]]
 repo = 'rhysd/clever-f.vim'
-
-[[plugins]]
-repo = 'othree/yajs.vim'
 
 [[plugins]]
 repo = 'cespare/vim-toml'
@@ -119,3 +116,6 @@ repo = 'lambdalisue/guise.vim'
 
 [[plugins]]
 repo = 'hashivim/vim-terraform'
+
+[[plugins]]
+repo = 'Shougo/ddc-source-lsp'
