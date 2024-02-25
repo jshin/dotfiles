@@ -1,0 +1,18 @@
+[[plugins]]
+repo = 'EdenEast/nightfox.nvim'
+
+[[plugins]]
+repo = 'neovim/nvim-lspconfig'
+merged = 0
+
+[[plugins]]
+repo = 'williamboman/mason.nvim'
+
+[[plugins]]
+repo = 'williamboman/mason-lspconfig.nvim'
+
+[[plugins]]
+repo = 'lewis6991/gitsigns.nvim'
+
+[[plugins]]
+repo = 'j-hui/fidget.nvim'
