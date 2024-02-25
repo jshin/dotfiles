@@ -60,8 +60,13 @@ setlocal dictionary+=/usr/share/dict/words
 call ddc#custom#patch_global('ui', 'native')
 call ddc#custom#patch_global('sourceParams', {
     \ 'dictionary': {'dictPaths': ['/usr/share/dict/words'],
-    \ 'smartCase': v:true,
-    \ 'showMenu': v:false,}
+    \   'smartCase': v:true,
+    \   'showMenu': v:false,},
+    \ 'lsp': {
+    \   'snippetEngine': denops#callback#register({body -> vsnip#anonymous(body)}),
+    \   'enableResolveItem': v:true,
+    \   'enableAdditionalTextEdit': v:true,
+    \   }
     \ })
 call ddc#custom#patch_global('autoCompleteEvents',
     \ ['InsertEnter', 'TextChangedI', 'TextChangedP', 'CmdlineChanged', 'CmdlineEnter'])
@@ -77,7 +82,7 @@ call ddc#custom#patch_global('sourceOptions', {
     \ 'buffer': {'mark': 'B'},
     \ 'dictionary': {'mark': 'D'},
     \ 'necovim': {'mark': 'vim'},
-    \ 'vim-lsp': {
+    \ 'lsp': {
     \   'mark': 'lsp',
     \   'forceCompletionPattern': '\.\w*|:\w*|->\w*',
     \ },
@@ -92,8 +97,8 @@ call ddc#custom#patch_filetype(
     \ )
 
 call ddc#custom#patch_filetype(
-    \ ['c', 'cpp', 'dockerfile', 'go', 'php', 'python', 'yaml', 'typescript', 'javascript', 'html'], 'sources',
-    \ ['vsnip', 'vim-lsp', 'around', 'buffer']
+    \ ['c', 'cpp', 'dockerfile', 'go', 'php', 'python', 'yaml', 'typescript', 'javascript', 'html', 'lua'], 'sources',
+    \ ['vsnip', 'lsp', 'around', 'buffer']
     \ )
 
 call lexima#init()
@@ -182,10 +187,6 @@ on_source = 'ddc.vim'
 
 [[plugins]]
 repo = 'matsui54/ddc-buffer'
-on_source = 'ddc.vim'
-
-[[plugins]]
-repo = 'shun/ddc-vim-lsp'
 on_source = 'ddc.vim'
 
 [[plugins]]
