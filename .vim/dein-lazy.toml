@@ -258,6 +258,9 @@ on_cmd = ['Gina']
 repo = 'Shougo/ddu.vim'
 depends = ['denops.vim']
 on_source = ['denops.vim']
+hook_post_update = '''
+call ddu#set_static_import_path()
+'''
 hook_source = '''
 call ddu#custom#patch_global({
     \ 'ui': 'ff',
@@ -266,6 +269,11 @@ call ddu#custom#patch_global({
     \       'ignoreCase': v:true,
     \       'matchers': ['converter_display_word', 'matcher_substring'],
     \       'converters': ['converter_hl_dir'],
+    \   },
+    \ },
+    \ 'filterParams': {
+    \   'matcher_substring': {
+    \       'highlightMatched': 'Search',
     \   },
     \ },
     \ 'uiParams': {
@@ -285,6 +293,9 @@ call ddu#custom#patch_global({
     \   'action': {
     \       'defaultAction': 'do',
     \   },
+    \   'lsp': {
+    \       'defaultAction': 'open',
+    \   },
     \ }
     \ })
 '''
@@ -292,7 +303,8 @@ hook_add = '''
 nnoremap <silent> <Leader>b :<C-u>Ddu file file_old<CR>
 nnoremap <silent> <Leader>r :<C-u>Ddu file_rec<CR>
 nnoremap <silent> <Leader>g <Cmd>DduRgLive<CR>
-nnoremap <silent> <Leader>l :<C-u>Ddu line -ui-ff-param-startFilter<CR>
+nnoremap <silent> <Leader>l :<C-u>Ddu line<CR>
+nnoremap <silent> <Leader>o :<C-u>Ddu lsp_documentSymbol<CR>
 
 autocmd FileType ddu-ff call s:ddu_settings()
 autocmd FileType ddu-ff-filter call s:ddu_ff_settings()
@@ -373,6 +385,10 @@ on_source = 'ddu.vim'
 
 [[plugins]]
 repo = 'shun/ddu-source-rg'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'uga-rosa/ddu-source-lsp'
 on_source = 'ddu.vim'
 
 [[plugins]]
