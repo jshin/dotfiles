@@ -298,6 +298,7 @@ require'nvim-treesitter.configs'.setup {
     },
     indent = {
         enable = true,
+        disable = {"yaml"},
     }
 }
 -- end nvim-treesitter
@@ -337,6 +338,9 @@ lspconfig.lua_ls.setup({
     end
 })
 
+lspconfig.intelephense.setup({
+    capabilities = capabilities,
+})
 
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('UserLspConfig', {}),
