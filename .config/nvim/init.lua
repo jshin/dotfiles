@@ -175,7 +175,7 @@ vim.g.lightline = {colorscheme = 'nightfox',
     },
     active = {
         left = {
-            {'mode', 'paste'}, {'readonly', 'filename', 'modified'}
+            {'mode', 'paste'}, {'readonly', 'gitbranch', 'filename', 'modified'}
         },
         right = {
             {'lineinfo', 'syntaxcheck'}, {'percent'}, {'charcode', 'fileformat', 'fileencoding', 'filetype'}
