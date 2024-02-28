@@ -223,7 +223,7 @@ on_source = 'ddc.vim'
 [[plugins]]
 repo = 'hrsh7th/vim-vsnip'
 on_event = ['InsertEnter']
-depends = ['vim-vsnip-integ', 'friendly-snippets']
+depends = ['friendly-snippets']
 hook_source = '''
 imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
 smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
