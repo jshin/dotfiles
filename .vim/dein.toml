@@ -35,6 +35,7 @@ repo = 'mhinz/vim-startify'
 
 [[plugins]]
 repo = 'tyru/caw.vim'
+if = '''!has('nvim')'''
 
 [[plugins]]
 repo = 'markonm/traces.vim'
@@ -64,21 +65,10 @@ repo = 'andymass/vim-matchup'
 repo = 'rhysd/clever-f.vim'
 
 [[plugins]]
-repo = 'cespare/vim-toml'
-
-[[plugins]]
-repo = 'roxma/nvim-yarp'
-if = '''has('python3')'''
-
-[[plugins]]
-repo = 'roxma/vim-hug-neovim-rpc'
-if = '''has('python3')'''
-
-[[plugins]]
 repo = 'ruanyl/vim-gh-line'
 
-[[plugins]]
-repo = 'bfrg/vim-cpp-modern'
+# [[plugins]]
+# repo = 'bfrg/vim-cpp-modern'
 
 [[plugins]]
 repo = 'lambdalisue/pastefix.vim'
