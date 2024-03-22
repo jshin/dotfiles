@@ -5,9 +5,6 @@ repo = 'Shougo/dein.vim'
 repo = 'vim-jp/vimdoc-ja'
 
 [[plugins]]
-repo = 'w0ng/vim-hybrid'
-
-[[plugins]]
 repo = 'itchyny/lightline.vim'
 
 [[plugins]]
@@ -18,6 +15,7 @@ repo = 'cohama/lexima.vim'
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
+if = '''!has('nvim')'''
 
 [[plugins]]
 repo = 'osyo-manga/vim-anzu'
@@ -37,6 +35,7 @@ repo = 'mhinz/vim-startify'
 
 [[plugins]]
 repo = 'tyru/caw.vim'
+if = '''!has('nvim')'''
 
 [[plugins]]
 repo = 'markonm/traces.vim'
@@ -44,12 +43,14 @@ if = '''!has('nvim')'''
 
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
+if = '''!has('nvim')'''
 
 [[plugins]]
 repo = 'mattn/vim-lsp-settings'
+if = '''!has('nvim')'''
 
-[[plugins]]
-repo = 'hrsh7th/vim-vsnip-integ'
+# [[plugins]]
+# repo = 'hrsh7th/vim-vsnip-integ'
 
 [[plugins]]
 repo = 'machakann/vim-sandwich'
@@ -64,24 +65,10 @@ repo = 'andymass/vim-matchup'
 repo = 'rhysd/clever-f.vim'
 
 [[plugins]]
-repo = 'othree/yajs.vim'
-
-[[plugins]]
-repo = 'cespare/vim-toml'
-
-[[plugins]]
-repo = 'roxma/nvim-yarp'
-if = '''has('python3')'''
-
-[[plugins]]
-repo = 'roxma/vim-hug-neovim-rpc'
-if = '''has('python3')'''
-
-[[plugins]]
 repo = 'ruanyl/vim-gh-line'
 
-[[plugins]]
-repo = 'bfrg/vim-cpp-modern'
+# [[plugins]]
+# repo = 'bfrg/vim-cpp-modern'
 
 [[plugins]]
 repo = 'lambdalisue/pastefix.vim'
@@ -119,3 +106,6 @@ repo = 'lambdalisue/guise.vim'
 
 [[plugins]]
 repo = 'hashivim/vim-terraform'
+
+[[plugins]]
+repo = 'Shougo/ddc-source-lsp'

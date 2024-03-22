@@ -4,7 +4,6 @@ on_ft = ['vim', 'toml']
 
 [[plugins]]
 repo = 'Shougo/neomru.vim'
-on_source = ['denite.nvim']
 
 [[plugins]]
 repo = 'mattn/vim-goimports'
@@ -22,28 +21,28 @@ on_source = 'previm'
 repo = 'tyru/capture.vim'
 on_cmd = ['Capture']
 
-[[plugins]]
-repo = 'Shougo/denite.nvim'
-if = '''has('python3')'''
-on_cmd = 'Denite'
-depends = ['nvim-yarp', 'vim-hug-neovim-rpc']
-hook_source = '''
-call denite#custom#var('grep', {
-    \ 'command': ['rg'],
-    \ 'default_opts': ['-i', '--vimgrep', '--no-heading'],
-    \ 'recursive_opts': [],
-    \ 'pattern_opt': ['--regexp'],
-    \ 'separator': ['--'],
-    \ 'final_opts': [],
-    \ })
-call denite#custom#var('file/rec', 'command',
-    \ ['rg', '--files', '--glob', '!.git', '--color', 'never'])
-call denite#custom#var('outline', 'ignore_types', ['v', 's', 'm'])
-if has('nvim')
-call denite#custom#option('default', {
-    \ 'source_names': 'short'})
-endif
-'''
+# [[plugins]]
+# repo = 'Shougo/denite.nvim'
+# if = '''has('python3')'''
+# on_cmd = 'Denite'
+# depends = ['nvim-yarp', 'vim-hug-neovim-rpc']
+# hook_source = '''
+# call denite#custom#var('grep', {
+#     \ 'command': ['rg'],
+#     \ 'default_opts': ['-i', '--vimgrep', '--no-heading'],
+#     \ 'recursive_opts': [],
+#     \ 'pattern_opt': ['--regexp'],
+#     \ 'separator': ['--'],
+#     \ 'final_opts': [],
+#     \ })
+# call denite#custom#var('file/rec', 'command',
+#     \ ['rg', '--files', '--glob', '!.git', '--color', 'never'])
+# call denite#custom#var('outline', 'ignore_types', ['v', 's', 'm'])
+# if has('nvim')
+# call denite#custom#option('default', {
+#     \ 'source_names': 'short'})
+# endif
+# '''
 
 [[plugins]]
 repo = 'rhysd/git-messenger.vim'
@@ -61,8 +60,13 @@ setlocal dictionary+=/usr/share/dict/words
 call ddc#custom#patch_global('ui', 'native')
 call ddc#custom#patch_global('sourceParams', {
     \ 'dictionary': {'dictPaths': ['/usr/share/dict/words'],
-    \ 'smartCase': v:true,
-    \ 'showMenu': v:false,}
+    \   'smartCase': v:true,
+    \   'showMenu': v:false,},
+    \ 'lsp': {
+    \   'snippetEngine': denops#callback#register({body -> vsnip#anonymous(body)}),
+    \   'enableResolveItem': v:true,
+    \   'enableAdditionalTextEdit': v:true,
+    \   }
     \ })
 call ddc#custom#patch_global('autoCompleteEvents',
     \ ['InsertEnter', 'TextChangedI', 'TextChangedP', 'CmdlineChanged', 'CmdlineEnter'])
@@ -78,7 +82,7 @@ call ddc#custom#patch_global('sourceOptions', {
     \ 'buffer': {'mark': 'B'},
     \ 'dictionary': {'mark': 'D'},
     \ 'necovim': {'mark': 'vim'},
-    \ 'vim-lsp': {
+    \ 'lsp': {
     \   'mark': 'lsp',
     \   'forceCompletionPattern': '\.\w*|:\w*|->\w*',
     \ },
@@ -93,8 +97,8 @@ call ddc#custom#patch_filetype(
     \ )
 
 call ddc#custom#patch_filetype(
-    \ ['c', 'cpp', 'dockerfile', 'go', 'php', 'python', 'yaml', 'typescript', 'javascript', 'html'], 'sources',
-    \ ['vsnip', 'vim-lsp', 'around', 'buffer']
+    \ ['c', 'cpp', 'dockerfile', 'go', 'php', 'python', 'yaml', 'typescript', 'javascript', 'html', 'lua'], 'sources',
+    \ ['vsnip', 'lsp', 'around', 'buffer']
     \ )
 
 call lexima#init()
@@ -186,10 +190,6 @@ repo = 'matsui54/ddc-buffer'
 on_source = 'ddc.vim'
 
 [[plugins]]
-repo = 'shun/ddc-vim-lsp'
-on_source = 'ddc.vim'
-
-[[plugins]]
 repo = 'matsui54/ddc-dictionary'
 on_source = 'ddc.vim'
 
@@ -223,7 +223,7 @@ on_source = 'ddc.vim'
 [[plugins]]
 repo = 'hrsh7th/vim-vsnip'
 on_event = ['InsertEnter']
-depends = ['vim-vsnip-integ', 'friendly-snippets']
+depends = ['friendly-snippets']
 hook_source = '''
 imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
 smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
@@ -253,3 +253,148 @@ require("ibl").setup()
 [[plugins]]
 repo = 'lambdalisue/gina.vim'
 on_cmd = ['Gina']
+
+[[plugins]]
+repo = 'Shougo/ddu.vim'
+depends = ['denops.vim']
+on_source = ['denops.vim']
+hook_post_update = '''
+call ddu#set_static_import_path()
+'''
+hook_source = '''
+call ddu#custom#patch_global({
+    \ 'ui': 'ff',
+    \ 'sourceOptions': {
+    \   '_': {
+    \       'ignoreCase': v:true,
+    \       'matchers': ['converter_display_word', 'matcher_substring'],
+    \       'converters': ['converter_hl_dir'],
+    \   },
+    \ },
+    \ 'filterParams': {
+    \   'matcher_substring': {
+    \       'highlightMatched': 'Search',
+    \   },
+    \ },
+    \ 'uiParams': {
+    \   'ff': {
+    \       'split': 'floating',
+    \       'prompt': '> ',
+    \       'filterSplitDirection': 'floating',
+    \       'displaySourceName': 'short',
+    \       'previewHeight': 20,
+    \       'floatingBorder': 'rounded',
+    \   }
+    \ },
+    \ 'kindOptions': {
+    \   'file': {
+    \       'defaultAction': 'open',
+    \   },
+    \   'action': {
+    \       'defaultAction': 'do',
+    \   },
+    \   'lsp': {
+    \       'defaultAction': 'open',
+    \   },
+    \ }
+    \ })
+'''
+hook_add = '''
+nnoremap <silent> <Leader>b :<C-u>Ddu file file_old<CR>
+nnoremap <silent> <Leader>r :<C-u>Ddu file_rec<CR>
+nnoremap <silent> <Leader>g <Cmd>DduRgLive<CR>
+nnoremap <silent> <Leader>l :<C-u>Ddu line<CR>
+nnoremap <silent> <Leader>o :<C-u>Ddu lsp_documentSymbol<CR>
+
+autocmd FileType ddu-ff call s:ddu_settings()
+autocmd FileType ddu-ff-filter call s:ddu_ff_settings()
+function! s:ddu_settings() abort
+    nnoremap <buffer><silent> <CR>
+                \ <Cmd>call ddu#ui#do_action('itemAction')<CR>
+    nnoremap <buffer><silent> i
+                \ <Cmd>call ddu#ui#do_action('openFilterWindow')<CR>
+    nnoremap <buffer><silent> a
+                \ <Cmd>call ddu#ui#do_action('chooseAction')<CR>
+    nnoremap <buffer><silent> p
+                \ <Cmd>call ddu#ui#do_action('preview')<CR>
+    nnoremap <buffer><silent> q
+               \ <Cmd>call ddu#ui#do_action('quit')<CR>
+endfunction
+
+function! s:ddu_ff_settings() abort
+    inoremap <buffer><silent> <CR>
+        \ <Esc><Cmd>close<CR>
+    nnoremap <buffer><silent> <CR>
+        \ <Cmd>close<CR>
+    nnoremap <buffer><silent> q
+        \ <Cmd>close<CR>
+endfunction
+
+command! DduRgLive call <SID>ddu_rg_live()
+
+function! s:ddu_rg_live() abort
+    call ddu#start({
+        \   'sources': [{
+        \       'name': 'rg',
+        \       'options': {'matchers':[], 'volatile': v:true},
+        \   }],
+        \   'uiParams': {'ff': {
+        \       'ignoreEmpty': v:false,
+        \       'autoResize': v:false,
+        \   }}
+        \ })
+endfunction
+'''
+
+[[plugins]]
+repo = 'Shougo/ddu-commands.vim'
+depends = 'ddu.vim'
+on_cmd = ['Ddu']
+
+[[plugins]]
+repo = 'Shougo/ddu-ui-ff'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-kind-file'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-filter-matcher_substring'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-action'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-file'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-file_rec'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-file_old'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-line'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'shun/ddu-source-rg'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'uga-rosa/ddu-source-lsp'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-filter-converter_display_word'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'kyoh86/ddu-filter-converter_hl_dir'
+on_source = 'ddu.vim'
