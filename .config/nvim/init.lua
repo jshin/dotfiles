@@ -8,25 +8,26 @@ vim.g.loaded_rrhelper = 1
 vim.g.loaded_vimball = 1
 vim.g.loaded_vimballPlugin = 1
 
-if vim.fn.has('vim_starting') then
-    vim.g.mapleader = " "
-    vim.opt.runtimepath:append('~/.cache/dein/repos/github.com/Shougo/dein.vim')
-end
+require("config.lazy")
+--if vim.fn.has('vim_starting') then
+--    vim.g.mapleader = " "
+--    vim.opt.runtimepath:append('~/.cache/dein/repos/github.com/Shougo/dein.vim')
+--end
 
 -- dein loading
-local cache_dir = "~/.cache/dein/"
-if vim.fn["dein#load_state"](cache_dir)  == 1 then
-    vim.fn["dein#begin"](cache_dir)
-    vim.fn["dein#load_toml"]("~/.vim/dein.toml", {lazy = 0})
-    vim.fn["dein#load_toml"]("~/.vim/dein-lazy.toml", {lazy = 1})
-    vim.fn["dein#load_toml"]("~/.vim/dein-nvim.toml", {lazy = 0})
-    vim.fn["dein#end"]()
-    vim.fn["dein#save_state"]()
-end
+--local cache_dir = "~/.cache/dein/"
+--if vim.fn["dein#load_state"](cache_dir)  == 1 then
+--    vim.fn["dein#begin"](cache_dir)
+--    vim.fn["dein#load_toml"]("~/.vim/dein.toml", {lazy = 0})
+--    vim.fn["dein#load_toml"]("~/.vim/dein-lazy.toml", {lazy = 1})
+--    vim.fn["dein#load_toml"]("~/.vim/dein-nvim.toml", {lazy = 0})
+--    vim.fn["dein#end"]()
+--    vim.fn["dein#save_state"]()
+--end
 
-if vim.fn["dein#check_install"]() == 1 then
-    vim.fn["dein#install"]()
-end
+-- if vim.fn["dein#check_install"]() == 1 then
+--     vim.fn["dein#install"]()
+-- end
 
 -- basic settings
 vim.opt.number = true
@@ -80,6 +81,7 @@ vim.opt.hlsearch = true
 
 -- keymaps
 vim.keymap.set({'n', 'v'}, ':', ';', {noremap = true})
+vim.keymap.set({'n', 'v'}, ';', ':', {noremap = true})
 vim.keymap.set({ 'n', 'x' }, 's', '<Nop>', {})
 
 vim.keymap.set({'n', 'v'}, 'j', 'gj', {noremap = true})
@@ -139,99 +141,78 @@ end
 --    end
 --end
 
--- denite settings
--- local denite_keymap_option = { noremap = true, silent = true }
--- vim.keymap.set('n', '<leader>b', ':<C-u>Denite buffer file file_mru<CR>', denite_keymap_option)
--- vim.keymap.set('n', '<leader>f', ':<C-u>DeniteBufferDir -buffer-name=files file<CR>', denite_keymap_option)
--- vim.keymap.set('n', '<leader>o', ':<C-u>Denite outline<CR>', denite_keymap_option)
--- vim.keymap.set('n', '<leader>g', ':<C-u>Denite grep<CR>', denite_keymap_option)
--- 
--- local denite_do_map_option = { noremap = true, silent = true, expr = true }
--- vim.api.nvim_create_autocmd({"FileType"}, {
---     group = vim.api.nvim_create_augroup('denite_settings', { clear = true }),
---     pattern = {"denite"},
---     callback = function()
---         vim.keymap.set('n', '<CR>', vim.fn['denite#do_map']('do_action'), denite_do_map_option)
---         vim.keymap.set('n', 'a', vim.fn['denite#do_map']('choose_action'), denite_do_map_option)
---         vim.keymap.set('n', 'p', vim.fn['denite#do_map']('do_action', 'choose_action'), denite_do_map_option)
---         vim.keymap.set('n', 'q', vim.fn['denite#do_map']('quit'), denite_do_map_option)
---         vim.keymap.set('n', 'i', vim.fn['denite#do_map']('open_filter_buffer'), denite_do_map_option)
---     end,
--- })
--- end denite
-
 --lightline settings
-vim.g.lightline = {colorscheme = 'nightfox',
-    mode_map = {
-        n = 'N',
-        i = 'I',
-        R = 'RREPLACE',
-        v = 'V',
-        V = 'V-LINE',
-        ["<C-v>"] = 'V-BLOCK',
-        s = "S",
-        S = "S-LINE",
-        ["<C-s>"] = 'S-BLOCK'
-    },
-    active = {
-        left = {
-            {'mode', 'paste'}, {'readonly', 'gitbranch', 'filename', 'modified'}
-        },
-        right = {
-            {'lineinfo', 'syntaxcheck'}, {'percent'}, {'charcode', 'fileformat', 'fileencoding', 'filetype'}
-        }
-    },
-    component_function = {
-        mode = 'Mymode',
-        gitbranch = 'gitbranch#name',
-        fileformat = 'Myfileformat',
-        fileencoding = 'Myfileencoding',
-        filetype = 'Myfiletype',
-    },
-    -- WIP. lsp diagnostics status
-}
-
-vim.cmd([[
-function! Mymode()
-    return winwidth(0) > 30 ? lightline#mode() : ''
-endfunction
-
-function! Myfileformat()
-    return winwidth(0) > 70 ? &fileformat : ''
-endfunction
-
-function! Myfileencoding()
-    return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
-endfunction
-
-function! Myfiletype()
-    return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
-endfunction
-]])
+-- vim.g.lightline = {colorscheme = 'nightfox',
+--     mode_map = {
+--         n = 'N',
+--         i = 'I',
+--         R = 'RREPLACE',
+--         v = 'V',
+--         V = 'V-LINE',
+--         ["<C-v>"] = 'V-BLOCK',
+--         s = "S",
+--         S = "S-LINE",
+--         ["<C-s>"] = 'S-BLOCK'
+--     },
+--     active = {
+--         left = {
+--             {'mode', 'paste'}, {'readonly', 'gitbranch', 'filename', 'modified'}
+--         },
+--         right = {
+--             {'lineinfo', 'syntaxcheck'}, {'percent'}, {'charcode', 'fileformat', 'fileencoding', 'filetype'}
+--         }
+--     },
+--     component_function = {
+--         mode = 'Mymode',
+--         gitbranch = 'gitbranch#name',
+--         fileformat = 'Myfileformat',
+--         fileencoding = 'Myfileencoding',
+--         filetype = 'Myfiletype',
+--     },
+--     -- WIP. lsp diagnostics status
+-- }
+-- 
+-- vim.cmd([[
+-- function! Mymode()
+--     return winwidth(0) > 30 ? lightline#mode() : ''
+-- endfunction
+-- 
+-- function! Myfileformat()
+--     return winwidth(0) > 70 ? &fileformat : ''
+-- endfunction
+-- 
+-- function! Myfileencoding()
+--     return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+-- endfunction
+-- 
+-- function! Myfiletype()
+--     return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+-- endfunction
+-- ]])
 -- end lightline
 
 -- vim-startify settings
-vim.g.startify_lists = {
-    { type = 'dir', header = { '   MRU' .. vim.fn.getcwd() } },
-    { type = 'files', header = {'   MRU'} },
-    { type = 'sessions', header = {'   Sessions'} },
-    { type = 'commands', header = {'   Commands'} },
-}
-vim.g.startify_commands = {
-    { 'Plugins Update', 'call dein#update()' },
-    { 'Plugins Recache', 'call dein#recache_runtimepath()' }
-}
-vim.g.startify_change_to_dir = 0
-vim.g.startify_change_to_vcs_root = 1
-vim.g.startify_custom_header = {
-[[                               ]],
-[[            __                 ]],
-[[    __  __ /\_\    ___ ___     ]],
-[[   /\ \/\ \\/\ \ /'' __` __`\  ]],
-[[   \ \ \_/ |\ \ \/\ \/\ \/\ \  ]],
-[[    \ \___/  \ \_\ \_\ \_\ \_\ ]],
-[[     \/__/    \/_/\/_/\/_/\/_/ ]],
-}
+-- vim.g.startify_lists = {
+--     { type = 'dir', header = { '   MRU' .. vim.fn.getcwd() } },
+--     { type = 'files', header = {'   MRU'} },
+--     { type = 'sessions', header = {'   Sessions'} },
+--     { type = 'commands', header = {'   Commands'} },
+-- }
+-- vim.g.startify_commands = {
+--     { 'Plugins Update', 'call dein#update()' },
+--     { 'Plugins Recache', 'call dein#recache_runtimepath()' }
+-- }
+-- vim.g.startify_change_to_dir = 0
+-- vim.g.startify_change_to_vcs_root = 1
+-- vim.g.startify_custom_header = {
+-- [[                               ]],
+-- [[            __                 ]],
+-- [[    __  __ /\_\    ___ ___     ]],
+-- [[   /\ \/\ \\/\ \ /'' __` __`\  ]],
+-- [[   \ \ \_/ |\ \ \/\ \/\ \/\ \  ]],
+-- [[    \ \___/  \ \_\ \_\ \_\ \_\ ]],
+-- [[     \/__/    \/_/\/_/\/_/\/_/ ]],
+-- }
 -- end vim-startify
 
 -- gitgutter settings
@@ -243,9 +224,9 @@ vim.keymap.set({'n'}, '<Leader>gm', '<Plug>(git-messenger)')
 -- end git-messenger
 
 -- vim-matchup settings
-vim.g.matchup_matchparen_offscreen = { method = 'popup', scrolloff = 1 }
-vim.g.matchup_matchparen_deferred = 1
-vim.g.matchup_matchparen_deferred_show_delay = 200
+-- vim.g.matchup_matchparen_offscreen = { method = 'popup', scrolloff = 1 }
+-- vim.g.matchup_matchparen_deferred = 1
+-- vim.g.matchup_matchparen_deferred_show_delay = 200
 -- end vim-matchup
 
 -- fern.vim settings
@@ -278,82 +259,82 @@ local function init_fern()
     vim.keymap.set('n', 'o', '<Plug>(fern-my-expand-or-collapse)', fern_keymap_options)
 end
 
-if vim.fn['dein#tap']('fern.vim') == 1 then
-    vim.keymap.set('n', '<leader>d', ':Fern -drawer -toggle . <CR>', { silent = true })
-    vim.api.nvim_create_autocmd({"FileType"}, {
-        group = vim.api.nvim_create_augroup('my-fern', { clear = true }),
-        pattern = {"fern"},
-        callback = function()
-            return init_fern()
-        end,
-    })
-end
+--if vim.fn['dein#tap']('fern.vim') == 1 then
+--    vim.keymap.set('n', '<leader>d', ':Fern -drawer -toggle . <CR>', { silent = true })
+--    vim.api.nvim_create_autocmd({"FileType"}, {
+--        group = vim.api.nvim_create_augroup('my-fern', { clear = true }),
+--        pattern = {"fern"},
+--        callback = function()
+--            return init_fern()
+--        end,
+--    })
+--end
 -- end fern.vim
 
 -- nvim-treesitter
-require'nvim-treesitter.configs'.setup {
-    highlight = {
-        enable = true,
-        disable = {"help", "vim"},
-    },
-    indent = {
-        enable = true,
-        disable = {"yaml"},
-    }
-}
+-- require'nvim-treesitter.configs'.setup {
+--     highlight = {
+--         enable = true,
+--         disable = {"help", "vim"},
+--     },
+--     indent = {
+--         enable = true,
+--         disable = {"yaml"},
+--     }
+-- }
 -- end nvim-treesitter
 
 -- mason.nvim
-require("mason").setup()
-require("mason-lspconfig").setup()
+-- require("mason").setup()
+-- require("mason-lspconfig").setup()
 -- end mason.nvim
 
 -- nvim-lsp
-local lspconfig = require("lspconfig")
-local capabilities = require("ddc_source_lsp").make_client_capabilities()
-lspconfig.gopls.setup {
-    capabilities = capabilities,
-}
-lspconfig.lua_ls.setup({
-    on_init = function (client)
-        local path = client.workspace_folders[1].name
-        if not vim.loop.fs_stat(path..'/.luarc.json') and not vim.loop.fs_stat(path..'/.luarc.jsonc') then
-            client.config.settings = vim.tbl_deep_extend('force', client.config.settings, {
-                Lua = {
-                    runtime = {
-                        version = 'LuaJIT'
-                    },
-                    workspace = {
-                        checkThirdParty = false,
-                        library = vim.api.nvim_get_runtime_file("lua", true)
-                    },
-                    diagnostics = {
-                        globals = { 'vim' }
-                    }
-                }
-            })
-            client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
-        end
-        return true
-    end
-})
-
-lspconfig.intelephense.setup({
-    capabilities = capabilities,
-})
-
-vim.api.nvim_create_autocmd('LspAttach', {
-    group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-    callback = function(ev)
-        local opts = { buffer = ev.buf }
-        vim.keymap.set('n', 'gh', vim.lsp.buf.hover, opts)
-        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-        vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-    end
-})
+-- local lspconfig = require("lspconfig")
+-- local capabilities = require("ddc_source_lsp").make_client_capabilities()
+-- lspconfig.gopls.setup {
+--     capabilities = capabilities,
+-- }
+-- lspconfig.lua_ls.setup({
+--     on_init = function (client)
+--         local path = client.workspace_folders[1].name
+--         if not vim.loop.fs_stat(path..'/.luarc.json') and not vim.loop.fs_stat(path..'/.luarc.jsonc') then
+--             client.config.settings = vim.tbl_deep_extend('force', client.config.settings, {
+--                 Lua = {
+--                     runtime = {
+--                         version = 'LuaJIT'
+--                     },
+--                     workspace = {
+--                         checkThirdParty = false,
+--                         library = vim.api.nvim_get_runtime_file("lua", true)
+--                     },
+--                     diagnostics = {
+--                         globals = { 'vim' }
+--                     }
+--                 }
+--             })
+--             client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
+--         end
+--         return true
+--     end
+-- })
+-- 
+-- lspconfig.intelephense.setup({
+--     capabilities = capabilities,
+-- })
+-- 
+-- vim.api.nvim_create_autocmd('LspAttach', {
+--     group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+--     callback = function(ev)
+--         local opts = { buffer = ev.buf }
+--         vim.keymap.set('n', 'gh', vim.lsp.buf.hover, opts)
+--         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+--         vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+--     end
+-- })
 
 -- gitsigns
-require('gitsigns').setup()
+-- require('gitsigns').setup()
 
 -- fidget.nvim
-require('fidget').setup {}
+-- require('fidget').setup {}
